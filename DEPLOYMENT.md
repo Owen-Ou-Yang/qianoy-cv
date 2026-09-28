@@ -31,9 +31,9 @@ npm run validate
 
 Node 22.23.3 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
 
-The current content includes confirmed education, experience, and skills plus exactly two owner-approved research case studies: a MACE GPU engineering pilot and preliminary polymer density screening. The HTML and PDF CV use their shared `cvSummary` fields. JEPA results and coursework remain excluded; general JEPA research interests remain visible. Review `TODO.md` for optional additions.
+The current content includes confirmed education, experience, and skills plus three owner-approved research case studies: an earlier UMA/FAIR-Chem workflow, a MACE GPU engineering pilot, and preliminary polymer density screening. The UMA workflow explains how practical GPU-memory constraints motivated the owner's HPC interests; it does not present quantitative UMA results. The HTML and PDF CV use the records' shared `cvSummary` fields. JEPA results and coursework remain excluded; general JEPA research interests remain visible. Review `TODO.md` for optional additions.
 
-Keep the selected SVG/PNG figures, plotted CSV files, and social preview image in `public/`; they are ordinary static assets and add no JavaScript or hosting service. Check both case-study pages, image/data downloads, and the updated PDF before publishing a content update. Regenerate and visually inspect the PDF when changing CV content, then run `npm run validate`.
+Keep the selected SVG/PNG figures, plotted CSV files, and social preview image in `public/`; they are ordinary static assets and add no JavaScript or hosting service. The UMA workflow schematic is rendered as static HTML and is not a scientific result figure. Check all three case-study pages, including `/projects/uma-fairchem-polymer-workflow/`, the two measurement studies' image/data downloads, and the updated PDF before publishing a content update. Regenerate and visually inspect the PDF when changing CV content, then run `npm run validate`. A prepared content revision is not confirmed live until its deployment and served pages have been checked.
 
 ## 2. Create the public GitHub repository and push
 

@@ -1,0 +1,12 @@
+---
+import type { Project } from '../data/projects';
+interface Props { workflow: NonNullable<Project['workflow']>; }
+const { workflow } = Astro.props;
+---
+<section class="workflow-overview" aria-labelledby="workflow-heading">
+  <p class="eyebrow">Workflow schematic</p>
+  <h2 id="workflow-heading">{workflow.title}</h2>
+  <p class="workflow-note">{workflow.note}</p>
+  <ol class="workflow-steps">{workflow.steps.map((step, index) => <li><span class="workflow-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><h3>{step.title}</h3><p>{step.description}</p></li>)}</ol>
+  <div class="workflow-insight"><div><h3>{workflow.insightTitle}</h3><p>{workflow.insight}</p></div><a href={workflow.link}>{workflow.linkLabel} <span aria-hidden="true">↗</span></a></div>
+</section>

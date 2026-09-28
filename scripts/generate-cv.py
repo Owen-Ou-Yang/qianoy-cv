@@ -46,7 +46,7 @@ def add(text, style='body'):
     content.append(para(text, style))
 
 def e(text):
-    return escape(str(text))
+    return escape(str(text).replace('\u2011', '-').replace('\u2013', '-').replace('\u2014', '-'))
 
 if profile['cvIsDraft']:
     add('CURRICULUM VITAE / DRAFT - TODO fields remain', 'meta')

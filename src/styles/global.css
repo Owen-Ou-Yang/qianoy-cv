@@ -105,6 +105,18 @@
   .study-page h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); }
   .study-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--muted); font-size: .85rem; }
   .study-meta > span:first-child { color: #236b69; font-weight: 600; }
+  .workflow-overview { margin-block: 2.5rem 3rem; padding-block: 2rem; border-block: 1px solid var(--line); }
+  .workflow-overview > h2 { font-size: 1.9rem; }
+  .workflow-note { color: var(--muted); font-size: .875rem; margin-top: .75rem; max-width: 78ch; }
+  .workflow-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-block: 2rem; }
+  .workflow-steps li { margin: 0; border-top: 2px solid var(--line); padding-top: .7rem; }
+  .workflow-number { font-size: .8rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .workflow-steps h3 { font-size: 1.05rem; margin-block: .5rem; }
+  .workflow-steps p { font-size: .875rem; }
+  .workflow-insight { border-left: 2px solid #236b69; padding-left: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .workflow-insight h3 { font-size: 1.05rem; }
+  .workflow-insight p { max-width: 65ch; margin-top: .5rem; }
+  .workflow-insight > a { flex-shrink: 0; font-size: .9rem; }
   .study-figure { margin-block: 2rem 3rem; }
   .study-figure img { border: 0; width: 100%; }
   .figure-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-top: .8rem; font-size: .875rem; }
@@ -171,6 +183,8 @@
   .project-figure { margin-top: .5rem; }
   .project-figure figcaption { font-size: .8rem; }
   .study-body { grid-template-columns: 1fr; gap: 2rem; }
+  .workflow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .workflow-insight { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .study-figure { margin-bottom: 2rem; }
   .contact-invitation, .next-study { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
   .site-footer { flex-direction: column; gap: 1.5rem; margin-top: 3rem; }

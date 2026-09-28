@@ -1,5 +1,65 @@
 [
   {
+    "slug": "uma-fairchem-polymer-workflow",
+    "title": "Polymer elastic-response workflows with UMA / FAIR-Chem",
+    "theme": "Scientific workflows / ML interatomic potentials",
+    "summary": "Building a polymer elastic-response workflow with UMA / FAIR-Chem and LAMMPS, from individual snapshots to batch calculations and stress–strain analysis.",
+    "question": "What does it take to turn a pretrained interatomic potential into a reproducible polymer-simulation workflow under practical GPU-memory constraints?",
+    "takeaway": "GPU-memory limitations encountered in this project prompted my interest in MLIP efficiency and HPC optimization.",
+    "scope": "Workflow implementation and research motivation. No validated UMA property benchmark or quantified optimization gain is claimed.",
+    "status": "Research workflow",
+    "role": "Workflow development as part of my research in Prof. Tengfei Luo's group.",
+    "cvSummary": "Developed a UMA / FAIR-Chem and LAMMPS workflow for polymer elastic response, with batch execution and stress–strain analysis. GPU-memory constraints motivated my interest in MLIP efficiency.",
+    "methodology": [
+      "Used the FAIR-Chem–LAMMPS interface to build snapshot-based polymer calculations with UMA and a fixed-box baseline at 300 K.",
+      "Implemented positive and negative perturbations in six strain modes, with stress sampling and finite-difference stiffness-matrix postprocessing.",
+      "Organized single-snapshot and batch execution with per-run metadata and postprocessing for elastic-response estimates.",
+      "Added tooling to inspect model cutoff and neighbor settings, directed edge counts, and neighbors per atom to examine the size of the molecular graph supplied to the potential."
+    ],
+    "resultsHeading": "What I built and learned",
+    "results": [
+      "A reusable workflow linking polymer snapshots, UMA / FAIR-Chem calculations, and stress–strain postprocessing.",
+      "Batch-launch and graph-inspection tools for investigating the practical resource requirements of the workflow.",
+      "A research question grounded in experience: how can MLIPs use GPU memory and computation more efficiently while preserving their physical predictions?"
+    ],
+    "resultsNote": "Working on this project exposed me to GPU-memory limitations. That experience motivated the later MACE resource study, where I measured runtime, sampled device memory, and allocated GPU-hours together.",
+    "limitations": [
+      "This case study documents an implemented elastic-response workflow. It does not report a validated UMA modulus benchmark, glass-transition temperature, or equilibrium density.",
+      "No specific UMA memory footprint or optimization speedup is reported here. The later MACE measurements are a separate study.",
+      "Changing a pretrained model’s neighbor settings can alter its predictions. Such changes require scientific validation and are not automatically equivalent to memory optimization."
+    ],
+    "workflow": {
+      "title": "From polymer snapshots to elastic response",
+      "note": "Workflow schematic based on the implementation; it illustrates calculation stages, not a validated property result.",
+      "steps": [
+        {
+          "title": "Polymer snapshot",
+          "description": "Select an input configuration and record the run settings."
+        },
+        {
+          "title": "UMA + LAMMPS",
+          "description": "Prepare and sample a fixed-box baseline at 300 K."
+        },
+        {
+          "title": "12 perturbations",
+          "description": "Apply positive and negative strains in six modes; sample stress."
+        },
+        {
+          "title": "Elastic response",
+          "description": "Assemble the stiffness matrix and postprocess modulus estimates."
+        }
+      ],
+      "insightTitle": "The question this work led to",
+      "insight": "When GPU memory limits practical simulation, how can we reduce resource demands without compromising the physics?",
+      "link": "/projects/mlip-gpu-resources/",
+      "linkLabel": "Follow the resource study"
+    },
+    "repository": null,
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false
+  },
+  {
     "slug": "mlip-gpu-resources",
     "title": "GPU resource trade-offs in MACE molecular dynamics",
     "theme": "ML interatomic potentials / HPC",

@@ -9,6 +9,16 @@ export interface Project {
   methodology: string[];
   results: string[];
   resultsNote?: string;
+  resultsHeading?: string;
+  workflow?: {
+    title: string;
+    note: string;
+    steps: { title: string; description: string }[];
+    insightTitle: string;
+    insight: string;
+    link: string;
+    linkLabel: string;
+  };
   detailsTodo?: string[];
   status: string | null;
   role?: string;

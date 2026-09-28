@@ -20,7 +20,7 @@
   {
     "id": "mlip-hpc",
     "title": "HPC Optimization of ML Interatomic Potentials",
-    "description": "I am particularly interested in where MLIPs spend computation and GPU memory, and whether redundant work can be reduced while retaining useful physical predictions. Improving memory efficiency and simulation throughput is a research direction I want to pursue; I do not yet report optimization or training results.",
+    "description": "My interest in MLIP efficiency grew out of GPU-memory limitations encountered while developing UMA / FAIR-Chem polymer-simulation workflows. I want to understand where these models spend memory and computation, and how to improve simulation throughput while preserving physical predictions. My MACE resource pilot is an initial measurement study; a new optimization method remains a research goal.",
     "keywords": [
       "GPU memory",
       "Computational efficiency",

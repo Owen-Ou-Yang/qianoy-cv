@@ -10,16 +10,24 @@ Updated from the owner's messages on 2026-09-27 and 2026-09-28. This file record
 | 2025 年 8–12 月在圣母大学做学期 visiting student | Visiting Student, August - December 2025 |
 | 2026 年 7–9 月在圣母大学做 iSURE 暑研 | Summer Research Participant (iSURE), July - September 2026 |
 | MLIP 的 HPC 优化非常重要，关注显存、冗余和速度 | Research interest in memory efficiency, computational redundancy, and simulation throughput |
+| UMA/FAIR-Chem 项目遇到显存限制，是 HPC 优化兴趣的来源 | GPU-memory constraints encountered while developing UMA/FAIR-Chem workflows motivated an interest in efficient ML interatomic potentials |
 | 完整搭建过 VPN；有 CRC 使用经验；C++ 和 Python | Independent VPN setup; research computing experience with CRC; C++, Python |
-| 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish exactly the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
+| 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
+| 2026-09-28：之前那个 UMA FAIRchem 的项目也可以加上去 | Add the earlier UMA/FAIR-Chem workflow as a third case study and explain its connection to HPC interests |
 
-The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the two approved case studies, their selected measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
+The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the approved UMA/FAIR-Chem workflow and two measurement studies, their selected descriptions, measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
 
 ## Editorial scope
 
-On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. This supersedes the earlier request to withhold all projects for these two case studies only. It does not authorize publication of complete research directories, unpublished project drafts, JEPA results, coursework, or unrelated measurements.
+On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. In a subsequent message, the owner approved adding the earlier UMA/FAIR-Chem project and explained that its GPU-memory limits motivated their HPC optimization interests. These approvals supersede the earlier request to withhold all projects for these three case studies only. They do not authorize publication of complete research directories, unpublished project drafts, JEPA results, coursework, or unrelated measurements.
 
-`src/data/projects.json` contains exactly two published records. Each supplies a bounded `cvSummary` to the HTML and PDF CV. Static SVG figures, downloadable PNG versions, and small CSV files contain the selected approved measurements; a separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript.
+`src/data/projects.json` contains three published records: one workflow case study and two measurement studies. Each supplies a bounded `cvSummary` to the HTML and PDF CV. The UMA page uses an HTML schematic to explain workflow stages. Static SVG figures, downloadable PNG versions, and small CSV files contain the two measurement studies' selected approved values; a separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript. The publication array remains empty, and none of these records sets `output` or creates a publication citation.
+
+### UMA/FAIR-Chem polymer workflow
+
+The earlier source describes an elastic-response workflow: fixed-box baseline preparation, twelve signed finite-strain calculations, and stress-tensor/modulus post-processing, with single-snapshot and batch execution. This supports describing implemented workflow stages. Later thermal-property paths concern Tg and density development; they do not establish validated UMA Tg or equilibrium-density results. The case-study route is `/projects/uma-fairchem-polymer-workflow/`.
+
+The connection between practical GPU-memory limitations and the owner's HPC research interests is explicitly user-confirmed. It is a statement of research motivation, not a quantified performance result. The HTML workflow schematic describes the computational process and contains no measured UMA property values. No quantitative UMA accuracy, optimization gain, or completed thermal-property validation is claimed. The later MACE resource and density case studies retain their own evidence and limitations rather than being relabeled as UMA results.
 
 ### MACE GPU engineering pilot
 
@@ -36,7 +44,7 @@ Reference phase, temperature, molecular weight, and measurement uncertainty rema
 ### Other claims
 
 - No JEPA success, paper, benchmark, or generalization result is claimed.
-- MLIP optimization remains a research direction. The approved engineering measurement does not claim a newly optimized algorithm or controlled general performance improvement. The user's compute constraints are not included in the public biography.
+- MLIP optimization remains a research direction. The approved engineering measurement does not claim a newly optimized algorithm or controlled general performance improvement. The owner-approved account of GPU-memory limitations explains the origin of this interest; it does not assert hardware capacity, infrastructure details, or a measured optimization gain.
 - Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, GPA, award, publication, or additional quantitative result has been inferred.
 - The current RA, visiting student, and iSURE records are separate. The two visit dates are not treated as continuous employment dates.
 

@@ -4,11 +4,12 @@
   "siteUrl": "https://cv.qianoy.uk",
   "identity": "Machine learning for materials and molecular simulation.",
   "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame research assistant, interested in molecular simulation and efficient MLIPs.",
-  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. I am interested in how molecular models describe materials, and how to make their simulations more efficient.",
+  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. GPU-memory limitations in my UMA / FAIR-Chem polymer-simulation work sparked my interest in making ML interatomic potentials more efficient.",
   "biography": [
     "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University. I am also a research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
     "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I have been a research assistant at Notre Dame since October 2025. I was a visiting student at Notre Dame from August to December 2025 and returned for summer research through iSURE from July to September 2026.",
-    "My research interests include JEPA-style representation learning for molecular dynamics and coarse-grained modeling. I am particularly interested in optimizing machine learning interatomic potentials for high-performance computing: understanding computational redundancy, reducing GPU memory requirements, and making molecular simulation more efficient."
+    "Working on polymer simulations with UMA / FAIR-Chem exposed me to GPU-memory constraints in practice. That experience led me to ask how ML interatomic potentials could use computational resources more efficiently. I am interested in understanding computational redundancy, reducing memory requirements, and improving simulation throughput while preserving useful physical predictions.",
+    "My research interests also include JEPA-style representation learning for molecular dynamics, coarse-grained modeling, and polymer property prediction."
   ],
   "email": "qouyang@nd.edu",
   "github": "https://github.com/Owen-Ou-Yang",

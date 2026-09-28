@@ -4,7 +4,7 @@ Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.
 
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
-The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Two owner-approved research case studies show an engineering pilot of MACE GPU resource use and preliminary polymer density screening, with their measurements and limitations. Their concise `cvSummary` fields also supply the HTML and PDF CV research entries. JEPA results and coursework remain excluded; general JEPA research interests remain visible. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
+The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Three owner-approved research case studies connect an earlier UMA/FAIR-Chem workflow, a MACE GPU resource pilot, and preliminary polymer density screening. The first describes workflow development and the GPU-memory limits that motivated the owner's HPC interests; the other two present selected measurements with their limitations. Their concise `cvSummary` fields also supply the HTML and PDF CV research entries. JEPA results and coursework remain excluded; general JEPA research interests remain visible. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
 
 ## Develop locally
 
@@ -66,7 +66,7 @@ npm run preview    # Serve the production build locally
     ├── data/
     │   ├── profile.json           # Name, biography, experience, education, skills
     │   ├── research.json          # Research themes and descriptions
-    │   ├── projects.json          # Two approved case studies and shared CV summaries
+    │   ├── projects.json          # Three approved case studies and shared CV summaries
     │   ├── publications.json      # Actual citations only; currently empty
     │   ├── site.ts                # Profile types, exports, navigation
     │   ├── projects.ts            # Project types and exports
@@ -101,25 +101,27 @@ Edit `src/data/projects.json`. Each published record generates `/projects/<slug>
 
 - `slug`, `title`, `theme`, `summary`: identity and overview.
 - `question`, `methodology`, `results`: a question string and lists of concrete methods/results.
+- `resultsHeading`: optional outcomes heading, such as "What I built and learned" for a workflow.
+- `workflow`: optional static schematic with a title, scope note, ordered `steps` (title and description), and an insight with a follow-up link. Keep this description distinct from measured results.
 - `takeaway`, `scope`, `resultsNote`, and `limitations`: the main observation, study scope, interpretation, and limits. Keep the engineering pilot and preliminary screening labels next to their evidence.
 - `date`: the actual evidence snapshot or study date; do not substitute a deployment date.
 - `cvSummary`: a concise, bounded research description shared by the HTML CV and the optional PDF generator.
 - `dataFile`: an optional public CSV URL for the approved plotted measurements; `references`: source attribution with optional notes about what each source establishes.
 - `detailsTodo`: remaining information needed for the project record.
 - `role` and `status`: personal contribution and actual project status; `repository`: a public HTTPS code URL or `null`.
-- `published`: set to `true` only when the owner wants the record publicly displayed. Only published records generate detail pages or appear in the website/PDF. The public array currently contains exactly two approved case studies.
+- `published`: set to `true` only when the owner wants the record publicly displayed. Only published records generate detail pages or appear in the website/PDF. The public array currently contains three approved case studies: one workflow and two measurement studies.
 - `selected`: show a published entry on the homepage.
 - `isPlaceholder`: use `true` for a topic-only draft, which is excluded from indexing/sitemap. An actual ongoing project may use `false` without claiming completion.
 - `output`: optional `{ "type": "Research software", "role": "..." }` (or `Research workflow`). This includes the project in research output and the HTML CV without creating a publication citation.
 - `figure`: optional `{ "src": "/figures/filename.svg", "download": "/figures/filename.png", "width": 1680, "height": 864, "alt": "...", "caption": "..." }`. Use the actual dimensions, descriptive alt text, attribution, and interpretation limits. The current SVG figures have PNG download versions and small CSV files containing only the approved plotted measurements.
 
-The homepage and Research page highlight the two approved case studies; each has a detail page with methods, figures, data, and limitations. Coursework and JEPA results are not included. Other project drafts stay outside the public source. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built. General research interests and tool experience remain visible.
+The homepage and Research page highlight the three approved case studies. The UMA/FAIR-Chem page at `/projects/uma-fairchem-polymer-workflow/` explains the elastic-response workflow and its connection to the owner's HPC research interests. Its HTML workflow schematic describes processing stages; it is not a scientific result figure. The MACE resource and density pages contain the approved SVG/PNG figures, plotted CSV data, methods, and limitations. Keep the original UMA elastic-response workflow distinct from later Tg/density paths under development; no validated UMA property values are reported. Coursework and JEPA results are not included. Other project drafts stay outside the public source. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built. General research interests and tool experience remain visible.
 
 When adding new records, note that `published: false` controls rendered output only. Confidential drafts must stay outside public source and public Git history.
 
 ### Publications and other citations
 
-`src/data/publications.json` is intentionally empty. Allowed `type` values: `Publication`, `Preprint`, `Manuscript`, `Poster`, and `Talk`. Each entry needs `id`, `type`, `title`, and `authors`; optional fields are `venue`, `date`, `status`, `url`, and `code`. Add only real entries. The website and PDF generator use this same data. Software/workflow contributions are selected separately from `projects.json`.
+`src/data/publications.json` is intentionally empty. Allowed `type` values: `Publication`, `Preprint`, `Manuscript`, `Poster`, and `Talk`. Each entry needs `id`, `type`, `title`, and `authors`; optional fields are `venue`, `date`, `status`, `url`, and `code`. Add only real entries. The website and PDF generator use this same data. Software/workflow contributions can be selected separately from `projects.json`; the current three case studies do not set `output` and do not create publication or software-release citations.
 
 ### PDF and HTML CV
 

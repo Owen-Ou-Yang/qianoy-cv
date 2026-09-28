@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approved two specific research case studies: the MACE GPU engineering pilot and preliminary polymer density screening. Other project results, including JEPA and coursework, remain excluded.
+Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approved three research case studies: an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Other project results, including JEPA and coursework, remain excluded.
 
 ## Confirmed and incorporated
 
@@ -13,7 +13,9 @@ Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approv
 - [x] Programming languages: C++ and Python. No proficiency rating is assumed.
 - [x] CRC experience, independent VPN setup, and experience with UMA/FAIR-Chem and MACE.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
-- [x] Add exactly two approved research case studies, with SVG/PNG figures, plotted CSV data, methods, and visible limitations. Keep their short `cvSummary` entries shared by the HTML and PDF CV.
+- [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
+- [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
+- [x] Use each case study's short `cvSummary` entry in the HTML and PDF CV.
 - [x] Keep JEPA results and coursework outside the public project records; retain general JEPA research interests.
 - [x] Add a local sharing preview image without introducing client JavaScript.
 - [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
@@ -33,8 +35,9 @@ No GPA, awards, publications, or service entries are assumed or required. `src/d
 - [ ] Replace the density reference table with fully traced, condition-matched references when available; do not infer phase, temperature, molecular weight, or experimental uncertainty.
 - [ ] Add repeated measurements or independent preparations only after those experiments exist and their public scope is approved. Until then, keep the single-run engineering and single-packing screening limits explicit.
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
+- [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the two selected case studies, not all research documents or future results.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the UMA workflow and the two selected measurement studies, not all research documents or future results.
 
 Unpublished project drafts remain excluded from public source and public Git history.
 
