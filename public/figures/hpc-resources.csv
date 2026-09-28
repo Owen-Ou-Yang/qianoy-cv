@@ -1,0 +1,4 @@
+gpus,wall_minutes_excluding_queue,sampled_max_per_gpu_memory_GiB,allocated_gpu_hours,status
+2,117.303,21.6845703125,3.9101,engineering_pilot_failed_scientific_QC
+3,,,,MPI_CUDA_initialization_failed_before_model_work
+4,62.705,11.1259765625,4.18036,engineering_pilot_failed_scientific_QC

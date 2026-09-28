@@ -38,6 +38,15 @@ for (const file of htmlFiles) {
   const headings = [...html.matchAll(/<h([1-6])(?:\s|>)/g)].map(match => Number(match[1]));
   for (let i = 1; i < headings.length; i++) assert(headings[i] <= headings[i - 1] + 1, `${route}: skipped heading level`);
   for (const script of html.match(/<script\b[^>]*>/g) ?? []) assert.equal(readAttr(script, 'type'), 'application/ld+json', `${route}: unexpected client JavaScript`);
+  for (const img of html.match(/<img\b[^>]*>/g) ?? []) {
+    assert(readAttr(img, 'alt')?.trim(), `${route}: image needs descriptive alt text`);
+    assert(Number(readAttr(img, 'width')) > 0 && Number(readAttr(img, 'height')) > 0, `${route}: image dimensions prevent layout shifts`);
+  }
+  const ogImage = (html.match(/<meta\b[^>]*>/g) ?? []).find(tag => readAttr(tag, 'property') === 'og:image');
+  if (ogImage) {
+    const imageUrl = new URL(readAttr(ogImage, 'content'));
+    if (imageUrl.origin === 'https://cv.qianoy.uk') assert(files.includes(path.join(root, imageUrl.pathname)), `${route}: social image is missing`);
+  }
   assert(Buffer.byteLength(html) < 100 * 1024, `${route}: HTML exceeds 100 KiB budget`);
 }
 

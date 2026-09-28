@@ -1,22 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import Todo from '../../components/Todo.astro';
 import { projects, type Project } from '../../data/projects';
 export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
 interface Props { project: Project; }
 const { project } = Astro.props;
+const otherProjects = projects.filter(p => p.slug !== project.slug);
 ---
 <BaseLayout title={project.title} description={project.summary} noindex={project.isPlaceholder}>
-  <a class="back-link" href="/projects/">← All projects</a>
-  <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
-  <div class="reading">
-    {project.isPlaceholder && <p class="draft-note">Draft research entry. This topic reflects a stated research interest; the project record and results have yet to be supplied.</p>}
-    <dl class="detail-meta"><div><dt>Status</dt><dd>{project.status ?? <Todo text="TODO: Project status" />}</dd></div>{project.role && <div><dt>My role</dt><dd>{project.role}</dd></div>}<div><dt>Code</dt><dd>{project.repository ? <a href={project.repository}>Repository <span aria-hidden="true">↗</span></a> : <Todo text="TODO: Public repository URL" />}</dd></div></dl>
-    <section class="detail-section"><h2>Research question</h2>{project.question ? <p>{project.question}</p> : <Todo text="TODO: State the specific research question and scope." />}</section>
-    <section class="detail-section"><h2>Methodology</h2>{project.methodology.length ? <ul>{project.methodology.map(method => <li>{method}</li>)}</ul> : <Todo text="TODO: Add the models, datasets, simulation setup, evaluation protocol, and your contribution." />}</section>
-    <section class="detail-section"><h2>Outputs & current status</h2>{project.results.length > 0 && <ul>{project.results.map(result => <li>{result}</li>)}</ul>}{project.resultsNote ? <p class={project.results.length ? 'space-top' : undefined}>{project.resultsNote}</p> : project.results.length === 0 && <Todo text="TODO: Add evidence-backed results and limitations, or state that work is ongoing." />}</section>
-    {!!project.detailsTodo?.length && <section class="detail-section"><h2>Details to add</h2>{project.detailsTodo.map(todo => <p><Todo text={todo} /></p>)}</section>}
-    {project.figure && <figure class="research-figure"><img src={project.figure.src} alt={project.figure.alt} loading="lazy" decoding="async" /><figcaption>{project.figure.caption}</figcaption></figure>}
-  </div>
+  <article class="study-page">
+    <a class="back-link" href="/#selected-work">← Selected research</a>
+    <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
+    <div class="study-meta"><span>{project.status}</span>{project.date && <span>{project.date}</span>}</div>
+    {project.figure && <figure class="research-figure study-figure"><img src={project.figure.src} alt={project.figure.alt} width={project.figure.width} height={project.figure.height} decoding="async" fetchpriority="high" /><figcaption>{project.figure.caption}</figcaption><div class="figure-links"><a href={project.figure.download ?? project.figure.src}>Open full-size figure <span aria-hidden="true">↗</span></a>{project.dataFile && <a href={project.dataFile} download>Download figure data (CSV) <span aria-hidden="true">↓</span></a>}</div></figure>}
+    <div class="study-body">
+      <aside class="study-context"><h2>Context</h2>{project.role && <p>{project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}<p><a href="/cv/">Curriculum vitae</a></p></aside>
+      <div class="study-prose">
+        <section class="detail-section"><h2>Research question</h2><p>{project.question}</p></section>
+        <section class="detail-section"><h2>Approach</h2><ul>{project.methodology.map(method => <li>{method}</li>)}</ul></section>
+        <section class="detail-section"><h2>What the measurements show</h2><ul>{project.results.map(result => <li>{result}</li>)}</ul>{project.resultsNote && <p class="space-top">{project.resultsNote}</p>}</section>
+        {!!project.limitations?.length && <section class="detail-section"><h2>Scope & limitations</h2><ul>{project.limitations.map(limit => <li>{limit}</li>)}</ul></section>}
+        {!!project.references?.length && <section class="detail-section"><h2>Data attribution</h2>{project.references.map(reference => <p><a href={reference.url}>{reference.label} <span aria-hidden="true">↗</span></a>{reference.note && <span class="reference-note">{reference.note}</span>}</p>)}</section>}
+      </div>
+    </div>
+    {otherProjects.length > 0 && <section class="section next-study" aria-labelledby="next-study-heading"><div><p class="eyebrow">Continue exploring</p><h2 id="next-study-heading">{otherProjects[0].title}</h2></div><a class="text-link" href={`/projects/${otherProjects[0].slug}/`}>Read the case study <span aria-hidden="true">↗</span></a></section>}
+  </article>
 </BaseLayout>

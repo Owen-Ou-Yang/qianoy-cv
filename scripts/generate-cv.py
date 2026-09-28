@@ -90,19 +90,16 @@ add('Research interests', 'section')
 add('; '.join(e(theme['title']) for theme in themes) + '.')
 
 if projects:
-    add('Research software & ongoing work', 'section')
+    add('Selected research', 'section')
 for project in projects:
     # Publication citations are not inferred from project/software records.
-    label = project['output']['type'] if project.get('output') else 'Ongoing research'
-    description = project['summary']
-    if not project.get('output'):
-        description += ' ' + project.get('resultsNote', '')
+    description = project.get('cvSummary') or project['summary']
+    url = profile['siteUrl'].rstrip('/') + '/projects/' + project['slug'] + '/'
     block = [
-        para(e(project['title']), 'title'),
+        para(f'<link href="{e(url)}">{e(project["title"])}</link>', 'title'),
+        para(e(' | '.join(value for value in [project.get('status'), project.get('date')] if value)), 'meta'),
         para(e(description)),
     ]
-    if project.get('output'):
-        block.append(para(e(label + ' | ' + project['role']), 'meta'))
     block.append(Spacer(1, 4))
     content.append(KeepTogether(block))
 

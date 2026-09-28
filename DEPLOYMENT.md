@@ -13,11 +13,11 @@ Sources: [static request pricing](https://developers.cloudflare.com/pages/functi
 - Live canonical website: [https://cv.qianoy.uk](https://cv.qianoy.uk/), verified on 2026-09-28.
 - Public GitHub repository created: `Owen-Ou-Yang/qianoy-cv`.
 - Chrome access to the signed-in GitHub and Cloudflare accounts was restored on 2026-09-28.
-- Public source is published on `main`; commit `1e8c2e4` passed [GitHub Actions validation](https://github.com/Owen-Ou-Yang/qianoy-cv/actions/runs/36372847874) and automatically deployed successfully to Cloudflare Pages using Node 22.23.3.
+- Initial launch commit `1e8c2e4` passed [GitHub Actions validation](https://github.com/Owen-Ou-Yang/qianoy-cv/actions/runs/36372847874) and automatically deployed successfully to Cloudflare Pages using Node 22.23.3. Later content updates continue through `main`.
 - The owner approved the official Cloudflare GitHub app, scoped to **only** `Owen-Ou-Yang/qianoy-cv`. The Git-integrated Pages project deployed successfully at `https://qianoy-cv.pages.dev`; automatic production deployments from `main` are enabled.
 - `cv.qianoy.uk` is **Active**, with **SSL enabled**. Its `cv` CNAME points to `qianoy-cv.pages.dev`.
-- Live checks passed for all six public pages, `/cv.pdf` (matching the local file), `/sitemap.xml`, `/robots.txt`, and genuine 404 responses. HTTP redirects to HTTPS while preserving path and query. No additional redirect rule was needed.
-- This initial GitHub publication uses a clean source snapshot. Earlier local history and withheld project drafts remain local.
+- Initial launch checks passed for all six public pages, `/cv.pdf` (matching the local file), `/sitemap.xml`, `/robots.txt`, and genuine 404 responses. HTTP redirects to HTTPS while preserving path and query. No additional redirect rule was needed. Recheck changed pages and assets after each content deployment.
+- The initial GitHub publication used a clean source snapshot. Subsequent content updates use ordinary commits to `main`; unpublished drafts and unrelated research documents remain outside public source.
 
 ## 1. Validate locally
 
@@ -31,7 +31,9 @@ npm run validate
 
 Node 22.23.3 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
 
-The current CV uses the confirmed education, experience, and skills. Project records are deliberately excluded from the generated site and PDF. Review `TODO.md` for optional additions; project details are not required for this version.
+The current content includes confirmed education, experience, and skills plus exactly two owner-approved research case studies: a MACE GPU engineering pilot and preliminary polymer density screening. The HTML and PDF CV use their shared `cvSummary` fields. JEPA results and coursework remain excluded; general JEPA research interests remain visible. Review `TODO.md` for optional additions.
+
+Keep the selected SVG/PNG figures, plotted CSV files, and social preview image in `public/`; they are ordinary static assets and add no JavaScript or hosting service. Check both case-study pages, image/data downloads, and the updated PDF before publishing a content update. Regenerate and visually inspect the PDF when changing CV content, then run `npm run validate`.
 
 ## 2. Create the public GitHub repository and push
 

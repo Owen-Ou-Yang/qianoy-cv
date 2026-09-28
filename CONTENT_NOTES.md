@@ -11,17 +11,33 @@ Updated from the owner's messages on 2026-09-27 and 2026-09-28. This file record
 | 2026 年 7–9 月在圣母大学做 iSURE 暑研 | Summer Research Participant (iSURE), July - September 2026 |
 | MLIP 的 HPC 优化非常重要，关注显存、冗余和速度 | Research interest in memory efficiency, computational redundancy, and simulation throughput |
 | 完整搭建过 VPN；有 CRC 使用经验；C++ 和 Python | Independent VPN setup; research computing experience with CRC; C++, Python |
-| 项目可以先不放上去 | Project records excluded from the public source and rendered website/PDF; drafts retained locally |
+| 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish exactly the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
 
-The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. No private research files, VPN configuration, server details, credentials, or nonpublic experiment results are included.
+The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the two approved case studies, their selected measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
 
 ## Editorial scope
 
-At the owner's request, project drafts are excluded from this public source snapshot as well as the rendered website/PDF. The earlier local history is not part of the initial GitHub publication.
+On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. This supersedes the earlier request to withhold all projects for these two case studies only. It does not authorize publication of complete research directories, unpublished project drafts, JEPA results, coursework, or unrelated measurements.
+
+`src/data/projects.json` contains exactly two published records. Each supplies a bounded `cvSummary` to the HTML and PDF CV. Static SVG figures, downloadable PNG versions, and small CSV files contain the selected approved measurements; a separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript.
+
+### MACE GPU engineering pilot
+
+The completed two- and four-GPU configurations measured the same short MACE workload. Observed wall time decreased from 117.3 to 62.7 minutes and maximum sampled per-device memory from 21.68 to 11.13 GiB; allocated GPU time increased from 3.91 to 4.18 GPU-hours. The three-GPU initialization failure remains part of the record. Each configuration was attempted once on different hosts. Memory values are sampled measurements, not exact allocator peaks. These short runs did not pass scientific density quality checks.
+
+The case study shows resource evaluation and a measured trade-off. It does not establish general scaling, equilibrium density, or a novel model-optimization algorithm.
+
+### Preliminary polymer density screening
+
+The density case study is a snapshot of three MACE pilots for PE, PMP, and PIB, as of 17 September 2026. Each used one initial packing and 25 ps of sampling. Their simulation means differ from the available reference table by −2.59%, +3.25%, and −0.80%, respectively. The reference values are external data reported as experimental, not measurements made by Qian Ouyang.
+
+Reference phase, temperature, molecular weight, and measurement uncertainty remain incompletely specified. Temporal intervals characterize within-run sampling, not variation across independent packings or experimental uncertainty. The work remains preliminary screening and is not production-qualified experimental validation; the three differences do not establish general predictive accuracy.
+
+### Other claims
 
 - No JEPA success, paper, benchmark, or generalization result is claimed.
-- MLIP optimization is a research direction, not a completed performance improvement. The user's compute constraints are not included in the public biography.
-- Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, GPA, award, publication, or quantitative result has been inferred.
+- MLIP optimization remains a research direction. The approved engineering measurement does not claim a newly optimized algorithm or controlled general performance improvement. The user's compute constraints are not included in the public biography.
+- Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, GPA, award, publication, or additional quantitative result has been inferred.
 - The current RA, visiting student, and iSURE records are separate. The two visit dates are not treated as continuous employment dates.
 
 ## Official terminology checked

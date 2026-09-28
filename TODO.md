@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-09-28. Core profile and CV facts are confirmed. Projects are temporarily withheld by request, so project details and repository links are not needed for this version.
+Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approved two specific research case studies: the MACE GPU engineering pilot and preliminary polymer density screening. Other project results, including JEPA and coursework, remain excluded.
 
 ## Confirmed and incorporated
 
@@ -13,7 +13,9 @@ Updated on 2026-09-28. Core profile and CV facts are confirmed. Projects are tem
 - [x] Programming languages: C++ and Python. No proficiency rating is assumed.
 - [x] CRC experience, independent VPN setup, and experience with UMA/FAIR-Chem and MACE.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
-- [x] Temporarily hide all project entries, detail pages, project-derived software outputs, and CV project sections. Retain drafts only in local ignored storage/history; the public project array is empty.
+- [x] Add exactly two approved research case studies, with SVG/PNG figures, plotted CSV data, methods, and visible limitations. Keep their short `cvSummary` entries shared by the HTML and PDF CV.
+- [x] Keep JEPA results and coursework outside the public project records; retain general JEPA research interests.
+- [x] Add a local sharing preview image without introducing client JavaScript.
 - [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
 
 ## Optional details, not blockers
@@ -23,15 +25,18 @@ Edit `src/data/profile.json` if you want to add:
 - [ ] LinkedIn URL, or omit it. It is omitted from all public profile links while unavailable.
 - [ ] Official English degree designation (e.g. only if confirmed by the institution). Current wording states undergraduate studies and the major without claiming B.Eng./B.Sc.
 - [ ] Additional verified tools, frameworks, or skills and proficiency, if useful.
-- [ ] Optional social preview image (`socialImage`). Text metadata is already supported.
 
 No GPA, awards, publications, or service entries are assumed or required. `src/data/publications.json` intentionally remains empty.
 
-## Projects deferred
+## Research maintenance
 
-No project information is requested for the current version. When you decide to add projects later, add publishable records to `src/data/projects.json`, supply only approved details/code links, and set `published` to `true`. Then regenerate the PDF and run `npm run validate`.
+- [ ] Replace the density reference table with fully traced, condition-matched references when available; do not infer phase, temperature, molecular weight, or experimental uncertainty.
+- [ ] Add repeated measurements or independent preparations only after those experiments exist and their public scope is approved. Until then, keep the single-run engineering and single-packing screening limits explicit.
+- [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 
-Unpublished project drafts are excluded from this public source snapshot. Earlier local history containing drafts will remain local rather than being pushed to the new repository.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the two selected case studies, not all research documents or future results.
+
+Unpublished project drafts remain excluded from public source and public Git history.
 
 ## Public launch
 
@@ -40,7 +45,7 @@ Unpublished project drafts are excluded from this public source snapshot. Earlie
 - [x] Connected GitHub account identified: `Owen-Ou-Yang`.
 - [x] Restore an operable browser session. On 2026-09-28 Chrome pages and both signed-in accounts became accessible.
 - [x] Create public repository `Owen-Ou-Yang/qianoy-cv`.
-- [x] Publish the validated source; GitHub Actions passed for commit `1e8c2e4`.
+- [x] Publish the initial validated source; GitHub Actions passed for launch commit `1e8c2e4`.
 - [x] Owner approved installation of the official Cloudflare GitHub app, restricted to `Owen-Ou-Yang/qianoy-cv`; Pages Git integration is complete.
 - [x] Add only `cv.qianoy.uk` as a Pages custom domain. Domain Active, SSL enabled, HTTPS and the live PDF verified. No other hostname was redirected or repointed.
 - [x] Verify automatic deployments from `main`: commit `1e8c2e4` deployed successfully using Node 22.23.3.

@@ -4,7 +4,7 @@ import PageHeader from '../components/PageHeader.astro';
 import Todo from '../components/Todo.astro';
 import { outputs, outputTypes, softwareOutputs } from '../data/outputs';
 ---
-<BaseLayout title="Publications & Research Output" description="Publications, preprints, manuscripts, posters, talks, and publicly listed research software.">
+<BaseLayout title="Publications & Research Output" description="Publications, preprints, manuscripts, posters, talks, and publicly listed research software." noindex={outputs.length === 0 && softwareOutputs.length === 0}>
   <PageHeader eyebrow="Publications / Research output" title="Research, shared." description="Publications, presentations, and research output." />
   {softwareOutputs.length > 0 && <section class="section" aria-labelledby="software-heading">
     <h2 id="software-heading" class="space-bottom">Research software & workflows</h2>
@@ -16,5 +16,5 @@ import { outputs, outputTypes, softwareOutputs } from '../data/outputs';
       <div class="actions"><a href={`/projects/${project.slug}/`}>Project details <span aria-hidden="true">↗</span></a>{project.repository ? <a href={project.repository}>Code <span aria-hidden="true">↗</span></a> : <Todo text="TODO: Public code or documentation link" />}</div>
     </article>)}
   </section>}
-  {outputs.length === 0 ? <section class="empty-output"><h2>Publications & presentations</h2><p>No publications or presentations listed.</p><p>Future publications, preprints, manuscripts, posters, and talks can be added here.</p></section> : outputTypes.map(type => { const entries = outputs.filter(output => output.type === type); return entries.length > 0 && <section class="section" aria-labelledby={`output-${type}`}><h2 id={`output-${type}`} class="space-bottom">{type === 'Manuscript' ? 'Manuscripts' : `${type}s`}</h2>{entries.map(output => <article class="output-entry" id={output.id}><h3>{output.url ? <a href={output.url}>{output.title}</a> : output.title}</h3><p>{output.authors}</p><p class="muted">{[output.venue, output.date, output.status].filter(Boolean).join(' · ')}</p>{output.code && <div class="actions"><a href={output.code}>Code <span aria-hidden="true">↗</span></a></div>}</article>)}</section>; })}
+  {outputs.length === 0 ? <section class="empty-output"><h2>Publications & presentations</h2><p>No publications or presentations listed.</p><p><a href="/projects/">Explore selected research case studies <span aria-hidden="true">↗</span></a></p></section> : outputTypes.map(type => { const entries = outputs.filter(output => output.type === type); return entries.length > 0 && <section class="section" aria-labelledby={`output-${type}`}><h2 id={`output-${type}`} class="space-bottom">{type === 'Manuscript' ? 'Manuscripts' : `${type}s`}</h2>{entries.map(output => <article class="output-entry" id={output.id}><h3>{output.url ? <a href={output.url}>{output.title}</a> : output.title}</h3><p>{output.authors}</p><p class="muted">{[output.venue, output.date, output.status].filter(Boolean).join(' · ')}</p>{output.code && <div class="actions"><a href={output.code}>Code <span aria-hidden="true">↗</span></a></div>}</article>)}</section>; })}
 </BaseLayout>

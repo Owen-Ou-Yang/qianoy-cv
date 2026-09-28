@@ -4,7 +4,7 @@
   "siteUrl": "https://cv.qianoy.uk",
   "identity": "Machine learning for materials and molecular simulation.",
   "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame research assistant, interested in molecular simulation and efficient MLIPs.",
-  "introduction": "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University, and a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. My interests connect molecular simulation, learned representations, and efficient scientific computing.",
+  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. I am interested in how molecular models describe materials, and how to make their simulations more efficient.",
   "biography": [
     "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University. I am also a research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
     "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I have been a research assistant at Notre Dame since October 2025. I was a visiting student at Notre Dame from August to December 2025 and returned for summer research through iSURE from July to September 2026.",
@@ -66,5 +66,5 @@
     "Python"
   ],
   "cvIsDraft": false,
-  "socialImage": null
+  "socialImage": "/social/profile.png"
 }

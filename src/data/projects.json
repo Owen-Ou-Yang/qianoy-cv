@@ -1,1 +1,93 @@
-[]
+[
+  {
+    "slug": "mlip-gpu-resources",
+    "title": "GPU resource trade-offs in MACE molecular dynamics",
+    "theme": "ML interatomic potentials / HPC",
+    "summary": "Measuring how GPU allocation changes the runtime, memory footprint, and compute cost of the same polymer simulation workload.",
+    "question": "How should runtime, device memory, and total resource cost be evaluated together when distributing an ML interatomic potential across GPUs?",
+    "takeaway": "Four GPUs completed this short workload faster and used less memory per device, while consuming more total GPU time.",
+    "scope": "Engineering pilot: one short run per configuration on different hosts. The three-GPU startup failure is retained; these runs do not establish equilibrium density or general scaling performance.",
+    "date": "September 2026",
+    "status": "Engineering pilot",
+    "role": "Part of my work on MLIP simulation pipelines and HPC evaluation as a research assistant in Prof. Tengfei Luo's group.",
+    "cvSummary": "Evaluated runtime, sampled per-GPU memory, and GPU-hour trade-offs for a fixed MACE polymer simulation workload. Engineering pilot with one short run per configuration; not a general scaling claim.",
+    "methodology": [
+      "A 3,666-atom polymer system with MACE-MH-1, the omol head, and float32 precision; a fixed workload of 5,500 MD steps (1.375 ps).",
+      "Compared completed two- and four-GPU configurations using the same system, model, precision, and timestep. Wall time excludes queue wait and includes the recorded run stages.",
+      "Measured sampled per-device memory with NVML and calculated allocated GPU-hours. Retained the three-GPU attempt, which failed during MPI/CUDA initialization before model work."
+    ],
+    "results": [
+      "Observed wall time decreased from 117.3 to 62.7 minutes with four GPUs, a 1.87-fold speedup in this pilot.",
+      "Maximum sampled memory per device decreased from 21.68 to 11.13 GiB. These are NVML samples, not exact allocator peaks.",
+      "Allocated GPU time increased from 3.91 to 4.18 GPU-hours, approximately 6.9% more total GPU time."
+    ],
+    "resultsNote": "The useful result is a measured resource trade-off: lower elapsed time does not necessarily mean lower total compute cost.",
+    "limitations": [
+      "Each configuration was run once on different hosts. The observations do not isolate all hardware effects or establish broad scaling performance.",
+      "The trajectories were short engineering tests and failed scientific density quality checks. They are not qualified density measurements or evidence of long-time equilibration.",
+      "This is an evaluation of an existing MLIP workflow, not a claim to have introduced a new model-optimization algorithm."
+    ],
+    "repository": null,
+    "dataFile": "/figures/hpc-resources.csv",
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false,
+    "figure": {
+      "src": "/figures/hpc-resources.svg",
+      "download": "/figures/hpc-resources.png",
+      "width": 1680,
+      "height": 864,
+      "alt": "Two versus four GPUs: runtime falls from 117.3 to 62.7 minutes, maximum sampled per-GPU memory falls from 21.68 to 11.13 GiB, and allocated GPU time rises from 3.91 to 4.18 hours. The three-GPU attempt failed at initialization.",
+      "caption": "Measured resource use for the same MACE workload. One short engineering run per configuration, on different hosts; scientific density QC was not passed. The three-GPU initialization failure is included in the record."
+    }
+  },
+  {
+    "slug": "polymer-density-screening",
+    "title": "Preliminary polymer density screening with MACE",
+    "theme": "Polymer properties / Molecular dynamics",
+    "summary": "Following three polymer systems from molecular simulation to density estimates, sampling checks, and comparison with available reference values.",
+    "question": "What can short MLIP-based polymer simulations establish about density, and how does reference-data matching affect the interpretation?",
+    "takeaway": "Useful property estimates require both simulation checks and a physically matched reference. A small difference alone is not sufficient validation.",
+    "scope": "Preliminary screening: three polymers, one initial packing and 25 ps sampling each. Reference conditions are incompletely specified; the intervals describe within-run sampling only.",
+    "date": "17 September 2026",
+    "status": "Preliminary screening",
+    "role": "Part of my research on MLIP-based polymer property simulation and evaluation.",
+    "cvSummary": "Analyzed preliminary MACE density estimates for three polymers, including sampling behavior and reference-data matching. One packing and 25 ps sampling per polymer; experimental conditions remain incompletely matched.",
+    "methodology": [
+      "Simulated polyethylene (PE), poly(4-methyl-1-pentene) (PMP), and polyisobutylene (PIB) using MACE-MH-1, the omol head, and float32 precision.",
+      "Used NPT conditions with targets of 300 K and 1.01325 bar, one initial packing per polymer, and 25 ps of target sampling.",
+      "Compared simulation means and temporal sampling intervals with dataset reference values reported as experimental. The reference table is external data, not measurements made in this work."
+    ],
+    "results": [
+      "Recorded simulation means were 0.9120 g/cm³ for PE, 0.8590 g/cm³ for PMP, and 0.9047 g/cm³ for PIB.",
+      "Differences from the available reference table were −2.59%, +3.25%, and −0.80%, respectively.",
+      "The three pilots passed the workflow's numerical and sampling checks, while remaining preliminary screening results rather than production-qualified experimental validation."
+    ],
+    "resultsNote": "This is a snapshot of three completed pilots as of 17 September 2026, not a statement that a larger polymer collection has been fully evaluated.",
+    "limitations": [
+      "One initial packing per polymer does not measure variation across independent preparations. Temporal intervals cover within-trajectory sampling only.",
+      "Reference phase, temperature, molecular weight, and measurement uncertainty are incompletely specified, preventing a fully matched experimental comparison.",
+      "The underlying records remain ineligible for production-level scientific reuse. These three differences must not be promoted as general predictive accuracy."
+    ],
+    "references": [
+      {
+        "label": "PolyGraphMT dataset and repository",
+        "url": "https://github.com/sobinalosious/PolyGraphMT",
+        "note": "Context for the density reference table. Individual measurement provenance and conditions are not established by the table used here."
+      }
+    ],
+    "repository": "https://github.com/Owen-Ou-Yang/Density_calculation",
+    "dataFile": "/figures/density-screening.csv",
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false,
+    "figure": {
+      "src": "/figures/density-screening.svg",
+      "download": "/figures/density-screening.png",
+      "width": 1680,
+      "height": 876,
+      "alt": "Density estimates for PE, PMP, and PIB compared with dataset reference values, alongside fluctuations over 25 picoseconds. Mean differences are minus 2.59 percent, plus 3.25 percent, and minus 0.80 percent.",
+      "caption": "Three preliminary MACE density pilots at 300 K. Reference values are reported as experimental by the source dataset; their phase, temperature, molecular weight, and uncertainty are incompletely specified. Sampling intervals do not include independent-packing or experimental uncertainty."
+    }
+  }
+]

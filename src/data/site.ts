@@ -1,6 +1,6 @@
 import profileData from './profile.json';
 import researchData from './research.json';
-import { projects } from './projects';
+import publicationData from './publications.json';
 
 interface Profile {
   name: string | null;
@@ -43,8 +43,7 @@ export const siteTitle = profile.name ?? profile.domain;
 export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'Research', href: '/research/' },
-  ...(projects.length ? [{ label: 'Projects', href: '/projects/' }] : []),
-  { label: 'Research output', href: '/publications/' },
+  ...(publicationData.length ? [{ label: 'Publications', href: '/publications/' }] : []),
   { label: 'CV', href: '/cv/' },
   { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },

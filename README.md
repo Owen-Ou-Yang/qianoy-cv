@@ -4,7 +4,7 @@ Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.
 
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
-The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Project entries are temporarily withheld from the website and PDF at the owner's request; research interests remain visible. No B.Eng./B.Sc. degree type, publication, or quantitative research result is assumed. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
+The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Two owner-approved research case studies show an engineering pilot of MACE GPU resource use and preliminary polymer density screening, with their measurements and limitations. Their concise `cvSummary` fields also supply the HTML and PDF CV research entries. JEPA results and coursework remain excluded; general JEPA research interests remain visible. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
 
 ## Develop locally
 
@@ -48,6 +48,8 @@ npm run preview    # Serve the production build locally
 ├── public/
 │   ├── _headers                   # Cloudflare caching and security headers
 │   ├── favicon.svg
+│   ├── figures/                   # Approved SVG/PNG figures and plotted CSV data
+│   ├── social/profile.png         # Name and research-identity sharing preview
 │   └── cv.pdf                     # Generated academic CV from confirmed profile
 ├── scripts/
 │   ├── generate-cv.py              # Optional PDF generator from shared JSON
@@ -64,7 +66,7 @@ npm run preview    # Serve the production build locally
     ├── data/
     │   ├── profile.json           # Name, biography, experience, education, skills
     │   ├── research.json          # Research themes and descriptions
-    │   ├── projects.json          # Project and software-output records
+    │   ├── projects.json          # Two approved case studies and shared CV summaries
     │   ├── publications.json      # Actual citations only; currently empty
     │   ├── site.ts                # Profile types, exports, navigation
     │   ├── projects.ts            # Project types and exports
@@ -99,16 +101,19 @@ Edit `src/data/projects.json`. Each published record generates `/projects/<slug>
 
 - `slug`, `title`, `theme`, `summary`: identity and overview.
 - `question`, `methodology`, `results`: a question string and lists of concrete methods/results.
-- `resultsNote`: current limits or an explicit statement that there are no results yet.
+- `takeaway`, `scope`, `resultsNote`, and `limitations`: the main observation, study scope, interpretation, and limits. Keep the engineering pilot and preliminary screening labels next to their evidence.
+- `date`: the actual evidence snapshot or study date; do not substitute a deployment date.
+- `cvSummary`: a concise, bounded research description shared by the HTML CV and the optional PDF generator.
+- `dataFile`: an optional public CSV URL for the approved plotted measurements; `references`: source attribution with optional notes about what each source establishes.
 - `detailsTodo`: remaining information needed for the project record.
 - `role` and `status`: personal contribution and actual project status; `repository`: a public HTTPS code URL or `null`.
-- `published`: set to `true` only when the owner wants the record publicly displayed. Only published records generate detail pages or appear in the website/PDF. The public project array is currently empty.
+- `published`: set to `true` only when the owner wants the record publicly displayed. Only published records generate detail pages or appear in the website/PDF. The public array currently contains exactly two approved case studies.
 - `selected`: show a published entry on the homepage.
 - `isPlaceholder`: use `true` for a topic-only draft, which is excluded from indexing/sitemap. An actual ongoing project may use `false` without claiming completion.
 - `output`: optional `{ "type": "Research software", "role": "..." }` (or `Research workflow`). This includes the project in research output and the HTML CV without creating a publication citation.
-- `figure`: optional `{ "src": "/figures/filename.webp", "alt": "...", "caption": "..." }`. Add an optimized, publishable image to `public/figures/` with descriptive alt text and provenance.
+- `figure`: optional `{ "src": "/figures/filename.svg", "download": "/figures/filename.png", "width": 1680, "height": 864, "alt": "...", "caption": "..." }`. Use the actual dimensions, descriptive alt text, attribution, and interpretation limits. The current SVG figures have PNG download versions and small CSV files containing only the approved plotted measurements.
 
-Project drafts are retained only in the owner's local ignored files and local history. The public `projects.json` is empty. The Projects navigation item and homepage section disappear when no records are published; the empty `/projects/` route uses `noindex`, and detail routes are not built. General research interests and tool experience remain visible.
+The homepage and Research page highlight the two approved case studies; each has a detail page with methods, figures, data, and limitations. Coursework and JEPA results are not included. Other project drafts stay outside the public source. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built. General research interests and tool experience remain visible.
 
 When adding new records, note that `published: false` controls rendered output only. Confidential drafts must stay outside public source and public Git history.
 
@@ -133,7 +138,7 @@ You may instead replace `public/cv.pdf` with an independently prepared CV, but t
 
 ### SEO and appearance
 
-Edit colors, typography, and spacing in `src/styles/global.css`. System fonts eliminate font loading delay. All pages inherit metadata from `BaseLayout.astro`. `socialImage` accepts an optional supplied image path, otherwise image-specific OpenGraph tags are omitted. Text OpenGraph and Twitter metadata are included. Replace `public/favicon.svg` if desired.
+Edit colors, typography, and spacing in `src/styles/global.css`. System fonts eliminate font loading delay. All pages inherit metadata from `BaseLayout.astro`. `socialImage` points to the local `public/social/profile.png` sharing preview; replace it with another approved image or use `null` to omit image-specific OpenGraph tags. Text OpenGraph and Twitter metadata remain included. The figures and sharing preview are static assets and add no client JavaScript. Replace `public/favicon.svg` if desired.
 
 Keep `site` in `astro.config.mjs` and `profile.siteUrl` aligned if the canonical domain changes. Sitemap and robots files are generated from the content. No fake dates or `lastmod` values are emitted. A real `404.html` prevents Cloudflare Pages from falling back to single-page-app routing.
 
