@@ -14,7 +14,8 @@ Sources: [static request pricing](https://developers.cloudflare.com/pages/functi
 - Public GitHub repository created: `Owen-Ou-Yang/qianoy-cv`.
 - Chrome access to the signed-in GitHub and Cloudflare accounts was restored on 2026-09-28.
 - Public source is published on `main`; commit `6b170e8` passed the GitHub Actions validation workflow.
-- Cloudflare Pages setup has reached the official GitHub app authorization screen, scoped to **only** `Owen-Ou-Yang/qianoy-cv`. Installation awaits the owner's confirmation of the requested repository permissions. Pages deployment and custom-domain activation are not yet complete.
+- The owner approved the official Cloudflare GitHub app, scoped to **only** `Owen-Ou-Yang/qianoy-cv`. The Git-integrated Pages project deployed successfully at `https://qianoy-cv.pages.dev`; automatic production deployments from `main` are enabled.
+- `cv.qianoy.uk` has been registered as a custom domain and its new CNAME activated. DNS and certificate validation are in progress.
 - This initial GitHub publication uses a clean source snapshot. Earlier local history and withheld project drafts remain local.
 
 ## 1. Validate locally
@@ -27,7 +28,7 @@ npm ci
 npm run validate
 ```
 
-Node 22.16.0 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
+Node 22.23.3 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
 
 The current CV uses the confirmed education, experience, and skills. Project records are deliberately excluded from the generated site and PDF. Review `TODO.md` for optional additions and the remaining deployment steps; project details are not required for this version.
 
@@ -75,7 +76,7 @@ Source: [GitHub existing-source instructions](https://docs.github.com/en/migrati
 | Build command | `npm run validate` |
 | Build output directory | `dist` |
 | Root directory | Blank, because the website is at repository root |
-| Environment variable | `NODE_VERSION` = `22.16.0` |
+| Environment variable | `NODE_VERSION` = `22.23.3` |
 | Optional environment variable | `ASTRO_TELEMETRY_DISABLED` = `1` |
 
 `npm run validate` runs diagnostics, the static build, and output checks. Install devDependencies; do not set an install option that omits them. No Cloudflare Astro adapter is needed. Select the Free plan and do not enable any paid add-on.

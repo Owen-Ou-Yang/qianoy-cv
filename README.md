@@ -6,7 +6,7 @@ The profile includes Qian Ouyang's confirmed contact details, Artificial Intelli
 
 ## Develop locally
 
-Use Node 22.16.0 (pinned in `.nvmrc`) or a compatible supported even-numbered Node version >=22.12.0. npm is the package manager; commit `package-lock.json`.
+Use Node 22.23.3 (pinned in `.nvmrc`) or a compatible supported even-numbered Node version >=22.19.0. npm is the package manager; commit `package-lock.json`.
 
 ```sh
 nvm install
