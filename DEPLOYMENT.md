@@ -10,12 +10,13 @@ Sources: [static request pricing](https://developers.cloudflare.com/pages/functi
 
 ## Current launch status
 
-- Canonical website target: `https://cv.qianoy.uk`.
+- Live canonical website: [https://cv.qianoy.uk](https://cv.qianoy.uk/), verified on 2026-09-28.
 - Public GitHub repository created: `Owen-Ou-Yang/qianoy-cv`.
 - Chrome access to the signed-in GitHub and Cloudflare accounts was restored on 2026-09-28.
-- Public source is published on `main`; commit `6b170e8` passed the GitHub Actions validation workflow.
+- Public source is published on `main`; commit `1e8c2e4` passed [GitHub Actions validation](https://github.com/Owen-Ou-Yang/qianoy-cv/actions/runs/36372847874) and automatically deployed successfully to Cloudflare Pages using Node 22.23.3.
 - The owner approved the official Cloudflare GitHub app, scoped to **only** `Owen-Ou-Yang/qianoy-cv`. The Git-integrated Pages project deployed successfully at `https://qianoy-cv.pages.dev`; automatic production deployments from `main` are enabled.
-- `cv.qianoy.uk` has been registered as a custom domain and its new CNAME activated. DNS and certificate validation are in progress.
+- `cv.qianoy.uk` is **Active**, with **SSL enabled**. Its `cv` CNAME points to `qianoy-cv.pages.dev`.
+- Live checks passed for all six public pages, `/cv.pdf` (matching the local file), `/sitemap.xml`, `/robots.txt`, and genuine 404 responses. HTTP redirects to HTTPS while preserving path and query. No additional redirect rule was needed.
 - This initial GitHub publication uses a clean source snapshot. Earlier local history and withheld project drafts remain local.
 
 ## 1. Validate locally
@@ -30,7 +31,7 @@ npm run validate
 
 Node 22.23.3 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
 
-The current CV uses the confirmed education, experience, and skills. Project records are deliberately excluded from the generated site and PDF. Review `TODO.md` for optional additions and the remaining deployment steps; project details are not required for this version.
+The current CV uses the confirmed education, experience, and skills. Project records are deliberately excluded from the generated site and PDF. Review `TODO.md` for optional additions; project details are not required for this version.
 
 ## 2. Create the public GitHub repository and push
 

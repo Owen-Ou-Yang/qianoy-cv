@@ -1,4 +1,4 @@
-# Remaining optional content and launch steps
+# Remaining optional content and maintenance
 
 Updated on 2026-09-28. Core profile and CV facts are confirmed. Projects are temporarily withheld by request, so project details and repository links are not needed for this version.
 
@@ -40,10 +40,10 @@ Unpublished project drafts are excluded from this public source snapshot. Earlie
 - [x] Connected GitHub account identified: `Owen-Ou-Yang`.
 - [x] Restore an operable browser session. On 2026-09-28 Chrome pages and both signed-in accounts became accessible.
 - [x] Create public repository `Owen-Ou-Yang/qianoy-cv`.
-- [x] Publish the validated source; GitHub Actions passed for commit `6b170e8`.
-- [ ] Confirm installation of the official Cloudflare GitHub app, restricted to `Owen-Ou-Yang/qianoy-cv`, then complete Pages Git integration.
-- [ ] Add only `cv.qianoy.uk` as a Pages custom domain; verify HTTPS and the live PDF. Do not redirect or repoint `qianoy.uk` or `www.qianoy.uk`.
-- [ ] Verify automatic deployments from `main`.
-- [ ] Configure your preferred Git author identity for future commits. Automated commits use the site-builder identity.
+- [x] Publish the validated source; GitHub Actions passed for commit `1e8c2e4`.
+- [x] Owner approved installation of the official Cloudflare GitHub app, restricted to `Owen-Ou-Yang/qianoy-cv`; Pages Git integration is complete.
+- [x] Add only `cv.qianoy.uk` as a Pages custom domain. Domain Active, SSL enabled, HTTPS and the live PDF verified. No other hostname was redirected or repointed.
+- [x] Verify automatic deployments from `main`: commit `1e8c2e4` deployed successfully using Node 22.23.3.
+- [ ] Configure your preferred local Git author identity for future commits.
 - [ ] Review on a phone, with keyboard navigation, and at 200% browser zoom before using it for applications.
 - [ ] Choose a source-code license if desired. No reuse license has been assumed.

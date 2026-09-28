@@ -1,5 +1,7 @@
 # cv.qianoy.uk - Academic website
 
+Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.pdf) · [public source](https://github.com/Owen-Ou-Yang/qianoy-cv). Cloudflare Pages automatically publishes successful builds from `main`.
+
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
 The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Project entries are temporarily withheld from the website and PDF at the owner's request; research interests remain visible. No B.Eng./B.Sc. degree type, publication, or quantitative research result is assumed. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
@@ -87,7 +89,7 @@ npm run preview    # Serve the production build locally
 
 ### Profile, research, and links
 
-Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links render as TODO text rather than dead links. `name` supplies page titles and Person structured metadata. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.
+Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links are omitted rather than rendered as dead links. `name` supplies page titles and Person structured metadata. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.
 
 Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. Add verified languages to `programmingLanguages`; do not infer them from a project topic. A public email is visible to everyone. No contact form or data collection is included.
 
