@@ -1,0 +1,70 @@
+{
+  "name": "Qian Ouyang",
+  "domain": "cv.qianoy.uk",
+  "siteUrl": "https://cv.qianoy.uk",
+  "identity": "Machine learning for materials and molecular simulation.",
+  "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame research assistant, interested in molecular simulation and efficient MLIPs.",
+  "introduction": "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University, and a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. My interests connect molecular simulation, learned representations, and efficient scientific computing.",
+  "biography": [
+    "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University. I am also a research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
+    "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I have been a research assistant at Notre Dame since October 2025. I was a visiting student at Notre Dame from August to December 2025 and returned for summer research through iSURE from July to September 2026.",
+    "My research interests include JEPA-style representation learning for molecular dynamics and coarse-grained modeling. I am particularly interested in optimizing machine learning interatomic potentials for high-performance computing: understanding computational redundancy, reducing GPU memory requirements, and making molecular simulation more efficient."
+  ],
+  "email": "qouyang@nd.edu",
+  "github": "https://github.com/Owen-Ou-Yang",
+  "linkedin": null,
+  "education": {
+    "background": "Artificial Intelligence",
+    "level": "Fourth-year undergraduate",
+    "degree": "Undergraduate",
+    "institution": "Xi'an Jiaotong University",
+    "dates": "2023 - 2027 (expected)",
+    "program": "Artificial Intelligence Experimental Class"
+  },
+  "experience": [
+    {
+      "role": "Research Assistant",
+      "institution": "University of Notre Dame",
+      "group": "Prof. Tengfei Luo's group · Department of Aerospace and Mechanical Engineering",
+      "dates": "October 2025 - Present",
+      "description": "Research in AI for materials and molecular simulation.",
+      "dateTodo": null
+    },
+    {
+      "role": "Summer Research Participant (iSURE)",
+      "institution": "University of Notre Dame",
+      "group": null,
+      "dates": "July - September 2026",
+      "description": "International Summer Undergraduate Research Experience (iSURE).",
+      "dateTodo": null
+    },
+    {
+      "role": "Visiting Student",
+      "institution": "University of Notre Dame",
+      "group": null,
+      "dates": "August - December 2025",
+      "description": "Semester visiting student.",
+      "dateTodo": null
+    }
+  ],
+  "skills": [
+    {
+      "title": "Molecular simulation & MLIPs",
+      "description": "Experience with UMA/FAIR-Chem and MACE for molecular simulation."
+    },
+    {
+      "title": "High-performance computing",
+      "description": "Experience using Notre Dame's Center for Research Computing (CRC) for research computing."
+    },
+    {
+      "title": "Systems & networking",
+      "description": "Independent setup and configuration of a VPN."
+    }
+  ],
+  "programmingLanguages": [
+    "C++",
+    "Python"
+  ],
+  "cvIsDraft": false,
+  "socialImage": null
+}

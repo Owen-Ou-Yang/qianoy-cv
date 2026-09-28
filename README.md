@@ -32,7 +32,6 @@ npm run preview    # Serve the production build locally
 ```text
 .
 ├── .github/workflows/ci.yml        # Validation on main and pull requests
-├── .openai/hosting.json            # Optional private Sites preview, not needed by Pages
 ├── .gitattributes
 ├── .gitignore
 ├── .nvmrc
@@ -138,7 +137,7 @@ Keep `site` in `astro.config.mjs` and `profile.siteUrl` aligned if the canonical
 
 ## Deploy
 
-Follow [DEPLOYMENT.md](DEPLOYMENT.md) for public GitHub source, Cloudflare Pages Git integration, `cv.qianoy.uk`, HTTPS, and automatic deployments from `main`. Deploy only `dist/`; do not upload the repository root as the site. The `.openai/hosting.json` file is only for the separate Sites preview and is not a Cloudflare account credential or Pages configuration.
+Follow [DEPLOYMENT.md](DEPLOYMENT.md) for Cloudflare Pages, the public GitHub repository, HTTPS, and automatic updates from `main`. Deploy only `dist/`.
 
 No license is assumed. Public visibility is not an open-source license grant; choose a source license if you want to grant reuse rights. No secrets belong in this repository.
 

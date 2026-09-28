@@ -1,0 +1,13 @@
+---
+import { profile } from '../data/site';
+interface Props { showMissing?: boolean; }
+const { showMissing = false } = Astro.props;
+const links = [
+  { label: 'Email', href: profile.email ? `mailto:${profile.email}` : null },
+  { label: 'GitHub', href: profile.github },
+  { label: 'LinkedIn', href: profile.linkedin },
+];
+---
+<ul class="profile-links" aria-label="Profile links">
+  {links.map(link => link.href ? <li><a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a></li> : showMissing && <li class="missing-link">{link.label}: TODO</li>)}
+</ul>

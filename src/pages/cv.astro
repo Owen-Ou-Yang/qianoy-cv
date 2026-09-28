@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Education from '../components/Education.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import ProfileLinks from '../components/ProfileLinks.astro';
+import { displayName, profile, researchThemes } from '../data/site';
+import { outputs, softwareOutputs } from '../data/outputs';
+import { projects } from '../data/projects';
+const ongoingProjects = projects.filter(project => !project.output && !project.isPlaceholder);
+---
+<BaseLayout title="Curriculum Vitae" description="Academic CV: Artificial Intelligence background and research interests in AI for materials and molecular simulation.">
+  <PageHeader eyebrow="Curriculum vitae" title={displayName} description={profile.identity} />
+  <div class="actions space-bottom"><a class="button" href="/cv.pdf" download>{profile.cvIsDraft ? 'Download draft CV (PDF)' : 'Download CV (PDF)'} <span aria-hidden="true">↓</span></a><a href="/contact/">Contact details</a></div>
+  {profile.cvIsDraft && <p class="draft-note">Draft CV. Outstanding factual fields are marked below.</p>}
+  <ProfileLinks />
+  <section class="section section-grid space-top"><div><h2>Education</h2></div><Education detailed /></section>
+  <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
+  <section class="section section-grid"><div><h2>Research interests</h2></div><ul>{researchThemes.map(theme => <li>{theme.title}</li>)}</ul></section>
+  {softwareOutputs.length > 0 && <section class="section section-grid"><div><h2>Research software & workflows</h2></div><div class="compact-outputs">{softwareOutputs.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.summary}</p><p class="muted">{project.output?.role}</p></article>)}<p><a href="/publications/">Full research output list <span aria-hidden="true">↗</span></a></p></div></section>}
+  {ongoingProjects.length > 0 && <section class="section section-grid"><div><h2>Ongoing research</h2></div><div class="compact-outputs">{ongoingProjects.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.summary}</p><p class="muted">{project.resultsNote}</p></article>)}</div></section>}
+  <section class="section section-grid"><div><h2>Technical skills</h2></div><Skills /></section>
+  <section class="section section-grid"><div><h2>Publications & presentations</h2></div><div>{outputs.length ? <ul>{outputs.map(output => <li>{output.title} ({output.type})</li>)}</ul> : <p>No publications or presentations listed.</p>}</div></section>
+</BaseLayout>

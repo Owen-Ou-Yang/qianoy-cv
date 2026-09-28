@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Todo from '../components/Todo.astro';
+import { outputs, outputTypes, softwareOutputs } from '../data/outputs';
+---
+<BaseLayout title="Publications & Research Output" description="Publications, preprints, manuscripts, posters, talks, and publicly listed research software.">
+  <PageHeader eyebrow="Publications / Research output" title="Research, shared." description="Publications, presentations, and research output." />
+  {softwareOutputs.length > 0 && <section class="section" aria-labelledby="software-heading">
+    <h2 id="software-heading" class="space-bottom">Research software & workflows</h2>
+    {softwareOutputs.map(project => <article class="output-entry" id={project.slug}>
+      <p class="eyebrow">{project.output?.type}</p>
+      <h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3>
+      <p>{project.summary}</p>
+      <p class="muted space-top">{project.output?.role}</p>
+      <div class="actions"><a href={`/projects/${project.slug}/`}>Project details <span aria-hidden="true">↗</span></a>{project.repository ? <a href={project.repository}>Code <span aria-hidden="true">↗</span></a> : <Todo text="TODO: Public code or documentation link" />}</div>
+    </article>)}
+  </section>}
+  {outputs.length === 0 ? <section class="empty-output"><h2>Publications & presentations</h2><p>No publications or presentations listed.</p><p>Future publications, preprints, manuscripts, posters, and talks can be added here.</p></section> : outputTypes.map(type => { const entries = outputs.filter(output => output.type === type); return entries.length > 0 && <section class="section" aria-labelledby={`output-${type}`}><h2 id={`output-${type}`} class="space-bottom">{type === 'Manuscript' ? 'Manuscripts' : `${type}s`}</h2>{entries.map(output => <article class="output-entry" id={output.id}><h3>{output.url ? <a href={output.url}>{output.title}</a> : output.title}</h3><p>{output.authors}</p><p class="muted">{[output.venue, output.date, output.status].filter(Boolean).join(' · ')}</p>{output.code && <div class="actions"><a href={output.code}>Code <span aria-hidden="true">↗</span></a></div>}</article>)}</section>; })}
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileLinks from '../components/ProfileLinks.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import Education from '../components/Education.astro';
+import { displayName, profile, researchThemes } from '../data/site';
+import { projects } from '../data/projects';
+---
+<BaseLayout title="Home" description={profile.metaDescription}>
+  <section class="hero" aria-labelledby="intro-heading">
+    <div>
+      <p class="eyebrow">Artificial Intelligence · Materials · Molecules</p>
+      <h1 id="intro-heading">{displayName}</h1>
+      <p class="hero-identity">{profile.identity}</p>
+      <p class="hero-copy">{profile.introduction}</p>
+      <div class="actions"><a class="button" href="/research/">Explore my research <span aria-hidden="true">↗</span></a><a class="text-link" href="/cv.pdf">{profile.cvIsDraft ? 'Download CV (PDF · draft)' : 'Download CV (PDF)'} <span aria-hidden="true">↓</span></a></div>
+      <ProfileLinks />
+    </div>
+    <aside class="hero-aside" aria-label="Academic overview"><dl>
+      <div><dt>{profile.education.level}</dt><dd>{profile.education.institution}<br />{profile.education.background}</dd></div>
+      <div><dt>{profile.experience[0].role}</dt><dd>{profile.experience[0].institution}<br />{profile.experience[0].dates}</dd></div>
+      <div><dt>Research direction</dt><dd>Materials, molecules, and efficient machine learning.</dd></div>
+    </dl></aside>
+  </section>
+  <section class="section section-grid" aria-labelledby="interests-heading"><div class="section-label"><p class="eyebrow">Research directions</p><h2 id="interests-heading">Current interests</h2></div><ul class="interest-list">{researchThemes.map(theme => <li><a href={`/research/#${theme.id}`}>{theme.title}</a></li>)}</ul></section>
+  {projects.some(project => project.selected) && <section class="section" aria-labelledby="projects-heading"><div class="section-heading"><div><p class="eyebrow">Selected research / projects</p><h2 id="projects-heading">Learning across molecular scales</h2></div><a class="text-link" href="/projects/">All projects <span aria-hidden="true">↗</span></a></div>
+    {projects.filter(p => p.selected).map((project, index) => <ProjectEntry project={project} index={index} />)}
+  </section>}
+  <section class="section section-grid" aria-labelledby="education-heading"><div class="section-label"><p class="eyebrow">Academic foundation</p><h2 id="education-heading">Education</h2></div><div><Education /><div class="actions"><a href="/about/">More about me <span aria-hidden="true">↗</span></a><a href="/cv/">View curriculum vitae</a></div></div></section>
+</BaseLayout>

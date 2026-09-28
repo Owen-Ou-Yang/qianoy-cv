@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ai-for-materials",
+    "title": "AI for Materials",
+    "description": "Machine learning for molecular and materials modeling, with an interest in the relationships between structure, dynamics, and macroscopic properties.",
+    "keywords": [
+      "AI for Science",
+      "Materials modeling"
+    ]
+  },
+  {
+    "id": "molecular-dynamics",
+    "title": "Molecular Dynamics & Machine Learning Potentials",
+    "description": "Learned interatomic interactions for molecular simulation, with interests in the application and computational efficiency of machine learning potentials.",
+    "keywords": [
+      "Molecular dynamics",
+      "ML interatomic potentials"
+    ]
+  },
+  {
+    "id": "mlip-hpc",
+    "title": "HPC Optimization of ML Interatomic Potentials",
+    "description": "I am particularly interested in where MLIPs spend computation and GPU memory, and whether redundant work can be reduced while retaining useful physical predictions. Improving memory efficiency and simulation throughput is a research direction I want to pursue; I do not yet report optimization or training results.",
+    "keywords": [
+      "GPU memory",
+      "Computational efficiency",
+      "HPC"
+    ]
+  },
+  {
+    "id": "coarse-graining",
+    "title": "Coarse-Grained Molecular Modeling",
+    "description": "Reduced molecular descriptions that connect atomistic detail with modeling at larger length and time scales, and the information those descriptions retain about molecular dynamics.",
+    "keywords": [
+      "Coarse-graining",
+      "Multiscale modeling"
+    ]
+  },
+  {
+    "id": "representation-learning",
+    "title": "Representation Learning / JEPA",
+    "description": "JEPA-style representation learning for molecular dynamics and coarse-grained modeling, with an interest in representations that capture molecular structure and its evolution over time.",
+    "keywords": [
+      "Representation learning",
+      "Molecular dynamics"
+    ]
+  },
+  {
+    "id": "polymer-properties",
+    "title": "Polymer Property Prediction",
+    "description": "Machine learning and molecular simulation for studying polymer properties, including glass-transition temperature and density. I am also interested in agentic workflows that support polymer research.",
+    "keywords": [
+      "Polymers",
+      "Property prediction",
+      "Research workflows"
+    ]
+  }
+]

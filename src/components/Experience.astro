@@ -1,0 +1,13 @@
+---
+import { profile } from '../data/site';
+import Todo from './Todo.astro';
+---
+<div class="experience-list">
+  {profile.experience.map(entry => <article class="experience-entry">
+    <div class="experience-heading"><h3>{entry.role}</h3><p class="muted">{entry.dates}</p></div>
+    <p class="experience-institution">{entry.institution}</p>
+    {entry.group && <p>{entry.group}</p>}
+    <p>{entry.description}</p>
+    {entry.dateTodo && <p class="space-top"><Todo text={entry.dateTodo} /></p>}
+  </article>)}
+</div>

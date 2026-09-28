@@ -1,0 +1,8 @@
+---
+import { profile } from '../data/site';
+import Todo from './Todo.astro';
+---
+<div>
+  <dl class="skills-list">{profile.skills.map(skill => <div><dt>{skill.title}</dt><dd>{skill.description}</dd></div>)}</dl>
+  <p class="space-top">{profile.programmingLanguages.length ? <><strong>Programming languages:</strong> {profile.programmingLanguages.join(', ')}</> : <Todo text="TODO: Confirm programming languages to list" />}</p>
+</div>

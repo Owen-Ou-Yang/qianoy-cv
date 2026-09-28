@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProjectEntry from '../../components/ProjectEntry.astro';
+import { projects } from '../../data/projects';
+---
+<BaseLayout title="Projects" description="Research project entries in AI for materials and molecular simulation." noindex={projects.length === 0}>
+  <PageHeader eyebrow="Research / Projects" title="Questions, methods, and evidence." description="A closer look at the research directions connecting my background in AI with materials and molecular simulation." />
+  {projects.some(project => project.isPlaceholder) && <p class="draft-note">Draft project entries: these describe research interests. Specific questions, methods, contributions, and results are TODOs until verified project details are added.</p>}
+  {projects.map((project, index) => <ProjectEntry project={project} index={index} heading="h2" />)}
+  {projects.length === 0 && <section class="empty-output"><h2>Project details are not currently listed.</h2><p><a href="/research/">Explore research interests</a></p></section>}
+</BaseLayout>

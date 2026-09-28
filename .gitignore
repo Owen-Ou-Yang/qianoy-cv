@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.wrangler/
+coverage/
+artifacts/
+.vscode/
+.venv-cv/
+__pycache__/

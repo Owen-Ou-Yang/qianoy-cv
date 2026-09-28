@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Todo from '../../components/Todo.astro';
+import { projects, type Project } from '../../data/projects';
+export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
+interface Props { project: Project; }
+const { project } = Astro.props;
+---
+<BaseLayout title={project.title} description={project.summary} noindex={project.isPlaceholder}>
+  <a class="back-link" href="/projects/">← All projects</a>
+  <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
+  <div class="reading">
+    {project.isPlaceholder && <p class="draft-note">Draft research entry. This topic reflects a stated research interest; the project record and results have yet to be supplied.</p>}
+    <dl class="detail-meta"><div><dt>Status</dt><dd>{project.status ?? <Todo text="TODO: Project status" />}</dd></div>{project.role && <div><dt>My role</dt><dd>{project.role}</dd></div>}<div><dt>Code</dt><dd>{project.repository ? <a href={project.repository}>Repository <span aria-hidden="true">↗</span></a> : <Todo text="TODO: Public repository URL" />}</dd></div></dl>
+    <section class="detail-section"><h2>Research question</h2>{project.question ? <p>{project.question}</p> : <Todo text="TODO: State the specific research question and scope." />}</section>
+    <section class="detail-section"><h2>Methodology</h2>{project.methodology.length ? <ul>{project.methodology.map(method => <li>{method}</li>)}</ul> : <Todo text="TODO: Add the models, datasets, simulation setup, evaluation protocol, and your contribution." />}</section>
+    <section class="detail-section"><h2>Outputs & current status</h2>{project.results.length > 0 && <ul>{project.results.map(result => <li>{result}</li>)}</ul>}{project.resultsNote ? <p class={project.results.length ? 'space-top' : undefined}>{project.resultsNote}</p> : project.results.length === 0 && <Todo text="TODO: Add evidence-backed results and limitations, or state that work is ongoing." />}</section>
+    {!!project.detailsTodo?.length && <section class="detail-section"><h2>Details to add</h2>{project.detailsTodo.map(todo => <p><Todo text={todo} /></p>)}</section>}
+    {project.figure && <figure class="research-figure"><img src={project.figure.src} alt={project.figure.alt} loading="lazy" decoding="async" /><figcaption>{project.figure.caption}</figcaption></figure>}
+  </div>
+</BaseLayout>

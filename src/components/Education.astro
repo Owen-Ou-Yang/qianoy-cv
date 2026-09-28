@@ -1,0 +1,16 @@
+---
+import { profile } from '../data/site';
+import Todo from './Todo.astro';
+interface Props { detailed?: boolean; }
+const { detailed = false } = Astro.props;
+---
+<div>
+  <p class="education-title">{profile.education.institution ?? <Todo text="TODO: Institution" />}</p>
+  <p>{profile.education.level} · {profile.education.background}</p>
+  {profile.education.program && <p>{profile.education.program}</p>}
+  {detailed && <dl class="education-details space-top">
+    <div><dt>Level</dt><dd>{profile.education.degree ?? <Todo text="TODO: Study level" />}</dd></div>
+    <div><dt>Dates</dt><dd>{profile.education.dates ?? <Todo text="TODO: Enrollment and expected graduation dates" />}</dd></div>
+  </dl>}
+  {!detailed && profile.education.dates && <p class="muted">{profile.education.dates}</p>}
+</div>

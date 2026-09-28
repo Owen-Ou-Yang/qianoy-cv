@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Education from '../components/Education.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import { profile, researchThemes } from '../data/site';
+---
+<BaseLayout title="About" description="Academic background in Artificial Intelligence and research interests in machine learning, materials, and molecular simulation.">
+  <PageHeader eyebrow="About" title="From artificial intelligence to molecular science." />
+  <div class="reading prose space-bottom">{profile.biography.map(paragraph => <p>{paragraph}</p>)}</div>
+  <section class="section section-grid"><div><h2>Education</h2></div><Education detailed /></section>
+  <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
+  <section class="section section-grid"><div><h2>Research interests</h2></div><ul class="interest-list">{researchThemes.map(theme => <li><a href={`/research/#${theme.id}`}>{theme.title}</a></li>)}</ul></section>
+  <section class="section section-grid"><div><h2>Skills</h2></div><Skills /></section>
+  <div class="actions"><a class="button" href="/cv/">View curriculum vitae <span aria-hidden="true">↗</span></a><a href="/contact/">Get in touch</a></div>
+</BaseLayout>
