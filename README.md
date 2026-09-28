@@ -143,4 +143,4 @@ No license is assumed. Public visibility is not an open-source license grant; ch
 
 ## Hosting scope
 
-Use Cloudflare Pages Free for this static site. Only `cv.qianoy.uk` is the website hostname. The existing `qianoy.uk` apex is used by the VPN and must keep its current DNS, origin, routes, and TLS settings. Do not apply a root-domain or zone-wide redirect for this website. No RackNerd changes, Pages Functions, paid plan, or billing setup is required. See `DEPLOYMENT.md` for the current launch status and exact subdomain-only steps.
+Use Cloudflare Pages Free for this static site. Only `cv.qianoy.uk` is the website hostname. Keep the existing `qianoy.uk` apex and all other application records unchanged. Do not apply a root-domain or zone-wide redirect for this website. No Pages Functions, paid plan, or separate server setup is required. See `DEPLOYMENT.md` for the current launch status and exact subdomain-only steps.

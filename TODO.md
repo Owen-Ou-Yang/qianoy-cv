@@ -35,12 +35,13 @@ Unpublished project drafts are excluded from this public source snapshot. Earlie
 
 ## Public launch
 
-- [x] Correct domain: `qianoy.uk`; website hostname: `cv.qianoy.uk`. Preserve existing apex/VPN configuration.
+- [x] Correct domain: `qianoy.uk`; website hostname: `cv.qianoy.uk`. Preserve existing root-domain services and records.
 - [x] Cloudflare Pages Free supports this static site; no Functions or paid resources needed.
 - [x] Connected GitHub account identified: `Owen-Ou-Yang`.
 - [x] Restore an operable browser session. On 2026-09-28 Chrome pages and both signed-in accounts became accessible.
 - [x] Create public repository `Owen-Ou-Yang/qianoy-cv`.
-- [ ] Publish the validated source and connect Pages through Git integration.
+- [x] Publish the validated source; GitHub Actions passed for commit `6b170e8`.
+- [ ] Confirm installation of the official Cloudflare GitHub app, restricted to `Owen-Ou-Yang/qianoy-cv`, then complete Pages Git integration.
 - [ ] Add only `cv.qianoy.uk` as a Pages custom domain; verify HTTPS and the live PDF. Do not redirect or repoint `qianoy.uk` or `www.qianoy.uk`.
 - [ ] Verify automatic deployments from `main`.
 - [ ] Configure your preferred Git author identity for future commits. Automated commits use the site-builder identity.

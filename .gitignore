@@ -12,3 +12,4 @@ artifacts/
 .vscode/
 .venv-cv/
 __pycache__/
+.openai/

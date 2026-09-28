@@ -1,6 +1,6 @@
 # Deploy cv.qianoy.uk with Cloudflare Pages Free
 
-The domain is **qianoy.uk**. The website target is **cv.qianoy.uk**. The root domain currently participates in a VLESS/WebSocket/TLS VPN setup; preserve its DNS, origin, routes, and TLS configuration. This website requires only a new `cv` custom domain. No RackNerd login or server change is needed.
+The domain is **qianoy.uk**. The website target is **cv.qianoy.uk**. Keep all existing root-domain services and records unchanged. This website requires only a new `cv` custom domain. No separate server access is needed.
 
 ## Cost and scope
 
@@ -13,13 +13,14 @@ Sources: [static request pricing](https://developers.cloudflare.com/pages/functi
 - Canonical website target: `https://cv.qianoy.uk`.
 - Public GitHub repository created: `Owen-Ou-Yang/qianoy-cv`.
 - Chrome access to the signed-in GitHub and Cloudflare accounts was restored on 2026-09-28.
-- Public source upload and Cloudflare Pages deployment are in progress. A live deployment is not claimed until verified.
+- Public source is published on `main`; commit `6b170e8` passed the GitHub Actions validation workflow.
+- Cloudflare Pages setup has reached the official GitHub app authorization screen, scoped to **only** `Owen-Ou-Yang/qianoy-cv`. Installation awaits the owner's confirmation of the requested repository permissions. Pages deployment and custom-domain activation are not yet complete.
 - This initial GitHub publication uses a clean source snapshot. Earlier local history and withheld project drafts remain local.
 
 ## 1. Validate locally
 
 ```sh
-cd '/Users/qian_ouyang/项目/PHD_application/personal_CV'
+cd qianoy-cv
 nvm install
 nvm use
 npm ci
@@ -31,6 +32,8 @@ Node 22.16.0 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is alre
 The current CV uses the confirmed education, experience, and skills. Project records are deliberately excluded from the generated site and PDF. Review `TODO.md` for optional additions and the remaining deployment steps; project details are not required for this version.
 
 ## 2. Create the public GitHub repository and push
+
+The repository already exists and source is published. The following steps are retained as a reproducible setup reference; do not recreate it. Local `main` tracks `origin/main`. Earlier unpublished history is preserved only in the local `codex/pre-publication-history` branch.
 
 1. Sign in to [GitHub](https://github.com/new) as `Owen-Ou-Yang`.
 2. Create **qianoy-cv** with **Public** visibility.
@@ -92,13 +95,13 @@ Sources: [Pages Git integration](https://developers.cloudflare.com/pages/get-sta
 4. Review and confirm only the proposed `cv` CNAME pointing to the exact Pages hostname. Cloudflare can create it automatically for a zone managed in the account.
 5. Wait until the custom domain and certificate show **Active**.
 
-Do not merely create the CNAME without first registering `cv.qianoy.uk` in the Pages project; this can cause a 522 response. Do not change the apex `qianoy.uk`, `www`, existing VPN records, nameservers, MX/TXT records, or zone-wide redirects.
+Do not merely create the CNAME without first registering `cv.qianoy.uk` in the Pages project; this can cause a 522 response. Do not change the apex `qianoy.uk`, `www`, other application records, nameservers, MX/TXT records, or zone-wide redirects.
 
 The `www` redirect from the original, mistaken domain plan is deliberately omitted. `cv.qianoy.uk` is the canonical website address; neither `www.qianoy.uk` nor `www.cv.qianoy.uk` is needed.
 
 Source: [Pages custom subdomain setup](https://developers.cloudflare.com/pages/configuration/custom-domains/#add-a-custom-subdomain).
 
-## 5. HTTPS without changing VPN behavior
+## 5. HTTPS without changing other services
 
 Pages provisions HTTPS for its activated custom domain. Wait for the certificate to be active. Keep the zone's existing TLS mode and certificate settings.
 
@@ -124,7 +127,7 @@ curl -I https://cv.qianoy.uk/sitemap.xml
 curl -I https://cv.qianoy.uk/this-page-does-not-exist/
 ```
 
-Expect HTTPS pages/PDF to return 200, HTTP to redirect to the same HTTPS path and query, and the missing page to return 404. Verify the PDF's content type and inspect the served canonical URLs. Keep the existing VPN working; do not rewrite its routing as part of website deployment.
+Expect HTTPS pages/PDF to return 200, HTTP to redirect to the same HTTPS path and query, and the missing page to return 404. Verify the PDF's content type and inspect the served canonical URLs. Keep other services unchanged; limit website configuration to the new subdomain.
 
 Sources: [Cloudflare HTTPS](https://developers.cloudflare.com/ssl/get-started/), [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/).
 
