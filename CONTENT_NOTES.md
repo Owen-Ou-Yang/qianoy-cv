@@ -1,6 +1,6 @@
 # Content provenance and editorial boundaries
 
-Updated from the owner's messages on 2026-09-27 and 2026-09-28. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
+Updated from the owner's messages on 2026-09-27 through 2026-09-29. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
 
 | 用户确认的信息 | 网站 / CV 英文表述 |
 | --- | --- |
@@ -14,6 +14,7 @@ Updated from the owner's messages on 2026-09-27 and 2026-09-28. This file record
 | 完整搭建过 VPN；有 CRC 使用经验；C++ 和 Python | Independent VPN setup; research computing experience with CRC; C++, Python |
 | 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
 | 2026-09-28：之前那个 UMA FAIRchem 的项目也可以加上去 | Add the earlier UMA/FAIR-Chem workflow as a third case study and explain its connection to HPC interests |
+| 2026-09-29：不喜欢页首 q.；与英国的联系只是口音有一部分英国味儿，考虑加一个小玩笑 | Name-only header; a brief About-page aside about the .uk domain and a partly British accent, without implying UK nationality, residence, or affiliation |
 
 The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the approved UMA/FAIR-Chem workflow and two measurement studies, their selected descriptions, measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
 

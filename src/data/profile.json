@@ -11,6 +11,7 @@
     "Working on polymer simulations with UMA / FAIR-Chem exposed me to GPU-memory constraints in practice. That experience led me to ask how ML interatomic potentials could use computational resources more efficiently. I am interested in understanding computational redundancy, reducing memory requirements, and improving simulation throughput while preserving useful physical predictions.",
     "My research interests also include JEPA-style representation learning for molecular dynamics, coarse-grained modeling, and polymer property prediction."
   ],
+  "personalAside": "The .uk is more committed to being British than my accent is.",
   "email": "qouyang@nd.edu",
   "github": "https://github.com/Owen-Ou-Yang",
   "linkedin": null,

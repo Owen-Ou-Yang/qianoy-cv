@@ -35,7 +35,7 @@ const person = profile.name ? { '@context': 'https://schema.org', '@type': 'Pers
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header wrap">
-      <a class="wordmark" href="/" aria-label={`${siteTitle} home`}><span class="wordmark-symbol" aria-hidden="true">q.</span><span>{siteTitle}</span></a>
+      <a class="wordmark" href="/" aria-label={`${siteTitle} home`}>{siteTitle}</a>
       <nav aria-label="Main navigation"><ul>{navigation.map(item => <li><a href={item.href} aria-current={(item.href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a></li>)}</ul></nav>
     </header>
     <main id="main" class="wrap" tabindex="-1"><slot /></main>

@@ -10,6 +10,7 @@ interface Profile {
   metaDescription: string;
   introduction: string;
   biography: string[];
+  personalAside?: string;
   email: string | null;
   github: string | null;
   linkedin: string | null;

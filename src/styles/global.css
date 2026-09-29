@@ -24,8 +24,8 @@
 @layer components {
   .wrap { width: min(1120px, calc(100% - 5rem)); margin-inline: auto; }
   .site-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1.65rem; border-bottom: 1px solid var(--line); }
-  .wordmark { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--ink); font-weight: 600; white-space: nowrap; }
-  .wordmark-symbol { font-family: var(--serif); font-size: 2.1rem; line-height: 1; font-weight: 400; }
+  .wordmark { text-decoration: none; color: var(--ink); font-weight: 600; white-space: nowrap; }
+  .personal-aside { color: var(--muted); font-size: .875rem; margin-top: 1.5rem; }
   nav ul { display: flex; align-items: center; flex-wrap: wrap; gap: .2rem 1.35rem; list-style: none; padding: 0; }
   nav li + li { margin: 0; }
   nav a { display: inline-block; padding-block: .55rem; color: var(--body); font-size: .875rem; text-decoration: none; }

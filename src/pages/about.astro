@@ -8,7 +8,10 @@ import { profile, researchThemes } from '../data/site';
 ---
 <BaseLayout title="About" description="Academic background in Artificial Intelligence and research interests in machine learning, materials, and molecular simulation.">
   <PageHeader eyebrow="About" title="From artificial intelligence to molecular science." />
-  <div class="reading prose space-bottom">{profile.biography.map(paragraph => <p>{paragraph}</p>)}</div>
+  <div class="reading prose space-bottom">
+    {profile.biography.map(paragraph => <p>{paragraph}</p>)}
+    {profile.personalAside && <aside class="personal-aside" aria-label="A personal aside"><p>{profile.personalAside}</p></aside>}
+  </div>
   <section class="section section-grid"><div><h2>Education</h2></div><Education detailed /></section>
   <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
   <section class="section section-grid"><div><h2>Research interests</h2></div><ul class="interest-list">{researchThemes.map(theme => <li><a href={`/research/#${theme.id}`}>{theme.title}</a></li>)}</ul></section>
