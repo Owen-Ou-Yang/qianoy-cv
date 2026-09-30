@@ -14,6 +14,7 @@ Updated on 2026-09-30. Core profile and CV facts are confirmed. The owner approv
 - [x] CRC experience, independent VPN setup, and experience with UMA/FAIR-Chem and MACE.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
+- [x] Keep UMA last in the full research list and CV, with status "Resource-limited exploration" and the owner-confirmed absence of validated property results. Highlight the two JEPA lines and the resource/density studies on the homepage.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
 - [x] Use each case study's short `cvSummary` entry in the HTML and PDF CV.
 - [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep coursework excluded.
