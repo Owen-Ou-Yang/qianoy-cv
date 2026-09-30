@@ -39,7 +39,7 @@
   {
     "id": "representation-learning",
     "title": "Representation Learning / JEPA",
-    "description": "JEPA-style representation learning for molecular dynamics and coarse-grained modeling, with an interest in representations that capture molecular structure and its evolution over time.",
+    "description": "I investigate JEPA-style learning for molecular dynamics, from coarse-grained polymer representations to a MACE-based study on atomistic water. My focus is on what encoders retain, what temporal learning adds, and whether those representations improve physical readouts and prediction.",
     "keywords": [
       "Representation learning",
       "Molecular dynamics"

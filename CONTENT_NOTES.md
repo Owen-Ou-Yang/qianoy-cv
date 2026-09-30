@@ -14,9 +14,10 @@ Updated from the owner's messages on 2026-09-27 through 2026-09-30. This file re
 | 完整搭建过 VPN；有 CRC 使用经验；C++ 和 Python | Independent VPN setup; research computing experience with CRC; C++, Python |
 | 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
 | 2026-09-28：之前那个 UMA FAIRchem 的项目也可以加上去 | Add the earlier UMA/FAIR-Chem workflow as a third case study and explain its connection to HPC interests |
+| 2026-09-30：决定把尝试的 CG JEPA 与 encoder 对比中新开的 MACE JEPA 加入 CV 网站 | Add two bounded research descriptions to the website and shared CV; distinguish completed CG exploration from ongoing atomistic MACE work |
 | 2026-09-29：不喜欢页首 q.；与英国的联系只是口音有一部分英国味儿，考虑加一个小玩笑 | Name-only header; a brief About-page aside about the .uk domain and a partly British accent, without implying UK nationality, residence, or affiliation |
 
-The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the approved UMA/FAIR-Chem workflow and two measurement studies, their selected descriptions, measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
+The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content includes the approved CG JEPA and MACE JEPA descriptions, UMA/FAIR-Chem workflow, and two measurement studies. The two JEPA entries contain bounded editorial summaries rather than copied research reports or newly released numerical figures. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
 
 ## Reading and navigation
 
@@ -24,9 +25,9 @@ On 2026-09-30, the owner reported that the visual design felt uncomfortable to r
 
 ## Editorial scope
 
-On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. In a subsequent message, the owner approved adding the earlier UMA/FAIR-Chem project and explained that its GPU-memory limits motivated their HPC optimization interests. These approvals supersede the earlier request to withhold all projects for these three case studies only. They do not authorize publication of complete research directories, unpublished project drafts, JEPA results, coursework, or unrelated measurements.
+On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. In a subsequent message, the owner approved adding the earlier UMA/FAIR-Chem project and explained that its GPU-memory limits motivated their HPC optimization interests. These approvals supersede the earlier request to withhold all projects for these three case studies only. The later 2026-09-30 instruction adds CG JEPA and MACE JEPA descriptions and supersedes the earlier JEPA exclusion for these two entries. It does not authorize publication of complete research directories, unpublished project drafts, coursework, or unrelated measurements.
 
-`src/data/projects.json` contains three published records: one workflow case study and two measurement studies. Each supplies a bounded `cvSummary` to the HTML and PDF CV. The UMA page uses an HTML schematic to explain workflow stages. Static SVG figures, downloadable PNG versions, and small CSV files contain the two measurement studies' selected approved values; a separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript. The publication array remains empty, and none of these records sets `output` or creates a publication citation.
+`src/data/projects.json` contains five published records: two representation-learning investigations, one workflow case study, and two measurement studies. The homepage selects MACE JEPA, CG JEPA, and UMA/FAIR-Chem, while Research and both CV formats list all five. Each supplies a bounded `cvSummary` to the HTML and PDF CV. The UMA page uses an HTML schematic to explain workflow stages. Static SVG figures, downloadable PNG versions, and small CSV files contain the two measurement studies' selected approved values; a separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript. The publication array remains empty, and none of these records sets `output` or creates a publication citation.
 
 ### UMA/FAIR-Chem polymer workflow
 
@@ -46,9 +47,17 @@ The density case study is a snapshot of three MACE pilots for PE, PMP, and PIB, 
 
 Reference phase, temperature, molecular weight, and measurement uncertainty remain incompletely specified. Temporal intervals characterize within-run sampling, not variation across independent packings or experimental uncertainty. The work remains preliminary screening and is not production-qualified experimental validation; the three differences do not establish general predictive accuracy.
 
+### CG JEPA and MACE JEPA
+
+The CG JEPA entry summarizes the completed exploratory phase documented in `A_LINE_SUMMARY.md` and its supporting ablation and frozen public-CGPS reports. It covers local packing, relative-displacement interfaces, physical readouts, and temporal baselines. Useful geometry came from explicit geometric interfaces and current-state supervision; temporal JEPA variants did not surpass the strong linear physical baselines in the completed phase. Fixed-horizon observable prediction is not complete coarse-grained coordinate generation.
+
+The MACE JEPA entry follows the encoder audit into executed atomistic-water pilots and subsequent diagnostics through 2026-09-30. The initial pilot favored direct physical supervision with frozen MACE, while later temporal-pairing controls showed task- and readout-dependent effects. A separate hydrogen-bond exchange propensity study used frozen MACE features and a fitted physical readout. Its improvement relative to the specified geometry baseline is not a JEPA training result; additional feature dimensions, shared simulation ancestry, and previously inspected evaluation labels limit the interpretation.
+
+Source reports are read-only supporting evidence. No private source report, training artifact, CRC identifier, checkpoint, or raw trajectory is copied into the public repository. No project start date or public code link is inferred. These entries do not create publication citations. Their bounded `cvSummary` fields update the HTML and PDF CV together. The five-entry PDF uses two pages, with the two representation-learning lines together on page one and the other research on a titled continuation page; its font size is preserved.
+
 ### Other claims
 
-- No JEPA success, paper, benchmark, or generalization result is claimed.
+- The two JEPA entries describe concrete exploratory work and bounded observations. They do not claim a general JEPA advantage, a production trajectory generator, a paper, or broad material generalization.
 - MLIP optimization remains a research direction. The approved engineering measurement does not claim a newly optimized algorithm or controlled general performance improvement. The owner-approved account of GPU-memory limitations explains the origin of this interest; it does not assert hardware capacity, infrastructure details, or a measured optimization gain.
 - Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, GPA, award, publication, or additional quantitative result has been inferred.
 - The current RA, visiting student, and iSURE records are separate. The two visit dates are not treated as continuous employment dates.

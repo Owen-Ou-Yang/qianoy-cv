@@ -10,7 +10,7 @@ from pathlib import Path
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'public' / 'cv.pdf'
@@ -91,7 +91,12 @@ add('; '.join(e(theme['title']) for theme in themes) + '.')
 
 if projects:
     add('Selected research', 'section')
-for project in projects:
+for index, project in enumerate(projects):
+    # With five or more entries, keep the first two research lines together
+    # and start supporting studies on a clearly headed continuation page.
+    if len(projects) >= 5 and index == 2:
+        content.append(PageBreak())
+        add('Selected research (continued)', 'section')
     # Publication citations are not inferred from project/software records.
     description = project.get('cvSummary') or project['summary']
     url = profile['siteUrl'].rstrip('/') + '/projects/' + project['slug'] + '/'

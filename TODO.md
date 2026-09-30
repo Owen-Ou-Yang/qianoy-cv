@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approved three research case studies: an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Other project results, including JEPA and coursework, remain excluded.
+Updated on 2026-09-30. Core profile and CV facts are confirmed. The owner approved five research records: ongoing MACE JEPA work, the completed CG JEPA exploratory phase, an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Coursework and unrelated project results remain excluded.
 
 ## Confirmed and incorporated
 
@@ -16,7 +16,7 @@ Updated on 2026-09-28. Core profile and CV facts are confirmed. The owner approv
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
 - [x] Use each case study's short `cvSummary` entry in the HTML and PDF CV.
-- [x] Keep JEPA results and coursework outside the public project records; retain general JEPA research interests.
+- [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep coursework excluded.
 - [x] Add a local sharing preview image without introducing client JavaScript.
 - [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
 
@@ -32,12 +32,15 @@ No GPA, awards, publications, or service entries are assumed or required. `src/d
 
 ## Research maintenance
 
+- [ ] Add CG JEPA / MACE JEPA start dates or public code links only if confirmed. Their absence does not block the current descriptions.
+- [ ] Keep MACE JEPA status and evidence current as the line develops. Any future numerical result or figure needs its actual protocol, source, and claim limits.
+
 - [ ] Replace the density reference table with fully traced, condition-matched references when available; do not infer phase, temperature, molecular weight, or experimental uncertainty.
 - [ ] Add repeated measurements or independent preparations only after those experiments exist and their public scope is approved. Until then, keep the single-run engineering and single-packing screening limits explicit.
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the UMA workflow and the two selected measurement studies, not all research documents or future results.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the five selected research descriptions. It does not authorize copying complete research directories or unrelated results into the public repository.
 
 Unpublished project drafts remain excluded from public source and public Git history.
 
@@ -53,5 +56,5 @@ Unpublished project drafts remain excluded from public source and public Git his
 - [x] Add only `cv.qianoy.uk` as a Pages custom domain. Domain Active, SSL enabled, HTTPS and the live PDF verified. No other hostname was redirected or repointed.
 - [x] Verify automatic deployments from `main`: commit `1e8c2e4` deployed successfully using Node 22.23.3.
 - [ ] Configure your preferred local Git author identity for future commits.
-- [ ] Review on a phone, with keyboard navigation, and at 200% browser zoom before using it for applications.
+- [x] Review the reading layout on desktop, at 320/390 px widths, with keyboard navigation, and at 200% browser zoom (2026-09-30).
 - [ ] Choose a source-code license if desired. No reuse license has been assumed.

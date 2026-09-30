@@ -1,5 +1,81 @@
 [
   {
+    "slug": "mace-jepa-molecular-dynamics",
+    "title": "MACE JEPA: representations for molecular dynamics",
+    "theme": "Atomistic representation learning / Molecular dynamics",
+    "summary": "An ongoing study of pretrained MACE features, explicit atomic velocities, and JEPA-style temporal learning, using atomistic water to test what representations retain about molecular dynamics.",
+    "question": "Can temporal representation learning make pretrained atomistic features more useful for physical prediction, beyond the effects of the input interface and physical supervision?",
+    "methodology": [
+      "Audited encoder inputs and intermediate features to understand which geometric and dynamical information each representation exposes.",
+      "Built an adapter that combines MACE-MH-1 scalar and vector features with atomic velocities and local geometry. Compared frozen and fine-tuned encoders under direct physical supervision, same-state representation pretraining, and future-state representation pretraining.",
+      "Used common physical readouts and true-versus-shuffled temporal-pairing controls to examine the contribution of temporal learning, alongside short-horizon prediction and recursive-rollout diagnostics.",
+      "Extended the investigation to structure-dependent hydrogen-bond exchange propensity: predict the event frequency averaged over repeated velocity initializations, comparing geometric inputs with the same inputs augmented by frozen MACE features."
+    ],
+    "resultsHeading": "Work to date",
+    "results": [
+      "Completed controlled training and evaluation pilots on atomistic water. In the initial short-horizon pilot, frozen MACE with direct physical supervision gave the lowest final physical errors; temporal pretraining showed different effects for oxygen and hydrogen.",
+      "Follow-up temporal-pairing controls found task-dependent value in temporal learning. The benefit depended on the physical readout and supervision protocol, and reliable long-horizon dynamics remain unestablished.",
+      "A separate frozen-feature study reduced hydrogen-bond exchange propensity error relative to its specified geometric baseline on two evaluation trajectory sources. This tests the usefulness of MACE features; it is not a result of JEPA training."
+    ],
+    "resultsNote": "This line grew out of the encoder comparison within my CG JEPA investigation. It now asks which molecular targets benefit from pretrained representations and temporal learning, with hydrogen-bond exchange providing a target beyond immediate displacement.",
+    "limitations": [
+      "These are exploratory atomistic-water studies. They do not establish a production molecular-dynamics surrogate, broad materials transfer, or a general advantage for JEPA.",
+      "The initial six-condition training pilot used one shared seed. Later technical-seed repetitions do not create independent physical systems.",
+      "The propensity comparison adds feature dimensions as well as MACE information. Its evaluation sources share simulation ancestry and their labels had been inspected previously; the comparison is not a fully blind test or a capacity-matched causal attribution."
+    ],
+    "takeaway": "Useful physical features and a successful temporal-learning objective are separate questions, and both need explicit physical evaluation.",
+    "scope": "Ongoing atomistic-water research with completed controlled pilots. Frozen-feature propensity results are kept distinct from JEPA training results.",
+    "status": "Ongoing research",
+    "role": "Encoder comparison, representation and adapter development, controlled training, and physical-readout evaluation.",
+    "cvSummary": "Investigate MACE-based molecular representations using position-velocity adapters, temporal JEPA controls, physical readouts, and hydrogen-bond exchange propensity targets. Completed water pilots show task-dependent effects.",
+    "repository": null,
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false,
+    "preview": {
+      "title": "MACE JEPA for molecular dynamics",
+      "description": "Investigating pretrained atomistic features and temporal learning through controlled water simulations, physical readouts, and hydrogen-bond exchange targets."
+    }
+  },
+  {
+    "slug": "cg-jepa-polymer-representations",
+    "title": "CG JEPA: polymer representations and physical prediction",
+    "theme": "Coarse-grained modeling / Representation learning",
+    "summary": "An exploratory study of JEPA-style learning for polymer dynamics, examining which molecular information survives encoding and whether it helps predict future physical observables.",
+    "question": "Which local and geometric information should a coarse-grained polymer representation retain to support useful physical prediction?",
+    "methodology": [
+      "Built periodic molecular graphs and temporal-learning pipelines for polymer trajectories, with local molecular descriptors and chain-level representations.",
+      "Compared JEPA-style predictors with persistence, linear autoregression, supervised graph models, and random-encoder controls using common physical observables.",
+      "Examined token fields, local packing information, chain pooling, and relative-displacement representations through controlled ablations.",
+      "Separated current-state representation quality from fixed-horizon future prediction, retaining technical-seed comparisons, time-block uncertainty estimates, and negative results."
+    ],
+    "resultsHeading": "What the exploration showed",
+    "results": [
+      "Local packing information contributed to physical prediction in the tested pipelines; deleting an input field did not necessarily remove the same information from graph connections and other channels.",
+      "Explicit relative-displacement representations improved current chain-geometry readouts and retained useful signals for future physical observables. These improvements came from a geometric interface and current-state physical supervision, rather than an established temporal JEPA gain.",
+      "The tested temporal-learning variants did not surpass strong linear physical baselines in the completed phase. The frozen public coarse-grained polystyrene benchmark also retained a negative result for the tested JEPA predictor at the 800 ps horizon."
+    ],
+    "resultsNote": "This phase sharpened the distinction between information in a molecular input, information retained by an encoder, and information used by a temporal predictor. The encoder comparison motivated the subsequent MACE JEPA line.",
+    "limitations": [
+      "The evaluated targets summarize polymer geometry and local environment. Predicting these observables does not demonstrate generation of complete coarse-grained coordinate trajectories.",
+      "The results concern the recorded polymer configurations, data sources, and finite training protocols; they do not establish experimental-polymer generalization or a universal ranking of learning methods.",
+      "Technical seeds and correlated chain windows are not independent molecular systems. Current-state supervised gains are kept separate from temporal self-supervised gains."
+    ],
+    "takeaway": "A representation can preserve useful geometry while temporal prediction still falls short of a simple physical baseline.",
+    "scope": "Completed exploratory phase in polymer representation quality and fixed-horizon physical prediction; no validated autonomous coarse-grained trajectory generator.",
+    "status": "Exploratory phase completed",
+    "role": "Molecular representation development, controlled ablation studies, baseline comparisons, and physical-readout analysis.",
+    "cvSummary": "Investigated JEPA-style polymer representations through controlled ablations, geometric interfaces, and physical-readout evaluation. Temporal variants did not surpass strong linear baselines in the tested setting.",
+    "repository": null,
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false,
+    "preview": {
+      "title": "CG JEPA for polymer representations",
+      "description": "Explored coarse-grained polymer representations through controlled ablations and physical prediction, identifying useful geometric interfaces and limits of temporal learning."
+    }
+  },
+  {
     "slug": "uma-fairchem-polymer-workflow",
     "title": "Polymer elastic-response workflows with UMA / FAIR-Chem",
     "theme": "Scientific workflows / ML interatomic potentials",
@@ -93,7 +169,7 @@
     ],
     "repository": null,
     "dataFile": "/figures/hpc-resources.csv",
-    "selected": true,
+    "selected": false,
     "published": true,
     "isPlaceholder": false,
     "figure": {
@@ -146,7 +222,7 @@
     ],
     "repository": "https://github.com/Owen-Ou-Yang/Density_calculation",
     "dataFile": "/figures/density-screening.csv",
-    "selected": true,
+    "selected": false,
     "published": true,
     "isPlaceholder": false,
     "figure": {
