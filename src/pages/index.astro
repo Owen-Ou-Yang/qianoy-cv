@@ -1,31 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProfileLinks from '../components/ProfileLinks.astro';
 import ProjectEntry from '../components/ProjectEntry.astro';
-import Education from '../components/Education.astro';
-import { displayName, profile, researchThemes } from '../data/site';
+import { displayName, profile } from '../data/site';
 import { projects } from '../data/projects';
 const selectedProjects = projects.filter(project => project.selected);
 ---
 <BaseLayout title="Home" description={profile.metaDescription}>
   <section class="hero" aria-labelledby="intro-heading">
-    <div>
-      <p class="eyebrow">AI for Science / Molecular simulation</p>
-      <h1 id="intro-heading">{displayName}</h1>
-      <p class="hero-identity">{profile.identity}</p>
-      <p class="hero-copy">{profile.introduction}</p>
-      <div class="actions"><a class="button" href="/cv.pdf">{profile.cvIsDraft ? 'Download CV (PDF · draft)' : 'Download CV (PDF)'} <span aria-hidden="true">↓</span></a><a class="text-link" href={selectedProjects.length ? '#selected-work' : '/research/'}>{selectedProjects.length ? 'Selected research' : 'Research interests'} <span aria-hidden="true">↘</span></a></div>
-      <ProfileLinks />
+    <h1 id="intro-heading">{displayName}</h1>
+    <div class="affiliations">{profile.overview.affiliations.map(line => <p>{line}</p>)}</div>
+    <p class="hero-copy">{profile.overview.summary}</p>
+    <div class="actions profile-actions">
+      <a class="button" href="/cv.pdf">{profile.cvIsDraft ? 'CV (PDF · draft)' : 'CV (PDF)'} <span aria-hidden="true">↓</span></a>
+      {profile.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
+      {profile.github && <a href={profile.github}>GitHub</a>}
+      {profile.linkedin && <a href={profile.linkedin}>LinkedIn</a>}
     </div>
-    <aside class="hero-aside" aria-label="Academic overview"><dl>
-      <div><dt>Undergraduate · {profile.education.dates}</dt><dd>{profile.education.institution}<span class="aside-detail">{profile.education.program}</span></dd></div>
-      <div><dt>{profile.experience[0].role} · {profile.experience[0].dates}</dt><dd>{profile.experience[0].institution}<span class="aside-detail">Prof. Tengfei Luo's group · AME</span></dd></div>
-    </dl></aside>
   </section>
-  {selectedProjects.length > 0 && <section id="selected-work" class="section selected-work" aria-labelledby="projects-heading"><div class="section-heading"><div><p class="eyebrow">Selected work</p><h2 id="projects-heading">From molecular models to measured behavior.</h2></div><p class="section-intro">Case studies in scientific computing: the resources simulations need, and the material properties they estimate.</p></div>
-    {selectedProjects.map((project, index) => <ProjectEntry project={project} index={index} featured />)}
+  {selectedProjects.length > 0 && <section id="selected-work" class="selected-work" aria-labelledby="projects-heading">
+    <div class="section-heading"><h2 id="projects-heading">Selected research</h2><a href="/research/#research-interests">Research interests <span aria-hidden="true">→</span></a></div>
+    {selectedProjects.map((project, index) => <ProjectEntry project={project} index={index} />)}
   </section>}
-  <section class="section section-grid" aria-labelledby="interests-heading"><div class="section-label"><p class="eyebrow">Looking ahead</p><h2 id="interests-heading">Research interests</h2></div><ul class="interest-list">{researchThemes.map(theme => <li><a href={`/research/#${theme.id}`}>{theme.title}</a></li>)}</ul></section>
-  <section class="section section-grid" aria-labelledby="education-heading"><div class="section-label"><p class="eyebrow">Academic foundation</p><h2 id="education-heading">Education</h2></div><div><Education /><div class="actions"><a href="/about/">More about me <span aria-hidden="true">↗</span></a><a href="/cv/">View curriculum vitae</a></div></div></section>
-  <section class="section contact-invitation" aria-labelledby="connect-heading"><div><p class="eyebrow">Get in touch</p><h2 id="connect-heading">Interested in similar questions?</h2><p>I welcome conversations about AI for materials, molecular simulation, and efficient scientific computing.</p></div><a class="text-link" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a></section>
+  <p class="home-more">More about my <a href="/about/">background</a> and <a href="/cv/">academic experience</a>.</p>
 </BaseLayout>

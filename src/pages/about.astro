@@ -7,7 +7,7 @@ import Skills from '../components/Skills.astro';
 import { profile, researchThemes } from '../data/site';
 ---
 <BaseLayout title="About" description="Academic background in Artificial Intelligence and research interests in machine learning, materials, and molecular simulation.">
-  <PageHeader eyebrow="About" title="From artificial intelligence to molecular science." />
+  <PageHeader title="About me" />
   <div class="reading prose space-bottom">
     {profile.biography.map(paragraph => <p>{paragraph}</p>)}
     {profile.personalAside && <aside class="personal-aside" aria-label="A personal aside"><p>{profile.personalAside}</p></aside>}

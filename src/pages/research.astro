@@ -6,8 +6,18 @@ import { projects } from '../data/projects';
 import ProjectEntry from '../components/ProjectEntry.astro';
 ---
 <BaseLayout title="Research" description="Qian Ouyang's interests in AI for materials, MLIP HPC optimization, molecular dynamics, coarse-graining, JEPA, and polymer properties.">
-  <PageHeader eyebrow="Research" title="Learning about materials, across scales." description="My interests connect artificial intelligence with molecular simulation: how we describe interactions, represent dynamics, and study material properties." />
-  <section class="section" aria-labelledby="studies-heading"><div class="section-heading"><div><p class="eyebrow">Work in practice</p><h2 id="studies-heading">Selected case studies</h2></div><a class="text-link" href="/projects/">Figures & details <span aria-hidden="true">↗</span></a></div>{projects.map((project, index) => <ProjectEntry project={project} index={index} />)}</section>
-  {researchThemes.map((theme, index) => <section id={theme.id} class="theme-entry" aria-labelledby={`${theme.id}-title`}><span class="entry-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h2 id={`${theme.id}-title`}>{theme.title}</h2><p>{theme.description}</p><ul class="keywords">{theme.keywords.map(word => <li>{word}</li>)}</ul></div></section>)}
-  <div class="actions">{projects.length > 0 ? <a class="button" href="/projects/">Explore project entries <span aria-hidden="true">↗</span></a> : <a class="button" href="/cv/">View curriculum vitae <span aria-hidden="true">↗</span></a>}<a href="/contact/">Contact</a></div>
+  <PageHeader title="Research" description="My interests connect artificial intelligence with molecular simulation: how we describe interactions, represent dynamics, and study material properties." />
+  <nav class="page-links" aria-label="On this page">
+    <span>On this page</span>
+    <ul><li><a href="#selected-work">Selected research</a></li><li><a href="#research-interests">Research interests</a></li></ul>
+  </nav>
+  <section id="selected-work" class="section" aria-labelledby="studies-heading">
+    <div class="section-heading"><h2 id="studies-heading">Selected research</h2></div>
+    {projects.map((project, index) => <ProjectEntry project={project} index={index} />)}
+  </section>
+  <section id="research-interests" class="section" aria-labelledby="interests-heading">
+    <div class="section-heading"><h2 id="interests-heading">Research interests</h2></div>
+    {researchThemes.map(theme => <section id={theme.id} class="theme-entry" aria-labelledby={`${theme.id}-title`}><h3 id={`${theme.id}-title`}>{theme.title}</h3><p>{theme.description}</p><ul class="keywords">{theme.keywords.map(word => <li>{word}</li>)}</ul></section>)}
+  </section>
+  <div class="actions"><a href="/cv/">View curriculum vitae</a><a href="/contact/">Contact</a></div>
 </BaseLayout>

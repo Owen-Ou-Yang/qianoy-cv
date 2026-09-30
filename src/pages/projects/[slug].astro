@@ -10,21 +10,23 @@ const nextProject = projects.length > 1 ? projects[(projects.findIndex(p => p.sl
 ---
 <BaseLayout title={project.title} description={project.summary} noindex={project.isPlaceholder}>
   <article class="study-page">
-    <a class="back-link" href="/#selected-work">← Selected research</a>
+    <a class="back-link" href="/research/#selected-work">← Selected research</a>
     <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
     <div class="study-meta"><span>{project.status}</span>{project.date && <span>{project.date}</span>}</div>
+    <div class="study-context">{project.role && <p><strong>My role.</strong> {project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}</div>
+    <nav class="page-links" aria-label="On this page"><span>On this page</span><ul><li><a href="#question">Question</a></li><li><a href="#approach">Approach</a></li>{project.figure && <li><a href="#figure">Figure</a></li>}<li><a href="#results">{project.resultsHeading ? 'Work & learning' : 'Observations'}</a></li>{!!project.limitations?.length && <li><a href="#scope">Scope & limitations</a></li>}</ul></nav>
+    <section id="question" class="detail-section question-section"><h2>Research question</h2><p>{project.question}</p></section>
+    <section id="approach" class="detail-section"><h2>Approach</h2><ul>{project.methodology.map(method => <li>{method}</li>)}</ul></section>
     {project.workflow && <WorkflowOverview workflow={project.workflow} />}
-    {project.figure && <figure class="research-figure study-figure"><img src={project.figure.src} alt={project.figure.alt} width={project.figure.width} height={project.figure.height} decoding="async" fetchpriority="high" /><figcaption>{project.figure.caption}</figcaption><div class="figure-links"><a href={project.figure.download ?? project.figure.src}>Open full-size figure <span aria-hidden="true">↗</span></a>{project.dataFile && <a href={project.dataFile} download>Download figure data (CSV) <span aria-hidden="true">↓</span></a>}</div></figure>}
-    <div class="study-body">
-      <aside class="study-context"><h2>Context</h2>{project.role && <p>{project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}<p><a href="/cv/">Curriculum vitae</a></p></aside>
-      <div class="study-prose">
-        <section class="detail-section"><h2>Research question</h2><p>{project.question}</p></section>
-        <section class="detail-section"><h2>Approach</h2><ul>{project.methodology.map(method => <li>{method}</li>)}</ul></section>
-        <section class="detail-section"><h2>{project.resultsHeading ?? 'What the measurements show'}</h2><ul>{project.results.map(result => <li>{result}</li>)}</ul>{project.resultsNote && <p class="space-top">{project.resultsNote}</p>}</section>
-        {!!project.limitations?.length && <section class="detail-section"><h2>Scope & limitations</h2><ul>{project.limitations.map(limit => <li>{limit}</li>)}</ul></section>}
-        {!!project.references?.length && <section class="detail-section"><h2>Data attribution</h2>{project.references.map(reference => <p><a href={reference.url}>{reference.label} <span aria-hidden="true">↗</span></a>{reference.note && <span class="reference-note">{reference.note}</span>}</p>)}</section>}
-      </div>
-    </div>
-    {nextProject && <section class="section next-study" aria-labelledby="next-study-heading"><div><p class="eyebrow">Continue exploring</p><h2 id="next-study-heading">{nextProject.title}</h2></div><a class="text-link" href={`/projects/${nextProject.slug}/`}>Read the case study <span aria-hidden="true">↗</span></a></section>}
+    {project.figure && <figure id="figure" class="study-figure">
+      <p id="figure-help" class="figure-hint">Scroll sideways to read the figure, or open the full-size version below.</p>
+      <div class="figure-scroll" tabindex="0" role="region" aria-label="Research figure" aria-describedby="figure-caption"><img src={project.figure.src} alt={project.figure.alt} width={project.figure.width} height={project.figure.height} decoding="async" loading="lazy" /></div>
+      <figcaption id="figure-caption">{project.figure.caption}</figcaption>
+      <div class="figure-links"><a href={project.figure.download ?? project.figure.src}>Open full-size figure <span aria-hidden="true">↗</span></a>{project.dataFile && <a href={project.dataFile} download>Download figure data (CSV) <span aria-hidden="true">↓</span></a>}</div>
+    </figure>}
+    <section id="results" class="detail-section"><h2>{project.resultsHeading ?? 'What the measurements show'}</h2><ul>{project.results.map(result => <li>{result}</li>)}</ul>{project.resultsNote && <p class="space-top">{project.resultsNote}</p>}</section>
+    {!!project.limitations?.length && <section id="scope" class="detail-section"><h2>Scope & limitations</h2><ul>{project.limitations.map(limit => <li>{limit}</li>)}</ul></section>}
+    {!!project.references?.length && <section class="detail-section"><h2>Data attribution</h2>{project.references.map(reference => <p><a href={reference.url}>{reference.label} <span aria-hidden="true">↗</span></a>{reference.note && <span class="reference-note">{reference.note}</span>}</p>)}</section>}
+    {nextProject && <section class="section next-study" aria-labelledby="next-study-heading"><p class="eyebrow">Next project</p><h2 id="next-study-heading"><a href={`/projects/${nextProject.slug}/`}>{nextProject.preview?.title ?? nextProject.title} <span aria-hidden="true">→</span></a></h2></section>}
   </article>
 </BaseLayout>

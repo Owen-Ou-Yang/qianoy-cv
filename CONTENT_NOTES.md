@@ -1,6 +1,6 @@
 # Content provenance and editorial boundaries
 
-Updated from the owner's messages on 2026-09-27 through 2026-09-29. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
+Updated from the owner's messages on 2026-09-27 through 2026-09-30. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
 
 | 用户确认的信息 | 网站 / CV 英文表述 |
 | --- | --- |
@@ -17,6 +17,10 @@ Updated from the owner's messages on 2026-09-27 through 2026-09-29. This file re
 | 2026-09-29：不喜欢页首 q.；与英国的联系只是口音有一部分英国味儿，考虑加一个小玩笑 | Name-only header; a brief About-page aside about the .uk domain and a partly British accent, without implying UK nationality, residence, or affiliation |
 
 The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content is limited to the approved UMA/FAIR-Chem workflow and two measurement studies, their selected descriptions, measurements, figures, and attribution. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
+
+## Reading and navigation
+
+On 2026-09-30, the owner reported that the visual design felt uncomfortable to read. The revision reduces heading sizes and repeated introductory content, uses plain page titles and compact research summaries, and keeps complete methods, observations, figures, and limitations on the existing detail pages. The optional project `preview` fields describe the same approved work without introducing new numerical conclusions. The homepage `overview` summarizes confirmed affiliations and interests. Academic records, shared CV summaries, and the PDF CV are unchanged.
 
 ## Editorial scope
 

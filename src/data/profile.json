@@ -68,5 +68,12 @@
     "Python"
   ],
   "cvIsDraft": false,
-  "socialImage": "/social/profile.png"
+  "socialImage": "/social/profile.png",
+  "overview": {
+    "affiliations": [
+      "Fourth-year AI undergraduate · Xi'an Jiaotong University",
+      "Research Assistant · Prof. Tengfei Luo's group, University of Notre Dame"
+    ],
+    "summary": "I work on molecular simulation for polymers, with a focus on machine learning interatomic potentials and their computational cost. My interests also include polymer property prediction and molecular representation learning."
+  }
 }

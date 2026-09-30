@@ -3,6 +3,7 @@ import projectData from './projects.json';
 export interface Project {
   slug: string;
   title: string;
+  preview?: { title: string; description: string };
   theme: string;
   summary: string;
   question: string | null;

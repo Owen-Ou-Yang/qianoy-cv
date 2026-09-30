@@ -57,7 +57,11 @@
     "repository": null,
     "selected": true,
     "published": true,
-    "isPlaceholder": false
+    "isPlaceholder": false,
+    "preview": {
+      "title": "UMA / FAIR-Chem polymer workflows",
+      "description": "Developed a LAMMPS workflow for polymer elastic response, including batch execution and stress–strain analysis. GPU-memory constraints motivated my interest in MLIP efficiency."
+    }
   },
   {
     "slug": "mlip-gpu-resources",
@@ -99,6 +103,10 @@
       "height": 864,
       "alt": "Two versus four GPUs: runtime falls from 117.3 to 62.7 minutes, maximum sampled per-GPU memory falls from 21.68 to 11.13 GiB, and allocated GPU time rises from 3.91 to 4.18 hours. The three-GPU attempt failed at initialization.",
       "caption": "Measured resource use for the same MACE workload. One short engineering run per configuration, on different hosts; scientific density QC was not passed. The three-GPU initialization failure is included in the record."
+    },
+    "preview": {
+      "title": "MACE GPU resource study",
+      "description": "Measured runtime, sampled device memory, and allocated GPU-hours for a fixed polymer simulation workload."
     }
   },
   {
@@ -148,6 +156,10 @@
       "height": 876,
       "alt": "Density estimates for PE, PMP, and PIB compared with dataset reference values, alongside fluctuations over 25 picoseconds. Mean differences are minus 2.59 percent, plus 3.25 percent, and minus 0.80 percent.",
       "caption": "Three preliminary MACE density pilots at 300 K. Reference values are reported as experimental by the source dataset; their phase, temperature, molecular weight, and uncertainty are incompletely specified. Sampling intervals do not include independent-packing or experimental uncertainty."
+    },
+    "preview": {
+      "title": "Preliminary polymer density screening",
+      "description": "Examined MACE density estimates for three polymers, with sampling checks and assessment of reference-data matching."
     }
   }
 ]

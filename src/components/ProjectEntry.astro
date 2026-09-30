@@ -1,14 +1,14 @@
 ---
 import type { Project } from '../data/projects';
-interface Props { project: Project; index: number; heading?: 'h2' | 'h3'; featured?: boolean; }
-const { project, index, heading: Heading = 'h3', featured = false } = Astro.props;
+interface Props { project: Project; index: number; heading?: 'h2' | 'h3'; }
+const { project, heading: Heading = 'h3' } = Astro.props;
+const title = project.preview?.title ?? project.title;
 ---
-<article class:list={['project-entry', { 'project-feature': featured }]}>
+<article class="project-entry">
   <div class="project-heading">
-    <p class="eyebrow"><span aria-hidden="true">{String(index + 1).padStart(2, '0')} / </span>{project.theme}</p>
-    <Heading class="project-title"><a href={`/projects/${project.slug}/`}>{project.title}</a></Heading>
-    <p class="entry-status">{project.status}{project.date && <span> · {project.date}</span>}</p>
+    <Heading class="project-title"><a href={`/projects/${project.slug}/`}>{title}</a></Heading>
+    <p class="entry-status">{project.status}</p>
   </div>
-  <div class="project-copy"><p>{project.summary}</p>{featured && project.takeaway && <p class="project-takeaway">{project.takeaway}</p>}<a class="study-link" href={`/projects/${project.slug}/`}>Methods & findings <span aria-hidden="true">↗</span></a></div>
-  {featured && project.figure && <figure class="project-figure"><a href={`/projects/${project.slug}/`} aria-label={`View ${project.title}`}><img src={project.figure.src} alt={project.figure.alt} width={project.figure.width} height={project.figure.height} loading="lazy" decoding="async" /></a><figcaption>{project.scope}</figcaption></figure>}
+  <p class="project-summary">{project.preview?.description ?? project.summary}</p>
+  <a class="study-link" href={`/projects/${project.slug}/`} aria-label={`View project: ${title}`}>View project <span aria-hidden="true">→</span></a>
 </article>

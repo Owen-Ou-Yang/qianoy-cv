@@ -89,6 +89,10 @@ npm run preview    # Serve the production build locally
 
 ## Edit content
 
+The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by compact project entries. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. These presentation fields do not change the shared `cvSummary` or the PDF CV. The Research page is the main research index; existing project URLs remain available.
+
+Typography and spacing favor quick reading: system sans-serif text, moderate headings, and one aligned column for project summaries. Detail pages provide section links and keep large scientific figures in a keyboard-accessible horizontal scroll region on narrow screens, with full-size image and data links.
+
 ### Profile, research, and links
 
 Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links are omitted rather than rendered as dead links. `name` supplies page titles and Person structured metadata. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.

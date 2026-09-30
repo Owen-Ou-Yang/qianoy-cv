@@ -5,6 +5,6 @@ import Todo from '../components/Todo.astro';
 import { profile } from '../data/site';
 ---
 <BaseLayout title="Contact" description="Contact and professional profiles for academic discussion in AI for materials and molecular simulation.">
-  <PageHeader eyebrow="Contact" title="Let’s connect." description="For academic conversations about AI for materials, molecular simulation, and related research." />
+  <PageHeader title="Contact" description="For academic conversations about AI for materials, molecular simulation, and related research." />
   <ul class="contact-list reading"><li><h2>Email</h2><div>{profile.email ? <a href={`mailto:${profile.email}`}>{profile.email}</a> : <Todo text="TODO: Public academic email address" />}</div></li><li><h2>GitHub</h2><div>{profile.github ? <a href={profile.github}>{profile.github} <span aria-hidden="true">↗</span></a> : <Todo text="TODO: GitHub profile URL" />}</div></li>{profile.linkedin && <li><h2>LinkedIn</h2><div><a href={profile.linkedin}>{profile.linkedin} <span aria-hidden="true">↗</span></a></div></li>}</ul>
 </BaseLayout>

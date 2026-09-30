@@ -5,6 +5,7 @@ interface Props { title: string; description?: string; noindex?: boolean; canoni
 const { title, description = profile.identity, noindex = false, canonicalPath = Astro.url.pathname } = Astro.props;
 const canonical = new URL(canonicalPath, profile.siteUrl).href;
 const fullTitle = title === 'Home' ? `${siteTitle} | AI for Materials & Molecular Simulation` : `${title} | ${siteTitle}`;
+const isCurrentPage = (href: string) => href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(href) || (href === '/research/' && Astro.url.pathname.startsWith('/projects/'));
 const person = profile.name ? { '@context': 'https://schema.org', '@type': 'Person', name: profile.name, url: profile.siteUrl, description: profile.identity, sameAs: [profile.github, profile.linkedin].filter(Boolean) } : null;
 ---
 <!doctype html>
@@ -36,12 +37,12 @@ const person = profile.name ? { '@context': 'https://schema.org', '@type': 'Pers
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header wrap">
       <a class="wordmark" href="/" aria-label={`${siteTitle} home`}>{siteTitle}</a>
-      <nav aria-label="Main navigation"><ul>{navigation.map(item => <li><a href={item.href} aria-current={(item.href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a></li>)}</ul></nav>
+      <nav aria-label="Main navigation"><ul>{navigation.map(item => <li><a href={item.href} aria-current={isCurrentPage(item.href) ? 'page' : undefined}>{item.label}</a></li>)}</ul></nav>
     </header>
     <main id="main" class="wrap" tabindex="-1"><slot /></main>
     <footer class="site-footer wrap">
       <div><a class="footer-name" href="/">{siteTitle}</a><p>AI for materials & molecular simulation</p></div>
-      <div class="footer-links"><a href="/projects/">Selected work</a><a href="/cv/">Curriculum vitae</a><a href="/contact/">Contact <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-links"><a href="/research/#selected-work">Selected research</a><a href="/cv/">Curriculum vitae</a><a href="/contact/">Contact <span aria-hidden="true">↗</span></a></div>
     </footer>
   </body>
 </html>

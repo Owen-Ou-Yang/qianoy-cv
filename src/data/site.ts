@@ -9,6 +9,7 @@ interface Profile {
   identity: string;
   metaDescription: string;
   introduction: string;
+  overview: { affiliations: string[]; summary: string };
   biography: string[];
   personalAside?: string;
   email: string | null;
