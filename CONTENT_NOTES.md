@@ -22,6 +22,8 @@ The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub ac
 
 ## Reading and navigation
 
+On 2026-09-30, the owner requested removing the GitHub profile link from Contact only. The Contact page keeps the academic email and optional LinkedIn field; GitHub links on the homepage, CV, and relevant project pages remain available.
+
 On 2026-09-30, the owner reported that the visual design felt uncomfortable to read. The revision reduces heading sizes and repeated introductory content, uses plain page titles and compact research summaries, and keeps complete methods, observations, figures, and limitations on the existing detail pages. The optional project `preview` fields describe the same approved work without introducing new numerical conclusions. The homepage `overview` summarizes confirmed affiliations and interests. Academic records, shared CV summaries, and the PDF CV are unchanged.
 
 ## Editorial scope
