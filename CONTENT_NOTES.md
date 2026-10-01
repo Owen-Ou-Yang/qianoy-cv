@@ -11,7 +11,7 @@ Updated from the owner's messages on 2026-09-27 through 2026-10-01. This file re
 | 2026 年 7–9 月在圣母大学做 iSURE 暑研 | Summer Research Participant (iSURE), July - September 2026 |
 | MLIP 的 HPC 优化非常重要，关注显存、冗余和速度 | Research interest in memory efficiency, computational redundancy, and simulation throughput |
 | UMA/FAIR-Chem 项目遇到显存限制，是 HPC 优化兴趣的来源 | GPU-memory constraints encountered while developing UMA/FAIR-Chem workflows motivated an interest in efficient ML interatomic potentials |
-| 完整搭建过 VPN；有 CRC 使用经验；C++ 和 Python | Independent VPN setup; research computing experience with CRC; C++, Python |
+| 有 CRC 使用经验；C++ 和 Python | Research computing experience with CRC; C++, Python |
 | 2026-09-28：JEPA 可以先不放，前两个可以放 | Publish the MACE GPU engineering pilot and preliminary polymer density screening; exclude JEPA results and coursework |
 | 2026-09-28：之前那个 UMA FAIRchem 的项目也可以加上去 | Add the earlier UMA/FAIR-Chem workflow as a third case study and explain its connection to HPC interests |
 | 2026-09-30：UMA 受显存限制，未做出实质结果，不希望优先展示 | Highlight the two JEPA lines and the completed measurement studies; place UMA last in the full list and label it resource-limited exploration with no validated property results |
@@ -22,6 +22,8 @@ Updated from the owner's messages on 2026-09-27 through 2026-10-01. This file re
 The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content includes the approved CG JEPA and MACE JEPA descriptions, UMA/FAIR-Chem workflow, and two measurement studies. The two JEPA entries contain bounded editorial summaries rather than copied research reports or newly released numerical figures. It does not include private research documents, unrelated results, configuration files, server details, or credentials.
 
 ## Reading and navigation
+
+On 2026-10-01, the owner requested removing the systems/networking skill from the academic profile. The shared skill data and regenerated PDF omit that entry; the remaining simulation, HPC, and programming skills are preserved.
 
 On 2026-09-30, the owner requested removing the GitHub profile link from Contact only. The Contact page keeps the academic email and optional LinkedIn field; GitHub links on the homepage, CV, and relevant project pages remain available.
 

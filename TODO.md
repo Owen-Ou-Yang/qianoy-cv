@@ -11,7 +11,7 @@ Updated on 2026-10-01. Core profile and CV facts are confirmed. Five approved re
 - [x] Notre Dame visiting student: August - December 2025.
 - [x] Notre Dame iSURE summer research: July - September 2026.
 - [x] Programming languages: C++ and Python. No proficiency rating is assumed.
-- [x] CRC experience, independent VPN setup, and experience with UMA/FAIR-Chem and MACE.
+- [x] CRC experience and experience with UMA/FAIR-Chem and MACE. Omit systems/networking experience from the academic profile at the owner's request.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
 - [x] Organize the site and both CV formats around two research lines, using shared `research-lines.json` data: CG exploration and encoder comparison leading to ongoing MACE JEPA; UMA background leading to MACE property screening and resource evaluation.
