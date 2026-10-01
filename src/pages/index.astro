@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectEntry from '../components/ProjectEntry.astro';
+import ResearchLine from '../components/ResearchLine.astro';
 import { displayName, profile } from '../data/site';
-import { projects } from '../data/projects';
-const selectedProjects = projects.filter(project => project.selected);
+import { researchLines } from '../data/research-lines';
 ---
 <BaseLayout title="Home" description={profile.metaDescription}>
   <section class="hero" aria-labelledby="intro-heading">
@@ -17,9 +16,9 @@ const selectedProjects = projects.filter(project => project.selected);
       {profile.linkedin && <a href={profile.linkedin}>LinkedIn</a>}
     </div>
   </section>
-  {selectedProjects.length > 0 && <section id="selected-work" class="selected-work" aria-labelledby="projects-heading">
-    <div class="section-heading"><h2 id="projects-heading">Selected research</h2><a href="/research/#research-interests">Research interests <span aria-hidden="true">→</span></a></div>
-    {selectedProjects.map((project, index) => <ProjectEntry project={project} index={index} />)}
+  {researchLines.length > 0 && <section id="selected-work" class="selected-work" aria-labelledby="projects-heading">
+    <div class="section-heading"><h2 id="projects-heading">Research lines</h2><a href="/research/">Research details <span aria-hidden="true">→</span></a></div>
+    {researchLines.map(line => <ResearchLine line={line} compact heading="h3" />)}
   </section>}
   <p class="home-more">More about my <a href="/about/">background</a> and <a href="/cv/">academic experience</a>.</p>
 </BaseLayout>

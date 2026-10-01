@@ -3,17 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import WorkflowOverview from '../../components/WorkflowOverview.astro';
 import { projects, type Project } from '../../data/projects';
+import { researchContext } from '../../data/research-lines';
 export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
 interface Props { project: Project; }
 const { project } = Astro.props;
-const nextProject = projects.length > 1 ? projects[(projects.findIndex(p => p.slug === project.slug) + 1) % projects.length] : null;
+const { line, stage } = researchContext(project.slug);
+const relatedStages = line.stages.filter(stage => stage.slug !== project.slug);
 ---
 <BaseLayout title={project.title} description={project.summary} noindex={project.isPlaceholder}>
   <article class="study-page">
-    <a class="back-link" href="/research/#selected-work">← Selected research</a>
+    <a class="back-link" href={`/research/#${line.id}`}>← {line.title}</a>
     <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
     <div class="study-meta"><span>{project.status}</span>{project.date && <span>{project.date}</span>}</div>
-    <div class="study-context">{project.role && <p><strong>My role.</strong> {project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}</div>
+    <div class="study-context"><p><strong>Within this research line.</strong> {stage.context}</p>{project.role && <p><strong>My role.</strong> {project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}</div>
     <nav class="page-links" aria-label="On this page"><span>On this page</span><ul><li><a href="#question">Question</a></li><li><a href="#approach">Approach</a></li>{project.figure && <li><a href="#figure">Figure</a></li>}<li><a href="#results">{project.resultsHeading ? 'Work & learning' : 'Observations'}</a></li>{!!project.limitations?.length && <li><a href="#scope">Scope & limitations</a></li>}</ul></nav>
     <section id="question" class="detail-section question-section"><h2>Research question</h2><p>{project.question}</p></section>
     <section id="approach" class="detail-section"><h2>Approach</h2><ul>{project.methodology.map(method => <li>{method}</li>)}</ul></section>
@@ -27,6 +29,6 @@ const nextProject = projects.length > 1 ? projects[(projects.findIndex(p => p.sl
     <section id="results" class="detail-section"><h2>{project.resultsHeading ?? 'What the measurements show'}</h2><ul>{project.results.map(result => <li>{result}</li>)}</ul>{project.resultsNote && <p class="space-top">{project.resultsNote}</p>}</section>
     {!!project.limitations?.length && <section id="scope" class="detail-section"><h2>Scope & limitations</h2><ul>{project.limitations.map(limit => <li>{limit}</li>)}</ul></section>}
     {!!project.references?.length && <section class="detail-section"><h2>Data attribution</h2>{project.references.map(reference => <p><a href={reference.url}>{reference.label} <span aria-hidden="true">↗</span></a>{reference.note && <span class="reference-note">{reference.note}</span>}</p>)}</section>}
-    {nextProject && <section class="section next-study" aria-labelledby="next-study-heading"><p class="eyebrow">Next project</p><h2 id="next-study-heading"><a href={`/projects/${nextProject.slug}/`}>{nextProject.preview?.title ?? nextProject.title} <span aria-hidden="true">→</span></a></h2></section>}
+    {relatedStages.length > 0 && <section class="section related-studies" aria-labelledby="related-studies-heading"><h2 id="related-studies-heading">Related work in this line</h2><ul>{relatedStages.map(({ project }) => <li><a href={`/projects/${project.slug}/`}>{project.preview?.title ?? project.title}</a></li>)}</ul></section>}
   </article>
 </BaseLayout>

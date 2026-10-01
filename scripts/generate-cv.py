@@ -21,7 +21,18 @@ def read_data(name):
 profile = read_data('profile.json')
 themes = read_data('research.json')
 projects = [project for project in read_data('projects.json') if project.get('published') is True]
+research_lines = read_data('research-lines.json')
 publications = read_data('publications.json')
+
+projects_by_slug = {project['slug']: project for project in projects}
+if len(projects_by_slug) != len(projects):
+    raise ValueError('Published project slugs must be unique.')
+assigned_slugs = [stage['slug'] for line in research_lines for stage in line['stages']]
+if len(assigned_slugs) != len(set(assigned_slugs)):
+    raise ValueError('Each published project must belong to exactly one research line.')
+if set(assigned_slugs) != set(projects_by_slug):
+    raise ValueError('Research lines must assign every published project and reference no unpublished projects.')
+
 INK = colors.HexColor('#182d45')
 BODY = colors.HexColor('#3f4c5b')
 MUTED = colors.HexColor('#5a6775')
@@ -33,6 +44,7 @@ styles = {
     'body': ParagraphStyle('body', fontName='Helvetica', fontSize=9.7, leading=13.3, textColor=BODY, spaceAfter=3),
     'title': ParagraphStyle('title', fontName='Helvetica-Bold', fontSize=10, leading=13.5, textColor=INK, spaceAfter=3),
     'section': ParagraphStyle('section', fontName='Times-Roman', fontSize=14, leading=18, textColor=INK, spaceBefore=9, spaceAfter=5, keepWithNext=True),
+    'line': ParagraphStyle('line', fontName='Helvetica-Bold', fontSize=11, leading=15, textColor=INK, spaceBefore=5, spaceAfter=4, keepWithNext=True),
     'meta': ParagraphStyle('meta', fontName='Helvetica', fontSize=8.4, leading=11.5, textColor=MUTED, spaceAfter=3),
     'date': ParagraphStyle('date', fontName='Helvetica', fontSize=8.8, leading=13.5, textColor=MUTED, alignment=2),
     'todo': ParagraphStyle('todo', fontName='Helvetica', fontSize=8.2, leading=11, textColor=colors.HexColor('#745012'), spaceAfter=3),
@@ -89,24 +101,26 @@ for index, entry in enumerate(profile['experience']):
 add('Research interests', 'section')
 add('; '.join(e(theme['title']) for theme in themes) + '.')
 
-if projects:
-    add('Selected research', 'section')
-for index, project in enumerate(projects):
-    # With five or more entries, keep the first two research lines together
-    # and start supporting studies on a clearly headed continuation page.
-    if len(projects) >= 5 and index == 2:
+for line_index, line in enumerate(research_lines):
+    # Research lines define the hierarchy and page divisions shared with the site.
+    if line_index:
         content.append(PageBreak())
-        add('Selected research (continued)', 'section')
-    # Publication citations are not inferred from project/software records.
-    description = project.get('cvSummary') or project['summary']
-    url = profile['siteUrl'].rstrip('/') + '/projects/' + project['slug'] + '/'
-    block = [
-        para(f'<link href="{e(url)}">{e(project["title"])}</link>', 'title'),
-        para(e(' | '.join(value for value in [project.get('status'), project.get('date')] if value)), 'meta'),
-        para(e(description)),
-    ]
-    block.append(Spacer(1, 4))
-    content.append(KeepTogether(block))
+    add('Selected research' + (' (continued)' if line_index else ''), 'section')
+    add(e(line['title']), 'line')
+    content.append(para(e(line['cvSummary'])))
+    content.append(Spacer(1, 5))
+    for stage in line['stages']:
+        project = projects_by_slug[stage['slug']]
+        # Publication citations are not inferred from project/software records.
+        description = project.get('cvSummary') or project['summary']
+        url = profile['siteUrl'].rstrip('/') + '/projects/' + project['slug'] + '/'
+        block = [
+            para(f'<link href="{e(url)}">{e(project["title"])}</link>', 'title'),
+            para(e(' | '.join(value for value in [project.get('status'), project.get('date')] if value)), 'meta'),
+            para(e(description)),
+            Spacer(1, 4),
+        ]
+        content.append(KeepTogether(block))
 
 if publications:
     add('Publications & presentations', 'section')

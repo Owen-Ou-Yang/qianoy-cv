@@ -1,10 +1,11 @@
 ---
 import type { Project } from '../data/projects';
-interface Props { project: Project; index: number; heading?: 'h2' | 'h3'; }
-const { project, heading: Heading = 'h3' } = Astro.props;
+interface Props { project: Project; index: number; heading?: 'h2' | 'h3' | 'h4'; stageLabel?: string; }
+const { project, heading: Heading = 'h3', stageLabel } = Astro.props;
 const title = project.preview?.title ?? project.title;
 ---
 <article class="project-entry">
+  {stageLabel && <p class="project-stage">{stageLabel}</p>}
   <div class="project-heading">
     <Heading class="project-title"><a href={`/projects/${project.slug}/`}>{title}</a></Heading>
     <p class="entry-status">{project.status}</p>

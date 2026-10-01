@@ -7,8 +7,8 @@ import Skills from '../components/Skills.astro';
 import ProfileLinks from '../components/ProfileLinks.astro';
 import { displayName, profile, researchThemes } from '../data/site';
 import { outputs, softwareOutputs } from '../data/outputs';
-import { projects } from '../data/projects';
-const ongoingProjects = projects.filter(project => !project.output && !project.isPlaceholder);
+import { researchLines } from '../data/research-lines';
+const cvLines = researchLines.map(line => ({ ...line, stages: line.stages.filter(stage => !stage.project.output && !stage.project.isPlaceholder) })).filter(line => line.stages.length > 0);
 ---
 <BaseLayout title="Curriculum Vitae" description="Academic CV: Artificial Intelligence background and research interests in AI for materials and molecular simulation.">
   <PageHeader eyebrow="Curriculum vitae" title={displayName} description={profile.identity} />
@@ -19,7 +19,7 @@ const ongoingProjects = projects.filter(project => !project.output && !project.i
   <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
   <section class="section section-grid"><div><h2>Research interests</h2></div><ul>{researchThemes.map(theme => <li>{theme.title}</li>)}</ul></section>
   {softwareOutputs.length > 0 && <section class="section section-grid"><div><h2>Research software & workflows</h2></div><div class="compact-outputs">{softwareOutputs.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.summary}</p><p class="muted">{project.output?.role}</p></article>)}<p><a href="/publications/">Full research output list <span aria-hidden="true">↗</span></a></p></div></section>}
-  {ongoingProjects.length > 0 && <section class="section section-grid"><div><h2>Selected research</h2></div><div class="compact-outputs">{ongoingProjects.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.cvSummary ?? project.summary}</p><p class="muted">{project.status}{project.date && <> · {project.date}</>}</p></article>)}</div></section>}
+  {cvLines.length > 0 && <section class="section section-grid"><div><h2>Selected research</h2></div><div class="cv-research-lines">{cvLines.map(line => <section class="cv-research-line" aria-labelledby={`cv-${line.id}`}><h3 id={`cv-${line.id}`}><a href={`/research/#${line.id}`}>{line.title}</a></h3><p class="cv-line-summary">{line.cvSummary}</p><div class="compact-outputs">{line.stages.map(({ project }) => <article><h4><a href={`/projects/${project.slug}/`}>{project.title}</a></h4><p>{project.cvSummary ?? project.summary}</p><p class="muted">{project.status}{project.date && <> · {project.date}</>}</p></article>)}</div></section>)}</div></section>}
   <section class="section section-grid"><div><h2>Technical skills</h2></div><Skills /></section>
   {outputs.length > 0 && <section class="section section-grid"><div><h2>Publications & presentations</h2></div><ul>{outputs.map(output => <li>{output.title} ({output.type})</li>)}</ul></section>}
 </BaseLayout>

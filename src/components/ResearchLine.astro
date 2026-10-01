@@ -1,0 +1,19 @@
+---
+import ProjectEntry from './ProjectEntry.astro';
+import type { ResearchLine } from '../data/research-lines';
+interface Props { line: ResearchLine; compact?: boolean; heading?: 'h2' | 'h3'; }
+const { line, compact = false, heading: Heading = 'h2' } = Astro.props;
+const projectHeading = Heading === 'h2' ? 'h3' : 'h4';
+const selectedStages = line.stages.filter(stage => stage.project.selected);
+---
+<section id={line.id} class:list={['research-line', { 'research-line-compact': compact }]} aria-labelledby={`${line.id}-title`}>
+  <Heading id={`${line.id}-title`} class="research-line-title">{compact ? <a href={`/research/#${line.id}`}>{line.title}</a> : line.title}</Heading>
+  <p class="line-summary">{line.summary}</p>
+  <p class="line-progression"><span class="muted">Development: </span>{line.progression}</p>
+  {compact ? <ul class="line-selected-work" aria-label={`Selected work in ${line.title}`}>
+    {selectedStages.map(({ project }) => <li><a href={`/projects/${project.slug}/`}>{project.preview?.title ?? project.title}</a><span class="line-work-status">{project.status}</span></li>)}
+  </ul> : <>
+    <p class="line-question"><strong>Shared question.</strong> {line.question}</p>
+    <div class="line-studies">{line.stages.map(({ project, label }, index) => <ProjectEntry project={project} index={index} heading={projectHeading} stageLabel={label} />)}</div>
+  </>}
+</section>

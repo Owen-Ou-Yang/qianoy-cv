@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-09-30. Core profile and CV facts are confirmed. The owner approved five research records: ongoing MACE JEPA work, the completed CG JEPA exploratory phase, an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Coursework and unrelated project results remain excluded.
+Updated on 2026-10-01. Core profile and CV facts are confirmed. Five approved research records are organized into two lines: molecular dynamics representation learning and MLIP material properties and efficiency. The records cover ongoing MACE JEPA work, the completed CG JEPA exploratory phase, an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Coursework and unrelated project results remain excluded.
 
 ## Confirmed and incorporated
 
@@ -14,7 +14,9 @@ Updated on 2026-09-30. Core profile and CV facts are confirmed. The owner approv
 - [x] CRC experience, independent VPN setup, and experience with UMA/FAIR-Chem and MACE.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
-- [x] Keep UMA last in the full research list and CV, with status "Resource-limited exploration" and the owner-confirmed absence of validated property results. Highlight the two JEPA lines and the resource/density studies on the homepage.
+- [x] Organize the site and both CV formats around two research lines, using shared `research-lines.json` data: CG exploration and encoder comparison leading to ongoing MACE JEPA; UMA background leading to MACE property screening and resource evaluation.
+- [x] Keep UMA last and subordinate within its research line, with status "Resource-limited exploration" and the owner-confirmed absence of validated property results. Link the two JEPA studies and the MACE resource/density studies from the homepage's research lines.
+- [x] Keep existing project URLs and all five case-study records; use detail-page backlinks and related-work links within the same research line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
 - [x] Use each case study's short `cvSummary` entry in the HTML and PDF CV.
 - [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep coursework excluded.
@@ -41,7 +43,7 @@ No GPA, awards, publications, or service entries are assumed or required. `src/d
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication. Keep `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the five selected research descriptions. It does not authorize copying complete research directories or unrelated results into the public repository.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the five selected research descriptions. It does not authorize copying complete research directories or unrelated results into the public repository.
 
 Unpublished project drafts remain excluded from public source and public Git history.
 

@@ -2,19 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { researchThemes } from '../data/site';
-import { projects } from '../data/projects';
-import ProjectEntry from '../components/ProjectEntry.astro';
+import { researchLines } from '../data/research-lines';
+import ResearchLine from '../components/ResearchLine.astro';
 ---
 <BaseLayout title="Research" description="Qian Ouyang's interests in AI for materials, MLIP HPC optimization, molecular dynamics, coarse-graining, JEPA, and polymer properties.">
-  <PageHeader title="Research" description="My interests connect artificial intelligence with molecular simulation: how we describe interactions, represent dynamics, and study material properties." />
+  <PageHeader title="Research" description="My work follows two connected questions: how to learn useful representations of molecular dynamics, and how to calculate material properties efficiently with ML interatomic potentials." />
   <nav class="page-links" aria-label="On this page">
     <span>On this page</span>
-    <ul><li><a href="#selected-work">Selected research</a></li><li><a href="#research-interests">Research interests</a></li></ul>
+    <ul>{researchLines.map(line => <li><a href={`#${line.id}`}>{line.title}</a></li>)}<li><a href="#research-interests">Research interests</a></li></ul>
   </nav>
-  <section id="selected-work" class="section" aria-labelledby="studies-heading">
-    <div class="section-heading"><h2 id="studies-heading">Selected research</h2></div>
-    {projects.map((project, index) => <ProjectEntry project={project} index={index} />)}
-  </section>
+  <div id="selected-work">{researchLines.map(line => <ResearchLine line={line} />)}</div>
   <section id="research-interests" class="section" aria-labelledby="interests-heading">
     <div class="section-heading"><h2 id="interests-heading">Research interests</h2></div>
     {researchThemes.map(theme => <section id={theme.id} class="theme-entry" aria-labelledby={`${theme.id}-title`}><h3 id={`${theme.id}-title`}>{theme.title}</h3><p>{theme.description}</p><ul class="keywords">{theme.keywords.map(word => <li>{word}</li>)}</ul></section>)}

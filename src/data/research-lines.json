@@ -1,0 +1,47 @@
+[
+  {
+    "id": "dynamics-representations",
+    "title": "Molecular dynamics representation learning",
+    "summary": "I investigate whether learned molecular representations retain information useful for physical prediction. My CG JEPA exploration led to encoder comparisons and an ongoing MACE JEPA direction, where MACE supplies pretrained atomic features.",
+    "question": "What information should a molecular representation preserve, and does temporal learning add value beyond strong physical baselines?",
+    "progression": "CG JEPA → encoder comparison → MACE JEPA",
+    "cvSummary": "From CG JEPA and encoder comparisons to ongoing MACE-based atomistic representation learning, evaluated through physical readouts and temporal controls.",
+    "stages": [
+      {
+        "slug": "mace-jepa-molecular-dynamics",
+        "label": "Current direction",
+        "context": "This ongoing direction grew out of the CG JEPA encoder comparisons. It uses MACE as a source of pretrained features, with explicit velocity inputs and physical-readout evaluation."
+      },
+      {
+        "slug": "cg-jepa-polymer-representations",
+        "label": "Completed exploration",
+        "context": "This exploration examined CG representations, geometric interfaces, and temporal learning. Its encoder comparisons informed the subsequent MACE JEPA direction."
+      }
+    ]
+  },
+  {
+    "id": "mlip-properties-efficiency",
+    "title": "MLIP material properties and efficiency",
+    "summary": "I use ML interatomic potentials to explore polymer properties and computational efficiency. My MACE studies examine preliminary density screening and GPU resource trade-offs, following an earlier UMA / FAIR-Chem exploration limited by GPU memory.",
+    "question": "How can ML interatomic potentials support credible material-property calculations within practical compute and memory budgets?",
+    "progression": "UMA / FAIR-Chem exploration → MACE property simulations → GPU resource evaluation",
+    "cvSummary": "A connected line of polymer property workflows and resource evaluation: UMA / FAIR-Chem exploration, preliminary MACE density screening, and a bounded GPU engineering pilot.",
+    "stages": [
+      {
+        "slug": "polymer-density-screening",
+        "label": "Property simulation",
+        "context": "Within the MLIP property-calculation line, this study uses MACE to supply atomic interactions for preliminary polymer density simulations. Scientific validation and resource costs remain separate questions."
+      },
+      {
+        "slug": "mlip-gpu-resources",
+        "label": "Computational efficiency",
+        "context": "This engineering pilot examines the computational cost of MACE molecular dynamics. It develops the resource-efficiency question raised by the earlier UMA memory constraints, without claiming a new optimization algorithm."
+      },
+      {
+        "slug": "uma-fairchem-polymer-workflow",
+        "label": "Earlier exploration and motivation",
+        "context": "This resource-limited exploration is the starting point of the MLIP property-calculation line. Memory constraints prevented validated UMA property results and motivated the later focus on computational efficiency."
+      }
+    ]
+  }
+]

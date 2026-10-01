@@ -4,7 +4,7 @@ Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.
 
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
-The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Five owner-approved research records cover ongoing MACE JEPA work, the completed CG JEPA exploratory phase, an earlier UMA/FAIR-Chem workflow, a MACE GPU resource pilot, and preliminary polymer density screening. The JEPA pages describe implemented experiments, physical-readout evidence, and negative or task-dependent results. The UMA workflow explains the GPU-memory limits that motivated the owner's HPC interests; the two measurement studies retain their limitations. Concise `cvSummary` fields supply the HTML and PDF CV research entries. Coursework remains excluded. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
+The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. Five owner-approved records are organized into two research lines: molecular dynamics representation learning, connecting CG exploration and encoder comparison to ongoing MACE JEPA work; and MLIP material properties and efficiency, connecting earlier UMA/FAIR-Chem exploration to MACE density screening and GPU resource evaluation. The JEPA pages describe implemented experiments, physical-readout evidence, and negative or task-dependent results. UMA remains background work with no validated property result, while the two measurement studies retain their limitations. Concise `cvSummary` fields supply the HTML and PDF CV research entries. Coursework remains excluded. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
 
 ## Develop locally
 
@@ -62,14 +62,17 @@ npm run preview    # Serve the production build locally
     │   ├── PageHeader.astro
     │   ├── ProfileLinks.astro
     │   ├── ProjectEntry.astro
+    │   ├── ResearchLine.astro
     │   └── Todo.astro
     ├── data/
     │   ├── profile.json           # Name, biography, experience, education, skills
     │   ├── research.json          # Research themes and descriptions
+    │   ├── research-lines.json    # Two research lines, narratives, and project context
     │   ├── projects.json          # Five approved research records and shared CV summaries
     │   ├── publications.json      # Actual citations only; currently empty
     │   ├── site.ts                # Profile types, exports, navigation
     │   ├── projects.ts            # Project types and exports
+    │   ├── research-lines.ts      # Shared line grouping and project lookup
     │   └── outputs.ts             # Citation types and software-output selection
     ├── layouts/BaseLayout.astro   # Navigation, metadata, footer
     ├── styles/global.css          # Theme, layouts, responsive and print styles
@@ -89,7 +92,7 @@ npm run preview    # Serve the production build locally
 
 ## Edit content
 
-The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by compact project entries. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. These presentation fields do not change the shared `cvSummary` or the PDF CV. The Research page is the main research index; existing project URLs remain available.
+The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by two compact research lines and links to selected studies within each. Research and Projects group the full case studies under the same lines. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. Detail-page backlinks and related-work links stay within the project's research line. The HTML and PDF CV use the same groups, with concise descriptions from `cvSummary`. Existing project URLs remain available.
 
 Typography and spacing favor quick reading: system sans-serif text, moderate headings, and one aligned column for project summaries. Detail pages provide section links and keep large scientific figures in a keyboard-accessible horizontal scroll region on narrow screens, with full-size image and data links.
 
@@ -98,6 +101,14 @@ Typography and spacing favor quick reading: system sans-serif text, moderate hea
 Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links are omitted rather than rendered as dead links. `name` supplies page titles and Person structured metadata. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.
 
 Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. Add verified languages to `programmingLanguages`; do not infer them from a project topic. A public email is visible to everyone. No contact form or data collection is included.
+
+### Research lines
+
+Edit `src/data/research-lines.json` for line-level introductions, progression narratives, project membership, and project context. `src/data/research-lines.ts` provides the typed grouping and lookup used by the pages; `ResearchLine.astro` supplies the shared presentation. General research interests remain in `research.json`, and each case study's methods and evidence remain in `projects.json`.
+
+The representation-learning line explains how CG JEPA exploration and encoder comparison led to ongoing MACE JEPA research. The properties-and-efficiency line explains the progression from resource-limited UMA work to MACE property screening and resource evaluation. Within that line, MACE supplies interactions for property simulations; in the representation-learning line, MACE supplies pretrained molecular features. This organization explains the relationship between studies without turning encoder comparison into a new accomplishment or inferring that one study validates another.
+
+When adding a published case study, also assign it to the appropriate research line and write its context using confirmed work. Keep the brief CV narrative consistent with the site. UMA remains the last, subordinate case study within its line and is not a homepage study highlight.
 
 ### Projects and optional figures
 
@@ -114,12 +125,12 @@ Edit `src/data/projects.json`. Each published record generates `/projects/<slug>
 - `detailsTodo`: remaining information needed for the project record.
 - `role` and `status`: personal contribution and actual project status; `repository`: a public HTTPS code URL or `null`.
 - `published`: set to `true` only when the owner wants the record publicly displayed. Only published records generate detail pages or appear in the website/PDF. The public array currently contains five approved research records: two representation-learning investigations, one workflow, and two measurement studies.
-- `selected`: show a published entry on the homepage.
+- `selected`: include a published entry among the homepage's linked studies within its research line.
 - `isPlaceholder`: use `true` for a topic-only draft, which is excluded from indexing/sitemap. An actual ongoing project may use `false` without claiming completion.
 - `output`: optional `{ "type": "Research software", "role": "..." }` (or `Research workflow`). This includes the project in research output and the HTML CV without creating a publication citation.
 - `figure`: optional `{ "src": "/figures/filename.svg", "download": "/figures/filename.png", "width": 1680, "height": 864, "alt": "...", "caption": "..." }`. Use the actual dimensions, descriptive alt text, attribution, and interpretation limits. The current SVG figures have PNG download versions and small CSV files containing only the approved plotted measurements.
 
-The homepage highlights MACE JEPA, CG JEPA, the MACE GPU resource study, and preliminary polymer density screening; the Research page and CV list all five approved records. The MACE JEPA page at `/projects/mace-jepa-molecular-dynamics/` describes ongoing atomistic-water research with completed pilots and distinguishes temporal-learning results from a separate frozen-feature propensity study. The CG JEPA page at `/projects/cg-jepa-polymer-representations/` describes a completed exploratory phase, useful geometric interfaces, and the limits of temporal prediction. The UMA/FAIR-Chem entry appears last in the full research list and CV. Its page at `/projects/uma-fairchem-polymer-workflow/` describes resource-limited workflow exploration and its connection to the owner's HPC research interests; it reports no validated property result. Its HTML workflow schematic describes processing stages; it is not a scientific result figure. The MACE resource and density pages contain the approved SVG/PNG figures, plotted CSV data, methods, and limitations. Keep the original UMA elastic-response workflow distinct from later Tg/density paths under development; no validated UMA property values are reported. Coursework and raw private research reports are not included. Other project drafts stay outside the public source. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built. General research interests and tool experience remain visible.
+The homepage introduces both research lines and links to MACE JEPA, CG JEPA, MACE density screening, and the MACE GPU resource study. Research and both CV formats include all five approved records in the same two groups. The MACE JEPA page at `/projects/mace-jepa-molecular-dynamics/` describes ongoing atomistic-water research with completed pilots and distinguishes temporal-learning results from a separate frozen-feature propensity study. The CG JEPA page at `/projects/cg-jepa-polymer-representations/` describes a completed exploratory phase, useful geometric interfaces, and the limits of temporal prediction. The UMA/FAIR-Chem entry appears last within the properties-and-efficiency group, as background to the later MACE work. Its page at `/projects/uma-fairchem-polymer-workflow/` describes resource-limited workflow exploration and its connection to the owner's HPC research interests; it reports no validated property result. Its HTML workflow schematic describes processing stages; it is not a scientific result figure. The MACE resource and density pages contain the approved SVG/PNG figures, plotted CSV data, methods, and limitations. Keep the original UMA elastic-response workflow distinct from later Tg/density paths under development; no validated UMA property values are reported. Coursework and raw private research reports are not included. Other project drafts stay outside the public source. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built. General research interests and tool experience remain visible.
 
 When adding new records, note that `published: false` controls rendered output only. Confidential drafts must stay outside public source and public Git history.
 
@@ -138,7 +149,7 @@ python3 -m venv .venv-cv
 npm run validate
 ```
 
-Running the script explicitly overwrites `public/cv.pdf`; it never runs during website builds. Python is not required for Cloudflare Pages. After editing profile, research, project, or publication data, regenerate the PDF and visually inspect all pages, especially after adding content that changes pagination. Commit both the data and the PDF. With five or more research entries, the generator keeps the first two together and begins the remaining studies on a clearly headed continuation page, preserving the existing readable type size.
+Running the script explicitly overwrites `public/cv.pdf`; it never runs during website builds. Python is not required for Cloudflare Pages. After editing profile, research, research-line, project, or publication data, regenerate the PDF and visually inspect all pages, especially after adding content that changes pagination. Commit both the data and the PDF. Research sections and page division follow the shared research-line groups rather than a hardcoded count of entries; the representation-learning work stays together, followed by the properties-and-efficiency line, preserving readable type size.
 
 You may instead replace `public/cv.pdf` with an independently prepared CV, but then maintain its consistency with the HTML manually and do not run the generator over it. The current `cvIsDraft` value is `false`: the core education dates, RA start date, study level, and programming languages have been confirmed. Optional LinkedIn/degree-abbreviation details do not block the CV. Set it back to `true` when preparing an incomplete revision, then regenerate or replace the PDF. Remove the PDF's `X-Robots-Tag: noindex` rule in `public/_headers` only if you want it indexed. The HTML CV also has a print stylesheet.
 

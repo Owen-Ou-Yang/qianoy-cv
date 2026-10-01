@@ -70,6 +70,33 @@ for (const [file, html] of htmlByPath) {
 }
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
 const projectRecords = JSON.parse(await readFile('src/data/projects.json', 'utf8'));
+const researchLines = JSON.parse(await readFile('src/data/research-lines.json', 'utf8'));
+const publishedSlugs = projectRecords.filter(project => project.published === true).map(project => project.slug);
+const groupedSlugs = researchLines.flatMap(line => line.stages.map(stage => stage.slug));
+assert.equal(new Set(researchLines.map(line => line.id)).size, researchLines.length, 'Research line IDs must be unique.');
+assert.equal(new Set(groupedSlugs).size, groupedSlugs.length, 'Each project must belong to one research line.');
+assert.deepEqual([...groupedSlugs].sort(), [...publishedSlugs].sort(), 'Research lines must include every published project and no unpublished project.');
+for (const route of ['research/index.html', 'projects/index.html']) {
+  const html = htmlByPath.get(path.join(root, route));
+  for (let index = 0; index < researchLines.length; index++) {
+    const line = researchLines[index];
+    const start = html.indexOf(`id="${line.id}"`);
+    const end = index + 1 < researchLines.length ? html.indexOf(`id="${researchLines[index + 1].id}"`) : html.length;
+    assert(start >= 0 && end > start, `${route}: missing or reordered research line ${line.id}`);
+    const group = html.slice(start, end);
+    for (const stage of line.stages) assert(group.includes(`href="/projects/${stage.slug}/"`), `${route}: missing project in its research line`);
+  }
+}
+for (const line of researchLines) {
+  for (const stage of line.stages) {
+    const html = htmlByPath.get(path.join(root, 'projects', stage.slug, 'index.html'));
+    assert(html.includes(`href="/research/#${line.id}"`), `${stage.slug}: missing backlink to its research line`);
+    const related = html.split('id="related-studies-heading"')[1]?.split('</section>')[0] ?? '';
+    for (const other of publishedSlugs.filter(slug => slug !== stage.slug)) {
+      assert.equal(related.includes(`href="/projects/${other}/"`), line.stages.some(member => member.slug === other), `${stage.slug}: related work must stay within its research line`);
+    }
+  }
+}
 for (const project of projectRecords.filter(project => project.published !== true)) {
   const route = `/projects/${project.slug}/`;
   assert(!files.includes(path.join(root, route, 'index.html')), `Unpublished project emitted: ${route}`);
