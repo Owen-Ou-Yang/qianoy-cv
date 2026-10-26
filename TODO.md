@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-10-01. Core profile and CV facts are confirmed. Five approved research records are organized into two lines: molecular dynamics representation learning and MLIP material properties and efficiency. The records cover ongoing MACE JEPA work, the completed CG JEPA exploratory phase, an earlier UMA/FAIR-Chem workflow, the MACE GPU engineering pilot, and preliminary polymer density screening. The owner confirmed that GPU-memory constraints encountered in the UMA work motivated their HPC optimization interests. Coursework and unrelated project results remain excluded.
+Updated on 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. Five case studies are individually selected for the CV, with earlier representation work summarized in the line introduction. Coursework and unrelated project results remain excluded.
 
 ## Confirmed and incorporated
 
@@ -14,11 +14,13 @@ Updated on 2026-10-01. Core profile and CV facts are confirmed. Five approved re
 - [x] CRC experience and experience with UMA/FAIR-Chem and MACE. Omit systems/networking experience from the academic profile at the owner's request.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
-- [x] Organize the site and both CV formats around two research lines, using shared `research-lines.json` data: CG exploration and encoder comparison leading to ongoing MACE JEPA; UMA background leading to MACE property screening and resource evaluation.
-- [x] Keep UMA last and subordinate within its research line, with status "Resource-limited exploration" and the owner-confirmed absence of validated property results. Link the two JEPA studies and the MACE resource/density studies from the homepage's research lines.
-- [x] Keep existing project URLs and all five case-study records; use detail-page backlinks and related-work links within the same research line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
+- [x] Keep two shared research lines while updating their current direction, earlier stages, status-review date, and links from verified project records.
+- [x] Highlight current pretrained atomistic-representation research and the ongoing density workflow on the homepage. Keep UMA subordinate, with status "Resource-limited exploration" and no validated property results.
+- [x] Retain earlier CG and MACE-water pages as archived explorations; MACE-water closed on 9 October 2026. Summarize them in the CV line history without duplicating individual CV entries.
+- [x] Add bounded summaries of native QM9 budget comparisons, crystal-study preparation, and the completed SSM/GRU synthetic physical-response study, without releasing new numerical results or figures.
+- [x] Keep all seven project URLs, with related-work links within the same line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
-- [x] Use each case study's short `cvSummary` entry in the HTML and PDF CV.
+- [x] Use shared `cvSummary` descriptions and `cvSelected` flags in the HTML and PDF CV; five case studies remain individually selected.
 - [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep coursework excluded.
 - [x] Add a local sharing preview image without introducing client JavaScript.
 - [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
@@ -35,15 +37,19 @@ No GPA, awards, publications, or service entries are assumed or required. `src/d
 
 ## Research maintenance
 
-- [ ] Add CG JEPA / MACE JEPA start dates or public code links only if confirmed. Their absence does not block the current descriptions.
-- [ ] Keep MACE JEPA status and evidence current as the line develops. Any future numerical result or figure needs its actual protocol, source, and claim limits.
+- [ ] Add study start dates or public code links only when confirmed. Their absence does not block the current descriptions.
+- [ ] Keep current atomistic-representation and density-workflow status current. Use `reviewedOn` and `researchReviewedOn` for editorial review dates; keep actual study dates separate.
+- [ ] Update crystal label-efficiency or transfer claims only after model execution and evaluation exist. Data/source acceptance is preparation; unknown historical pretraining membership is not evidence of an unseen structure or family.
+- [ ] Keep synthetic hysteresis results distinct from real-material validation, and distinguish curve fit from the study's decisive physical-response criteria.
 
-- [ ] Replace the density reference table with fully traced, condition-matched references when available; do not infer phase, temperature, molecular weight, or experimental uncertainty.
+- [ ] Replace the density reference table with fully traced, condition-matched references when available. The owner has confirmed 300 K; phase, crystallinity, molecular weight, tacticity, preparation history, and measurement uncertainty still require evidence.
 - [ ] Add repeated measurements or independent preparations only after those experiments exist and their public scope is approved. Until then, keep the single-run engineering and single-packing screening limits explicit.
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their content is approved for publication, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSummary`, the workflow description, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The present authorization covers the five selected research descriptions. It does not authorize copying complete research directories or unrelated results into the public repository.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSelected`, `cvSummary`, workflow descriptions, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The October update describes research status and methods without releasing new private numerical results, figures, or raw reports. Existing September density figures and measurements remain historical snapshots, not a current campaign total.
+
+- [ ] Review project records weekly on Mondays at 10:00 Asia/Shanghai. When evidence changes, prepare a pending website/CV update for owner review; do not publish automatically. Stay quiet when there is no material change.
 
 Unpublished project drafts remain excluded from public source and public Git history.
 

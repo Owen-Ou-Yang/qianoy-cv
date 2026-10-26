@@ -39,16 +39,17 @@
   {
     "id": "representation-learning",
     "title": "Representation Learning / JEPA",
-    "description": "I investigate JEPA-style learning for molecular dynamics, from coarse-grained polymer representations to a MACE-based study on atomistic water. My focus is on what encoders retain, what temporal learning adds, and whether those representations improve physical readouts and prediction.",
+    "description": "I study learned molecular representations and physically useful prediction, from completed CG and MACE-water JEPA explorations to pretrained-feature transfer and label efficiency. Controlled synthetic-response tests help separate state information, temporal propagation, and physical readout.",
     "keywords": [
       "Representation learning",
-      "Molecular dynamics"
+      "Transfer and label efficiency",
+      "Physical prediction"
     ]
   },
   {
     "id": "polymer-properties",
     "title": "Polymer Property Prediction",
-    "description": "Machine learning and molecular simulation for studying polymer properties, including glass-transition temperature and density. I am also interested in agentic workflows that support polymer research.",
+    "description": "Molecular simulation and machine learning for polymer properties, including density and glass-transition temperature. Current workflow development connects classical preparation, MACE sampling, and carefully matched references; interest in agentic polymer workflows remains part of this direction.",
     "keywords": [
       "Polymers",
       "Property prediction",

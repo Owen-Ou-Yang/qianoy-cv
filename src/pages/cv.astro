@@ -8,7 +8,7 @@ import ProfileLinks from '../components/ProfileLinks.astro';
 import { displayName, profile, researchThemes } from '../data/site';
 import { outputs, softwareOutputs } from '../data/outputs';
 import { researchLines } from '../data/research-lines';
-const cvLines = researchLines.map(line => ({ ...line, stages: line.stages.filter(stage => !stage.project.output && !stage.project.isPlaceholder) })).filter(line => line.stages.length > 0);
+const cvLines = researchLines.map(line => ({ ...line, stages: line.stages.filter(stage => !stage.project.output && !stage.project.isPlaceholder && stage.project.cvSelected !== false) })).filter(line => line.stages.length > 0);
 ---
 <BaseLayout title="Curriculum Vitae" description="Academic CV: Artificial Intelligence background and research interests in AI for materials and molecular simulation.">
   <PageHeader eyebrow="Curriculum vitae" title={displayName} description={profile.identity} />

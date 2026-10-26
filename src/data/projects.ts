@@ -24,6 +24,9 @@ export interface Project {
   status: string | null;
   role?: string;
   date?: string;
+  reviewedOn?: string;
+  cvSelected?: boolean;
+  currentWork?: { title: string; summary: string; items: string[] };
   dataFile?: string;
   takeaway?: string;
   scope?: string;

@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { researchThemes } from '../data/site';
+import { researchThemes, profile, formatReviewDate } from '../data/site';
 import { researchLines } from '../data/research-lines';
 import ResearchLine from '../components/ResearchLine.astro';
 ---
 <BaseLayout title="Research" description="Qian Ouyang's interests in AI for materials, MLIP HPC optimization, molecular dynamics, coarse-graining, JEPA, and polymer properties.">
-  <PageHeader title="Research" description="My work follows two connected questions: how to learn useful representations of molecular dynamics, and how to calculate material properties efficiently with ML interatomic potentials." />
+  <PageHeader title="Research" description="My work follows two connected questions: when learned representations help physical prediction, and how to calculate polymer properties efficiently with ML interatomic potentials." />
+  {profile.researchReviewedOn && <p class="review-date space-bottom">Research status reviewed <time datetime={profile.researchReviewedOn}>{formatReviewDate(profile.researchReviewedOn)}</time></p>}
   <nav class="page-links" aria-label="On this page">
     <span>On this page</span>
     <ul>{researchLines.map(line => <li><a href={`#${line.id}`}>{line.title}</a></li>)}<li><a href="#research-interests">Research interests</a></li></ul>

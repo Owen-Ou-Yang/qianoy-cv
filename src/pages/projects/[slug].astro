@@ -4,6 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import WorkflowOverview from '../../components/WorkflowOverview.astro';
 import { projects, type Project } from '../../data/projects';
 import { researchContext } from '../../data/research-lines';
+import { formatReviewDate } from '../../data/site';
 export function getStaticPaths() { return projects.map(project => ({ params: { slug: project.slug }, props: { project } })); }
 interface Props { project: Project; }
 const { project } = Astro.props;
@@ -15,8 +16,10 @@ const relatedStages = line.stages.filter(stage => stage.slug !== project.slug);
     <a class="back-link" href={`/research/#${line.id}`}>← {line.title}</a>
     <PageHeader eyebrow={project.theme} title={project.title} description={project.summary} />
     <div class="study-meta"><span>{project.status}</span>{project.date && <span>{project.date}</span>}</div>
+    {project.reviewedOn && <p class="review-date">Status reviewed <time datetime={project.reviewedOn}>{formatReviewDate(project.reviewedOn)}</time></p>}
     <div class="study-context"><p><strong>Within this research line.</strong> {stage.context}</p>{project.role && <p><strong>My role.</strong> {project.role}</p>}{project.repository && <p><a href={project.repository}>Related workflow code <span aria-hidden="true">↗</span></a></p>}</div>
-    <nav class="page-links" aria-label="On this page"><span>On this page</span><ul><li><a href="#question">Question</a></li><li><a href="#approach">Approach</a></li>{project.figure && <li><a href="#figure">Figure</a></li>}<li><a href="#results">{project.resultsHeading ? 'Work & learning' : 'Observations'}</a></li>{!!project.limitations?.length && <li><a href="#scope">Scope & limitations</a></li>}</ul></nav>
+    <nav class="page-links" aria-label="On this page"><span>On this page</span><ul>{project.currentWork && <li><a href="#current-work">Current work</a></li>}<li><a href="#question">Question</a></li><li><a href="#approach">Approach</a></li>{project.figure && <li><a href="#figure">Figure</a></li>}<li><a href="#results">{project.resultsHeading ? 'Work & learning' : 'Observations'}</a></li>{!!project.limitations?.length && <li><a href="#scope">Scope & limitations</a></li>}</ul></nav>
+    {project.currentWork && <section id="current-work" class="detail-section"><h2>{project.currentWork.title}</h2><p>{project.currentWork.summary}</p><ul class="space-top">{project.currentWork.items.map(item => <li>{item}</li>)}</ul></section>}
     <section id="question" class="detail-section question-section"><h2>Research question</h2><p>{project.question}</p></section>
     <section id="approach" class="detail-section"><h2>Approach</h2><ul>{project.methodology.map(method => <li>{method}</li>)}</ul></section>
     {project.workflow && <WorkflowOverview workflow={project.workflow} />}

@@ -1,9 +1,97 @@
 [
   {
+    "slug": "pretrained-atomistic-representations",
+    "title": "Pretrained atomistic representations: transfer and label efficiency",
+    "theme": "Atomistic representation learning / Property prediction",
+    "summary": "I study when pretrained atomistic representations help property prediction under limited labels and compute. Completed native QM9 comparisons examine data and update budgets; a crystal-property extension is in preparation.",
+    "question": "When do pretrained atomistic features improve property prediction beyond training the same backbone from scratch, and how does that depend on labels, compute, and transfer to new structures?",
+    "methodology": [
+      "Compared the released Atom-JEPA encoder with the same backbone trained from scratch on the QM9 molecular polarizability task, using the native fine-tuning entry point.",
+      "Separated data-size and update-budget comparisons, retaining multiple optimization seeds and distinguishing fixed training endpoints from validation-selected checkpoints.",
+      "Checked checkpoint re-evaluation and source provenance separately from scientific interpretation.",
+      "Prepared crystal-property data, official splits, and source checks for a subsequent label-efficiency and transfer study. Data preparation is not a completed model evaluation."
+    ],
+    "resultsHeading": "Completed comparisons and open questions",
+    "results": [
+      "Completed reduced-budget native QM9 comparisons and a fixed-data learning-curve extension. Pretraining effects depended on optimization seed, budget, and checkpoint selection.",
+      "The longer-budget comparison did not establish a stable fixed-endpoint pretraining advantage. Better validation-selected checkpoints and better final training endpoints are distinct observations.",
+      "The crystal extension has completed source and data checks. Engineering qualification, training, and transfer evaluation remain pending in the reviewed record."
+    ],
+    "resultsNote": "This work studies static molecular properties and planned crystal-property transfer. It is a separate task from the earlier water-dynamics and controlled-response studies. No new numerical benchmark or crystal result is released here.",
+    "currentWork": {
+      "title": "Current focus: crystal transfer and label efficiency",
+      "summary": "Preparing to test how useful pretrained representations remain when labels are limited and material structures change.",
+      "items": [
+        "Verify the model and data interfaces before scientific execution.",
+        "Keep official data splits and potential pretraining exposure distinct; a complete historical pretraining-membership list is unavailable.",
+        "Treat improved label efficiency and transfer to unseen structures as research questions, not established outcomes."
+      ]
+    },
+    "limitations": [
+      "The QM9 work is a reduced native fine-tuning comparison, not a full reproduction of the paper or a new large-scale pretraining run.",
+      "Optimization seeds share a chemical split and do not constitute independent chemical families. Previously inspected evaluation data do not support a fresh blind-test claim.",
+      "Released pretrained models carry upstream training cost and potentially unknown structural exposure; matching downstream updates alone does not match total training cost.",
+      "No crystal-property training result, general out-of-family transfer, or molecular-dynamics prediction advantage has been established."
+    ],
+    "takeaway": "Pretrained-feature value must be evaluated separately from optimization budget, checkpoint selection, and chemical transfer.",
+    "scope": "Completed reduced-budget static-property comparisons; crystal label-efficiency and transfer extension at preparation stage.",
+    "status": "Ongoing research · crystal study in preparation",
+    "reviewedOn": "2026-10-26",
+    "role": "Native evaluation workflows, matched baseline design, data and source verification, and analysis of training-budget and transfer questions.",
+    "cvSummary": "Compared pretrained and scratch Atom-JEPA models on QM9 under controlled data and update budgets. Current work prepares crystal-property and label-efficiency studies; crystal training and transfer results remain unestablished.",
+    "repository": null,
+    "selected": true,
+    "published": true,
+    "isPlaceholder": false,
+    "preview": {
+      "title": "Pretrained representations: transfer and label efficiency",
+      "description": "Native QM9 comparisons and a crystal-property extension in preparation, separating pretraining value from labels, compute, and transfer."
+    }
+  },
+  {
+    "slug": "controlled-physical-response",
+    "title": "State-space models for controlled physical response",
+    "theme": "Representation learning / Controlled dynamical systems",
+    "summary": "An exploratory comparison of state-space and recurrent models on a synthetic hysteretic system, examining how learned states and physical readouts support predictions under different controls.",
+    "question": "Does a learned state support the correct change in physical response under different controls, rather than only a good overall trajectory fit?",
+    "methodology": [
+      "Used a fixed-parameter Bouc–Wen synthetic system with observed history and known future force controls to predict displacement responses.",
+      "Compared state-space and recurrent models using matched state/control adaptations, supervised functional readouts, and frozen-rollout diagnostics.",
+      "Evaluated complete response curves and differences between paired control programs as separate physical targets.",
+      "Examined a fixed physical-symmetry constraint while preserving the original evaluation criteria and negative results."
+    ],
+    "resultsHeading": "What the bounded study established",
+    "results": [
+      "Improvements in full displacement curves did not resolve the decisive difference between responses to alternative controls. The main usefulness criterion remained unmet.",
+      "Direct source-state readouts exposed some usable response information under explicit future-response supervision. That finding did not establish successful complete dynamical prediction.",
+      "The bounded study closed with these limitations preserved; it is not an active training campaign."
+    ],
+    "resultsNote": "This controlled synthetic study helped isolate questions about state information, temporal propagation, and physical readout after the earlier molecular explorations. It is a mechanism study, not a result on real materials.",
+    "limitations": [
+      "The system is synthetic and uses fixed physical parameters. It is not molecular dynamics, experimental polymer behavior, or independent materials validation.",
+      "Direct functional readouts used future-response supervision; their gains do not establish unsupervised learning or a JEPA-specific advantage.",
+      "Evaluation sets had been inspected during exploration. Generalization to arbitrary controls, new parameters, noise, or real materials remains unestablished."
+    ],
+    "scope": "Completed bounded synthetic-system study; no general architecture advantage or real-material control-response validation.",
+    "status": "Exploratory study completed",
+    "date": "Closed 24 October 2026",
+    "reviewedOn": "2026-10-26",
+    "role": "Controlled prediction experiments, matched baselines, functional readouts, and analysis of physical-response criteria.",
+    "cvSummary": "Compared state-space and recurrent models on synthetic hysteretic dynamics, separating trajectory fit from control-response prediction. Curve-level gains did not resolve the decisive response contrast; real-material validation remains open.",
+    "repository": null,
+    "selected": false,
+    "published": true,
+    "isPlaceholder": false,
+    "preview": {
+      "title": "Controlled physical-response prediction",
+      "description": "A completed synthetic-system study of learned states, recurrent dynamics, and the gap between fitting curves and predicting control-response differences."
+    }
+  },
+  {
     "slug": "mace-jepa-molecular-dynamics",
     "title": "MACE JEPA: representations for molecular dynamics",
     "theme": "Atomistic representation learning / Molecular dynamics",
-    "summary": "An ongoing study of pretrained MACE features, explicit atomic velocities, and JEPA-style temporal learning, using atomistic water to test what representations retain about molecular dynamics.",
+    "summary": "A completed exploration of pretrained MACE features, atomic velocities, and JEPA-style temporal learning on atomistic water. The phase closed without establishing a stable JEPA-specific advantage or reliable free-rollout dynamics.",
     "question": "Can temporal representation learning make pretrained atomistic features more useful for physical prediction, beyond the effects of the input interface and physical supervision?",
     "methodology": [
       "Audited encoder inputs and intermediate features to understand which geometric and dynamical information each representation exposes.",
@@ -11,31 +99,35 @@
       "Used common physical readouts and true-versus-shuffled temporal-pairing controls to examine the contribution of temporal learning, alongside short-horizon prediction and recursive-rollout diagnostics.",
       "Extended the investigation to structure-dependent hydrogen-bond exchange propensity: predict the event frequency averaged over repeated velocity initializations, comparing geometric inputs with the same inputs augmented by frozen MACE features."
     ],
-    "resultsHeading": "Work to date",
+    "resultsHeading": "Findings from the closed phase",
     "results": [
       "Completed controlled training and evaluation pilots on atomistic water. In the initial short-horizon pilot, frozen MACE with direct physical supervision gave the lowest final physical errors; temporal pretraining showed different effects for oxygen and hydrogen.",
       "Follow-up temporal-pairing controls found task-dependent value in temporal learning. The benefit depended on the physical readout and supervision protocol, and reliable long-horizon dynamics remain unestablished.",
-      "A separate frozen-feature study reduced hydrogen-bond exchange propensity error relative to its specified geometric baseline on two evaluation trajectory sources. This tests the usefulness of MACE features; it is not a result of JEPA training."
+      "A separate frozen-feature study reduced hydrogen-bond exchange propensity error relative to its specified geometric baseline on two evaluation trajectory sources. This tests the usefulness of MACE features; it is not a result of JEPA training.",
+      "The subsequent closeout retained useful conditional-prediction and representation-transfer observations, but found no stable JEPA-specific advantage or reliable free-rollout water dynamics model."
     ],
-    "resultsNote": "This line grew out of the encoder comparison within my CG JEPA investigation. It now asks which molecular targets benefit from pretrained representations and temporal learning, with hydrogen-bond exchange providing a target beyond immediate displacement.",
+    "resultsNote": "This phase grew out of the CG JEPA encoder comparison and closed on 9 October 2026. Its lessons informed later controlled-response and pretrained-feature transfer studies; those studies address distinct prediction problems.",
     "limitations": [
       "These are exploratory atomistic-water studies. They do not establish a production molecular-dynamics surrogate, broad materials transfer, or a general advantage for JEPA.",
       "The initial six-condition training pilot used one shared seed. Later technical-seed repetitions do not create independent physical systems.",
       "The propensity comparison adds feature dimensions as well as MACE information. Its evaluation sources share simulation ancestry and their labels had been inspected previously; the comparison is not a fully blind test or a capacity-matched causal attribution."
     ],
     "takeaway": "Useful physical features and a successful temporal-learning objective are separate questions, and both need explicit physical evaluation.",
-    "scope": "Ongoing atomistic-water research with completed controlled pilots. Frozen-feature propensity results are kept distinct from JEPA training results.",
-    "status": "Ongoing research",
+    "scope": "Closed exploratory atomistic-water phase. Conditional-prediction and feature-transfer observations do not establish a stable JEPA advantage or a reliable autonomous dynamics model.",
+    "status": "Research phase closed",
     "role": "Encoder comparison, representation and adapter development, controlled training, and physical-readout evaluation.",
-    "cvSummary": "Investigate MACE-based molecular representations using position-velocity adapters, temporal JEPA controls, physical readouts, and hydrogen-bond exchange propensity targets. Completed water pilots show task-dependent effects.",
+    "cvSummary": "Investigated MACE-based water representations with velocity adapters, temporal controls, physical readouts, and exchange-propensity targets. Closed the phase without a stable JEPA-specific advantage or reliable free-rollout dynamics.",
     "repository": null,
-    "selected": true,
+    "selected": false,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "MACE JEPA for molecular dynamics",
-      "description": "Investigating pretrained atomistic features and temporal learning through controlled water simulations, physical readouts, and hydrogen-bond exchange targets."
-    }
+      "description": "Completed water studies of pretrained features and temporal learning, retaining useful conditional-prediction observations and the limits of JEPA-specific gains."
+    },
+    "date": "Closed 9 October 2026",
+    "reviewedOn": "2026-10-26",
+    "cvSelected": false
   },
   {
     "slug": "cg-jepa-polymer-representations",
@@ -67,13 +159,15 @@
     "role": "Molecular representation development, controlled ablation studies, baseline comparisons, and physical-readout analysis.",
     "cvSummary": "Investigated JEPA-style polymer representations through controlled ablations, geometric interfaces, and physical-readout evaluation. Temporal variants did not surpass strong linear baselines in the tested setting.",
     "repository": null,
-    "selected": true,
+    "selected": false,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "CG JEPA for polymer representations",
       "description": "Explored coarse-grained polymer representations through controlled ablations and physical prediction, identifying useful geometric interfaces and limits of temporal learning."
-    }
+    },
+    "cvSelected": false,
+    "reviewedOn": "2026-10-26"
   },
   {
     "slug": "mlip-gpu-resources",
@@ -105,7 +199,7 @@
     ],
     "repository": null,
     "dataFile": "/figures/hpc-resources.csv",
-    "selected": true,
+    "selected": false,
     "published": true,
     "isPlaceholder": false,
     "figure": {
@@ -123,16 +217,16 @@
   },
   {
     "slug": "polymer-density-screening",
-    "title": "Preliminary polymer density screening with MACE",
+    "title": "Polymer density workflows with MACE",
     "theme": "Polymer properties / Molecular dynamics",
-    "summary": "Following three polymer systems from molecular simulation to density estimates, sampling checks, and comparison with available reference values.",
+    "summary": "Developing polymer-density workflows that connect classical preparation, MACE molecular dynamics, and careful comparisons with GAFF2 and experimental references. The figure below preserves an earlier three-polymer pilot.",
     "question": "What can short MLIP-based polymer simulations establish about density, and how does reference-data matching affect the interpretation?",
     "takeaway": "Useful property estimates require both simulation checks and a physically matched reference. A small difference alone is not sufficient validation.",
-    "scope": "Preliminary screening: three polymers, one initial packing and 25 ps sampling each. Reference conditions are incompletely specified; the intervals describe within-run sampling only.",
-    "date": "17 September 2026",
-    "status": "Preliminary screening",
+    "scope": "Ongoing workflow development with a separately dated September pilot: three polymers, one initial packing and 25 ps sampling each. The displayed intervals describe within-run sampling only.",
+    "date": "Displayed pilot: 17 September 2026",
+    "status": "Ongoing workflow development",
     "role": "Part of my research on MLIP-based polymer property simulation and evaluation.",
-    "cvSummary": "Analyzed preliminary MACE density estimates for three polymers, including sampling behavior and reference-data matching. One packing and 25 ps sampling per polymer; experimental conditions remain incompletely matched.",
+    "cvSummary": "Developing polymer-density workflows with classical preparation and MACE molecular dynamics, GAFF2/reference comparisons, chemical-identity checks, sampling QC, and resource-aware HPC execution. Displayed September results remain preliminary.",
     "methodology": [
       "Simulated polyethylene (PE), poly(4-methyl-1-pentene) (PMP), and polyisobutylene (PIB) using MACE-MH-1, the omol head, and float32 precision.",
       "Used NPT conditions with targets of 300 K and 1.01325 bar, one initial packing per polymer, and 25 ps of target sampling.",
@@ -143,10 +237,10 @@
       "Differences from the available reference table were −2.59%, +3.25%, and −0.80%, respectively.",
       "The three pilots passed the workflow's numerical and sampling checks, while remaining preliminary screening results rather than production-qualified experimental validation."
     ],
-    "resultsNote": "This is a snapshot of three completed pilots as of 17 September 2026, not a statement that a larger polymer collection has been fully evaluated.",
+    "resultsNote": "The numerical results and figure are the original three-polymer snapshot from 17 September 2026. The workflow has continued since then; no expanded-set result or aggregate accuracy is claimed here. A later owner confirmation established that the listed references are at 300 K, while other matching uncertainties remain.",
     "limitations": [
       "One initial packing per polymer does not measure variation across independent preparations. Temporal intervals cover within-trajectory sampling only.",
-      "Reference phase, temperature, molecular weight, and measurement uncertainty are incompletely specified, preventing a fully matched experimental comparison.",
+      "The listed reference temperatures were subsequently confirmed as 300 K. Phase, crystallinity, molecular weight, tacticity, preparation history, and experimental uncertainty remain incompletely matched.",
       "The underlying records remain ineligible for production-level scientific reuse. These three differences must not be promoted as general predictive accuracy."
     ],
     "references": [
@@ -167,11 +261,22 @@
       "width": 1680,
       "height": 876,
       "alt": "Density estimates for PE, PMP, and PIB compared with dataset reference values, alongside fluctuations over 25 picoseconds. Mean differences are minus 2.59 percent, plus 3.25 percent, and minus 0.80 percent.",
-      "caption": "Three preliminary MACE density pilots at 300 K. Reference values are reported as experimental by the source dataset; their phase, temperature, molecular weight, and uncertainty are incompletely specified. Sampling intervals do not include independent-packing or experimental uncertainty."
+      "caption": "Historical snapshot: three preliminary MACE density pilots from 17 September 2026, at 300 K. Reference temperatures were subsequently confirmed as 300 K; other physical conditions and uncertainty remain incompletely matched. Sampling intervals do not include independent-packing or experimental uncertainty."
     },
     "preview": {
-      "title": "Preliminary polymer density screening",
-      "description": "Examined MACE density estimates for three polymers, with sampling checks and assessment of reference-data matching."
+      "title": "Polymer density workflows with MACE",
+      "description": "Ongoing classical-to-MLIP simulation workflows, reference comparisons, and sampling checks, with a separately dated September pilot."
+    },
+    "reviewedOn": "2026-10-26",
+    "resultsHeading": "September pilot results (17 September 2026)",
+    "currentWork": {
+      "title": "Current workflow development",
+      "summary": "The work has continued beyond the displayed September pilot. Current development focuses on expanding the evaluated set while keeping simulation quality and reference matching explicit.",
+      "items": [
+        "Connect RadonPy/GAFF2 classical preparation to MACE density sampling and separate GAFF2 baseline comparisons.",
+        "Check chemical identity, sampling quality, and reference conditions for each comparison; retain blocked or failed cases.",
+        "Manage compute and storage requirements during HPC execution. Input-catalog size, submitted work, and completed property comparisons are different quantities."
+      ]
     }
   },
   {

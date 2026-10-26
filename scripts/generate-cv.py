@@ -111,6 +111,8 @@ for line_index, line in enumerate(research_lines):
     content.append(Spacer(1, 5))
     for stage in line['stages']:
         project = projects_by_slug[stage['slug']]
+        if project.get('cvSelected') is False or project.get('output') or project.get('isPlaceholder'):
+            continue
         # Publication citations are not inferred from project/software records.
         description = project.get('cvSummary') or project['summary']
         url = profile['siteUrl'].rstrip('/') + '/projects/' + project['slug'] + '/'

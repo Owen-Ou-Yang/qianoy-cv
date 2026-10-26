@@ -76,6 +76,18 @@ const groupedSlugs = researchLines.flatMap(line => line.stages.map(stage => stag
 assert.equal(new Set(researchLines.map(line => line.id)).size, researchLines.length, 'Research line IDs must be unique.');
 assert.equal(new Set(groupedSlugs).size, groupedSlugs.length, 'Each project must belong to one research line.');
 assert.deepEqual([...groupedSlugs].sort(), [...publishedSlugs].sort(), 'Research lines must include every published project and no unpublished project.');
+const cvHtml = htmlByPath.get(path.join(root, 'cv/index.html'));
+const homeHtml = htmlByPath.get(path.join(root, 'index.html'));
+for (const project of projectRecords.filter(project => project.published === true && !project.output && !project.isPlaceholder)) {
+  assert.equal(cvHtml.includes(`href="/projects/${project.slug}/"`), project.cvSelected !== false, `${project.slug}: HTML CV must honor the selected research data`);
+}
+for (const line of researchLines) {
+  for (const stage of line.stages.filter(stage => stage.archive)) {
+    const project = projectRecords.find(project => project.slug === stage.slug);
+    assert(!project.selected, `${stage.slug}: archived work must not be a current homepage highlight`);
+    assert(!homeHtml.includes(`href="/projects/${stage.slug}/"`), `${stage.slug}: archive is still linked as current work`);
+  }
+}
 for (const route of ['research/index.html', 'projects/index.html']) {
   const html = htmlByPath.get(path.join(root, route));
   for (let index = 0; index < researchLines.length; index++) {

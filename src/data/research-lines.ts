@@ -5,6 +5,7 @@ interface ResearchStage {
   slug: string;
   label: string;
   context: string;
+  archive?: boolean;
 }
 interface ResearchLineRecord {
   id: string;

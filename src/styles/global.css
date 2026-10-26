@@ -67,6 +67,9 @@
   .line-work-status, .project-stage { color: var(--muted); font-size: .8125rem; }
   .project-stage { margin-bottom: .3rem; }
   .line-studies .project-entry:last-child { padding-bottom: 0; }
+  .review-date { color: var(--muted); font-size: .8125rem; margin-top: .6rem; }
+  .earlier-work { margin-top: 1.5rem; border-top: 1px solid var(--line); padding-top: .75rem; }
+  .earlier-work summary { color: var(--accent); cursor: pointer; padding-block: .5rem; font-size: .9375rem; }
   .cv-research-lines { display: grid; gap: 1.75rem; }
   .cv-research-line + .cv-research-line { padding-top: 1.5rem; border-top: 1px solid var(--line); }
   .cv-line-summary { font-size: .9375rem; margin-block: .5rem 1rem; }

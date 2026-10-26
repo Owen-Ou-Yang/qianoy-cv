@@ -10,6 +10,7 @@ interface Profile {
   metaDescription: string;
   introduction: string;
   overview: { affiliations: string[]; summary: string };
+  researchReviewedOn?: string;
   biography: string[];
   personalAside?: string;
   email: string | null;
@@ -42,6 +43,7 @@ export const profile: Profile = profileData;
 export const researchThemes = researchData;
 export const displayName = profile.name ?? 'TODO: Full name';
 export const siteTitle = profile.name ?? profile.domain;
+export const formatReviewDate = (date: string) => new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'Research', href: '/research/' },
