@@ -81,10 +81,16 @@ const homeHtml = htmlByPath.get(path.join(root, 'index.html'));
 const profile = JSON.parse(await readFile('src/data/profile.json', 'utf8'));
 const exchange = profile.exchangeEducation;
 if (exchange) {
+  for (const text of ['Academic background', 'Semester GPA', `${exchange.credits} credits`, 'Graduate-level Computer Vision (A)', 'Coursework and academic record']) {
+    assert(!homeHtml.includes(text), `Homepage must keep academic-record details on the CV: ${text}`);
+  }
   for (const route of ['about/index.html', 'cv/index.html']) {
     const html = htmlByPath.get(path.join(root, route));
     const block = html.match(/<article\b[^>]*id="notre-dame-exchange"[^>]*>([\s\S]*?)<\/article>/)?.[1];
-    assert(block?.includes(exchange.role) && block.includes(exchange.level), `${route}: exchange identity and undergraduate level`);
+    const exchangeLabel = exchange.role === 'Non-degree Exchange Student' && exchange.level === 'Undergraduate exchange'
+      ? 'Undergraduate Exchange Student (non-degree)' : exchange.role;
+    assert(block?.includes(exchangeLabel), `${route}: accurate combined exchange identity`);
+    assert.equal(block.split(exchange.dates).length - 1, 1, `${route}: one adjacent exchange date`);
     assert(block.includes(`Semester GPA: ${exchange.semesterGpa}`) && block.includes(`${exchange.credits} credits`), `${route}: semester GPA and credits must stay in the exchange record`);
     for (const course of exchange.courses) {
       const row = (block.match(/<tr>[^]*?<\/tr>/g) ?? []).find(row => row.includes(course.code));

@@ -27,6 +27,8 @@ The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub ac
 
 ## Reading and navigation
 
+In the subsequent October 28 hierarchy adjustment, the owner removed the entire Academic background block from the homepage. The About biography no longer repeats GPA, credits, or course-grade details. The shared website Education component uses “Undergraduate Exchange Student (non-degree)” with one adjacent date. The education data, CV grade table, PDF bytes, research summaries, Driving Coach entry, and specific skills are preserved.
+
 On 2026-10-28, the owner requested an application-focused revision for Fall 2027 PhD applications and recommendation materials. Research summaries now lead with the work performed—model or workflow implementation, matched comparisons, measurements, and analysis—while project details retain the methods, material limitations, and interpretation. Current Atom-JEPA work remains QM9 pretrained-versus-randomly-initialized encoder comparisons; the crystal-property extension remains in preparation. This editorial change does not update the research-status review date or invent new experimental results.
 
 The Notre Dame exchange record moves into education as `profile.exchangeEducation`, separate from XJTU degree studies, the Research Assistant role, and iSURE. The website shows all four confirmed courses and grades. The PDF uses a compact selected-coursework line for Computer Vision, NLP, and Computer Graphics; the full four-course table remains on the website. A graduate-level Computer Vision course does not imply graduate-student status.

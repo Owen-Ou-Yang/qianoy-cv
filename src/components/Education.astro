@@ -4,6 +4,9 @@ import Todo from './Todo.astro';
 interface Props { detailed?: boolean; compact?: boolean; }
 const { detailed = false, compact = false } = Astro.props;
 const exchange = profile.exchangeEducation;
+const exchangeRole = exchange?.role === 'Non-degree Exchange Student' && exchange.level === 'Undergraduate exchange'
+  ? 'Undergraduate Exchange Student (non-degree)'
+  : exchange?.role;
 ---
 <div class="education-list">
   <article>
@@ -18,11 +21,11 @@ const exchange = profile.exchangeEducation;
   </article>
   {exchange && <article id="notre-dame-exchange" class="exchange-education">
     <h3 class="education-title">{exchange.institution}</h3>
-    <p>{exchange.role} · {exchange.level}</p>
-    <p class="muted">{exchange.term}{!compact && <> · {exchange.dates}</>}</p>
+    <p>{exchangeRole}</p>
+    <p class="muted">{exchange.dates}</p>
     <p class="semester-gpa"><strong>Semester GPA: {exchange.semesterGpa}</strong> · {exchange.credits} credits</p>
     {detailed ? <div class="course-table-wrap"><table class="course-table">
-      <caption>{exchange.term} exchange coursework and grades</caption>
+      <caption>Exchange coursework and grades</caption>
       <thead><tr><th scope="col">Course</th><th scope="col">Level</th><th scope="col">Grade</th></tr></thead>
       <tbody>{exchange.courses.map(course => <tr><th scope="row">{course.name}<span class="course-code">{course.code}</span></th><td>{course.level}</td><td>{course.grade}</td></tr>)}</tbody>
     </table></div> : <p class="academic-course-highlight">Graduate-level Computer Vision (A){compact && <> · <a href="/cv/#education">Coursework and academic record <span aria-hidden="true">→</span></a></>}</p>}

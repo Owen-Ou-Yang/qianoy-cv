@@ -107,6 +107,8 @@ Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs
 
 ### Education and exchange coursework
 
+The homepage goes directly from the profile introduction and contact actions to Research lines. Education and grades remain in the CV and About education sections; the About biography describes the exchange, RA, and iSURE chronology without repeating grades or credits. The shared Education component combines the exchange identity as “Undergraduate Exchange Student (non-degree)” and shows one adjacent date. These presentation choices do not remove the underlying academic data or alter the PDF.
+
 `profile.education` describes the XJTU undergraduate degree. `profile.exchangeEducation` separately records Notre Dame's Non-degree Exchange Student role, undergraduate exchange level, August-December 2025 dates, Fall 2025 term, semester GPA, credits, and course records. `semesterGpa: "3.917/4.0"` applies only to this 12-credit Notre Dame semester; it is neither an XJTU GPA nor a cumulative undergraduate GPA. Keep RA and iSURE entries in `experience` instead of merging them with education.
 
 Each exchange course has `name`, `code`, `level`, `grade`, and `cvSelected`. The website shows all four confirmed grades: graduate-level Computer Vision (CSE 60535, A), undergraduate Natural Language Processing (CSE 40657, A), Computer Graphics (CSE 40166, A), and Human Computer Interaction (CSE 40424, A−). The first three are selected for the compact PDF coursework line. One graduate-level course does not make the owner a graduate student.
