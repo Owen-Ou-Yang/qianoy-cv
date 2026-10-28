@@ -1,13 +1,15 @@
 # Content provenance and editorial boundaries
 
-Updated from the owner's messages and read-only project-status review through 2026-10-26. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
+Updated from the owner's messages and read-only project-status review through 2026-10-28; the last research-status review remains 2026-10-26. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
 
 | 用户确认的信息 | 网站 / CV 英文表述 |
 | --- | --- |
 | 姓名与邮箱 | Qian Ouyang; qouyang@nd.edu |
 | 西安交通大学人工智能拔尖班；专业人工智能；本科、大四；2023 入学，2027 毕业 | Fourth-year undergraduate, Artificial Intelligence, Artificial Intelligence Experimental Class; 2023 - 2027 (expected) |
 | 圣母大学 AME 的 Tengfei Luo 老师组 RA；2025 年 10 月至今 | Research Assistant, Prof. Tengfei Luo's group, Department of Aerospace and Mechanical Engineering, University of Notre Dame; October 2025 - Present |
-| 2025 年 8–12 月在圣母大学做学期 visiting student | Visiting Student, August - December 2025 |
+| 2025 年 8–12 月在圣母大学做本科交换；2026-10-28 确认身份与成绩 | Non-degree Exchange Student (undergraduate exchange), August - December 2025 / Fall 2025; semester GPA 3.917/4.0, 12 credits |
+| 2026-10-28：确认 Notre Dame 四门课程及成绩 | Computer Vision, CSE 60535, Graduate level, A; Natural Language Processing, CSE 40657, Undergraduate, A; Computer Graphics, CSE 40166, Undergraduate, A; Human Computer Interaction, CSE 40424, Undergraduate, A− |
+| 2026-10-28：批准 Driving Coach 课程项目简介 | Driving Coach: Lane and Traffic-Object Detection; Computer Vision, University of Notre Dame, Fall 2025; Instructor: Prof. Adam Czajka |
 | 2026 年 7–9 月在圣母大学做 iSURE 暑研 | Summer Research Participant (iSURE), July - September 2026 |
 | MLIP 的 HPC 优化非常重要，关注显存、冗余和速度 | Research interest in memory efficiency, computational redundancy, and simulation throughput |
 | UMA/FAIR-Chem 项目遇到显存限制，是 HPC 优化兴趣的来源 | GPU-memory constraints encountered while developing UMA/FAIR-Chem workflows motivated an interest in efficient ML interatomic potentials |
@@ -21,9 +23,13 @@ Updated from the owner's messages and read-only project-status review through 20
 | 密度参考温度确认为 300 K | Treat 300 K as owner-confirmed; retain uncertainties about phase, crystallinity, molecular weight, tacticity, preparation history, and experimental uncertainty |
 | 2026-09-29：不喜欢页首 q.；与英国的联系只是口音有一部分英国味儿，考虑加一个小玩笑 | Name-only header; a brief About-page aside about the .uk domain and a partly British accent, without implying UK nationality, residence, or affiliation |
 
-The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content includes seven bounded research descriptions, with current and earlier work distinguished. The October update adds status and methodological summaries of pretrained atomistic-representation research and a controlled synthetic physical-response study. It does not release new numerical results or figures, private research reports, unrelated results, configuration files, server details, or credentials.
+The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content includes seven bounded research descriptions, with current and earlier work distinguished. A separately approved course-project summary and owner-confirmed Notre Dame exchange grades are included as of October 28. The October update adds status and methodological summaries of pretrained atomistic-representation research and a controlled synthetic physical-response study. It does not release new numerical results or figures, private research reports, unrelated results, configuration files, server details, or credentials.
 
 ## Reading and navigation
+
+On 2026-10-28, the owner requested an application-focused revision for Fall 2027 PhD applications and recommendation materials. Research summaries now lead with the work performed—model or workflow implementation, matched comparisons, measurements, and analysis—while project details retain the methods, material limitations, and interpretation. Current Atom-JEPA work remains QM9 pretrained-versus-randomly-initialized encoder comparisons; the crystal-property extension remains in preparation. This editorial change does not update the research-status review date or invent new experimental results.
+
+The Notre Dame exchange record moves into education as `profile.exchangeEducation`, separate from XJTU degree studies, the Research Assistant role, and iSURE. The website shows all four confirmed courses and grades. The PDF uses a compact selected-coursework line for Computer Vision, NLP, and Computer Graphics; the full four-course table remains on the website. A graduate-level Computer Vision course does not imply graduate-student status.
 
 On 2026-10-26, the current representation line becomes "Molecular representations and physical prediction" while keeping its existing section ID. It connects earlier CG and MACE-water work to controlled physical-response studies and current pretrained atomistic-representation questions. The MACE-water exploration closed on 2026-10-09 and is no longer described as ongoing. Earlier CG and MACE-water stages use `archive: true` and their project records use `cvSelected: false`: their URLs remain available, and their history is summarized in the line's CV introduction instead of repeated as individual CV entries. UMA is also subordinate archived background; archive presentation and CV selection are independent.
 
@@ -41,9 +47,21 @@ The progression narrative explains research motivation and methodology rather th
 
 ## Editorial scope
 
-On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. In a subsequent message, the owner approved adding the earlier UMA/FAIR-Chem project and explained that its GPU-memory limits motivated their HPC optimization interests. These approvals supersede the earlier request to withhold all projects for these three case studies only. The later 2026-09-30 instruction adds CG JEPA and MACE JEPA descriptions and supersedes the earlier JEPA exclusion for these two entries. It does not authorize publication of complete research directories, unpublished project drafts, coursework, or unrelated measurements.
+On 2026-09-28, after reviewing the proposed GPU-resource and density figures, the owner explicitly approved these two specific visuals and results for the website. In a subsequent message, the owner approved adding the earlier UMA/FAIR-Chem project and explained that its GPU-memory limits motivated their HPC optimization interests. These approvals supersede the earlier request to withhold all projects for these three case studies only. The later 2026-09-30 instruction adds CG JEPA and MACE JEPA descriptions and supersedes the earlier JEPA exclusion for these two entries. Those earlier approvals did not authorize publication of complete research directories, unpublished project drafts, coursework, or unrelated measurements. The October 28 instruction separately approves the limited Driving Coach course-project description below; unrelated coursework remains outside that scope.
 
 `src/data/projects.json` now contains seven published records in two shared research lines. Current/recent research and earlier explorations are presented separately without removing existing URLs. The five individually selected CV entries are current pretrained atomistic representations, controlled synthetic physical response, polymer density workflows, the GPU resource pilot, and the earlier UMA workflow. CG and MACE-water history remains in the line summary and archived detail pages. Each selected entry supplies a bounded `cvSummary` to both CV formats. The UMA HTML schematic and the two previously approved SVG/PNG measurement figures with small CSV files are retained; no new quantitative research asset is released. A separate name-and-research-identity image supplies the social preview. These assets require no client JavaScript. The publication array remains empty, and none of these records sets `output` or creates a publication citation.
+
+### Notre Dame exchange education and course project
+
+The October 28 message directly confirms the Notre Dame Non-degree Exchange Student role, undergraduate exchange status, August-December 2025 / Fall 2025 dates, 3.917/4.0 semester GPA, and 12 credits. The GPA applies to that Notre Dame semester only. It is not combined with an XJTU GPA, presented as a cumulative undergraduate GPA, or inferred from individual grades. XJTU GPA remains unknown.
+
+The confirmed course records are Computer Vision (CSE 60535, graduate level, A), Natural Language Processing (CSE 40657, undergraduate, A), Computer Graphics (CSE 40166, undergraduate, A), and Human Computer Interaction (CSE 40424, undergraduate, A−). Course titles and levels stay attached to their own records. The shared `cvSelected` course flags select the first three for the PDF's compact line.
+
+The owner supplied and authorized two contribution bullets for Driving Coach: Lane and Traffic-Object Detection, a Fall 2025 Computer Vision project under Prof. Adam Czajka. The project adapted a YOLOv1-style implementation with a pretrained ResNet-18 backbone for BDD100K driving scenes, and analyzed lane representation/training issues through qualitative evaluation on an unseen Shenzhen highway video. It does not claim a new detection architecture, annotated-test accuracy or mAP, or implementation of the discussed local lane-geometry proposal. The source repository is private, so the public entry keeps `repository: null`; neither its code nor the private report is copied into this repository.
+
+`src/data/coursework.json`, its typed module, and `CourseworkProjects.astro` keep this compact course-project entry separate from the two research lines and publication records. Both website and PDF read the same title, course, term, instructor, and bullets. This one approved course-project summary supersedes the earlier general coursework exclusion only for this project.
+
+Technical skills are concrete tools evidenced in the existing work: Python and C++; PyTorch, torchvision, TensorBoard; NumPy, SciPy, Matplotlib; LAMMPS, ASE, MACE, UMA / FAIR-Chem; CRC/SGE batch workflows and GPU resource measurement. No proficiency level, additional framework, or independent system-building accomplishment is inferred.
 
 ### UMA/FAIR-Chem polymer workflow
 
@@ -91,8 +109,8 @@ The owner requested weekly checks that prepare pending changes. Reviews are inte
 
 - The two JEPA entries describe concrete exploratory work and bounded observations. They do not claim a general JEPA advantage, a production trajectory generator, a paper, or broad material generalization.
 - MLIP optimization remains a research direction. The approved engineering measurement does not claim a newly optimized algorithm or controlled general performance improvement. The owner-approved account of GPU-memory limitations explains the origin of this interest; it does not assert hardware capacity, infrastructure details, or a measured optimization gain.
-- Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, GPA, award, publication, or additional quantitative result has been inferred.
-- The current RA, visiting student, and iSURE records are separate. The two visit dates are not treated as continuous employment dates.
+- Undergraduate status, enrollment year, expected graduation year, RA start month/year, and programming languages are user-confirmed. No B.Eng./B.Sc. degree type, enrollment/graduation month, language proficiency rating, XJTU/cumulative GPA, award, publication, or additional research result has been inferred. The Notre Dame semester GPA and course grades are directly owner-confirmed on October 28.
+- Notre Dame exchange education, the current RA role, and iSURE remain separate records. The exchange and summer dates are not treated as continuous employment dates.
 
 ## Official terminology checked
 
@@ -105,4 +123,4 @@ These primary sources establish names only, not the user's participation or affi
 - [Notre Dame summer research programs: International Summer Undergraduate Research Experience (iSURE)](https://research.nd.edu/our-services/funding-opportunities/undergraduates/summer-research-opportunities/)
 - [Center for Research Computing (CRC)](https://crc.nd.edu/)
 
-Do not relabel the visiting semester as a named exchange program or the summer program as E-SURE without confirmation.
+Use the owner-confirmed Non-degree Exchange Student title without inventing a named exchange scheme. Do not relabel the summer program as E-SURE without confirmation.

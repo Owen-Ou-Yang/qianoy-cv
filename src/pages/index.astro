@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResearchLine from '../components/ResearchLine.astro';
+import Education from '../components/Education.astro';
 import { displayName, profile, formatReviewDate } from '../data/site';
 import { researchLines } from '../data/research-lines';
 ---
@@ -17,6 +18,7 @@ import { researchLines } from '../data/research-lines';
       {profile.linkedin && <a href={profile.linkedin}>LinkedIn</a>}
     </div>
   </section>
+  <section class="section section-grid" aria-labelledby="academic-background-heading"><div><h2 id="academic-background-heading">Academic background</h2></div><Education compact /></section>
   {researchLines.length > 0 && <section id="selected-work" class="selected-work" aria-labelledby="projects-heading">
     <div class="section-heading"><h2 id="projects-heading">Research lines</h2><a href="/research/">Research details <span aria-hidden="true">→</span></a></div>
     {researchLines.map(line => <ResearchLine line={line} compact heading="h3" />)}

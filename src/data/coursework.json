@@ -1,0 +1,17 @@
+[
+  {
+    "id": "driving-coach",
+    "title": "Driving Coach: Lane and Traffic-Object Detection",
+    "course": "Computer Vision",
+    "courseCode": "CSE 60535",
+    "institution": "University of Notre Dame",
+    "term": "Fall 2025",
+    "instructor": "Prof. Adam Czajka",
+    "bullets": [
+      "Adapted a YOLOv1-style detector with a pretrained ResNet-18 backbone for BDD100K driving scenes, including lane and traffic-object detection.",
+      "Investigated lane-representation and training issues, and qualitatively evaluated the models on an unseen Shenzhen highway video, analyzing failures involving reflections, lane geometry, and traffic signs."
+    ],
+    "repository": null,
+    "published": true
+  }
+]

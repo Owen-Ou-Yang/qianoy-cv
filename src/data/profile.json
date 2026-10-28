@@ -7,9 +7,9 @@
   "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. GPU-memory limitations in my UMA / FAIR-Chem polymer-simulation work sparked my interest in making ML interatomic potentials more efficient.",
   "biography": [
     "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University. I am also a research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
-    "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I have been a research assistant at Notre Dame since October 2025. I was a visiting student at Notre Dame from August to December 2025 and returned for summer research through iSURE from July to September 2026.",
+    "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I was an undergraduate Non-degree Exchange Student at Notre Dame in Fall 2025, completing 12 credits with a semester GPA of 3.917/4.0, including graduate-level Computer Vision. Separately, I have worked in Prof. Tengfei Luo's group as a research assistant since October 2025 and returned for iSURE summer research from July to September 2026.",
     "Working on polymer simulations with UMA / FAIR-Chem exposed me to GPU-memory constraints in practice. That experience led me to ask how ML interatomic potentials could use computational resources more efficiently. I am interested in understanding computational redundancy, reducing memory requirements, and improving simulation throughput while preserving useful physical predictions.",
-    "My representation-learning work began with coarse-grained polymers and MACE-based water studies. After closing the water exploration, I investigated controlled physical-response prediction and pretrained atomistic representations. Current work examines transfer and label efficiency, alongside continued development of polymer-density workflows. These are exploratory studies, with completed stages kept separate from questions still under investigation."
+    "My representation-learning work began with coarse-grained polymers and MACE-based water studies, followed by controlled physical-response experiments. I now compare pretrained and randomly initialized Atom-JEPA encoders for molecular property prediction and develop reproducible polymer-density workflows. A crystal-property extension is in preparation."
   ],
   "personalAside": "The .uk is more committed to being British than my accent is.",
   "email": "qouyang@nd.edu",
@@ -39,29 +39,21 @@
       "dates": "July - September 2026",
       "description": "International Summer Undergraduate Research Experience (iSURE).",
       "dateTodo": null
-    },
-    {
-      "role": "Visiting Student",
-      "institution": "University of Notre Dame",
-      "group": null,
-      "dates": "August - December 2025",
-      "description": "Semester visiting student.",
-      "dateTodo": null
     }
   ],
   "skills": [
     {
-      "title": "Molecular simulation & MLIPs",
-      "description": "Experience with UMA/FAIR-Chem and MACE for molecular simulation."
+      "title": "Machine Learning",
+      "description": "PyTorch, torchvision, TensorBoard."
     },
     {
-      "title": "High-performance computing",
-      "description": "Experience using Notre Dame's Center for Research Computing (CRC) for research computing."
+      "title": "Scientific Computing / Research Workflows",
+      "description": "NumPy, SciPy, Matplotlib; LAMMPS, ASE, MACE, UMA / FAIR-Chem; CRC/SGE batch workflows and GPU resource measurement."
     }
   ],
   "programmingLanguages": [
-    "C++",
-    "Python"
+    "Python",
+    "C++"
   ],
   "cvIsDraft": false,
   "socialImage": "/social/profile.png",
@@ -72,5 +64,44 @@
     ],
     "summary": "I study how learned molecular representations support physical prediction, and how to use ML interatomic potentials efficiently for polymer simulation. My current work explores pretrained-feature transfer, label efficiency, and reproducible density workflows."
   },
-  "researchReviewedOn": "2026-10-26"
+  "researchReviewedOn": "2026-10-26",
+  "exchangeEducation": {
+    "institution": "University of Notre Dame",
+    "role": "Non-degree Exchange Student",
+    "level": "Undergraduate exchange",
+    "dates": "August - December 2025",
+    "term": "Fall 2025",
+    "semesterGpa": "3.917/4.0",
+    "credits": 12,
+    "courses": [
+      {
+        "name": "Computer Vision",
+        "code": "CSE 60535",
+        "level": "Graduate level",
+        "grade": "A",
+        "cvSelected": true
+      },
+      {
+        "name": "Natural Language Processing",
+        "code": "CSE 40657",
+        "level": "Undergraduate",
+        "grade": "A",
+        "cvSelected": true
+      },
+      {
+        "name": "Computer Graphics",
+        "code": "CSE 40166",
+        "level": "Undergraduate",
+        "grade": "A",
+        "cvSelected": true
+      },
+      {
+        "name": "Human Computer Interaction",
+        "code": "CSE 40424",
+        "level": "Undergraduate",
+        "grade": "A−",
+        "cvSelected": false
+      }
+    ]
+  }
 }

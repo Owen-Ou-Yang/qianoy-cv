@@ -2,26 +2,26 @@
   {
     "id": "dynamics-representations",
     "title": "Molecular representations and physical prediction",
-    "summary": "I study what learned states retain and when they help physical prediction. CG polymer and MACE water explorations led to controlled-response tests and current work on pretrained-feature transfer and label efficiency.",
+    "summary": "I investigate when learned molecular representations help physical prediction. My work combines encoder comparisons, controlled ablations, and physical readouts, progressing from CG polymer and MACE water studies to controlled-response experiments and current pretrained-feature transfer research.",
     "question": "Which physical information survives representation learning, and when does it improve prediction beyond matched baselines?",
     "progression": "CG and MACE JEPA → controlled-response tests and pretrained-feature transfer",
-    "cvSummary": "From CG polymer and MACE water explorations to controlled physical-response tests and current pretrained-feature transfer studies; each task has its own physical targets and evidence limits.",
+    "cvSummary": "Encoder comparisons, representation ablations, and physical-readout evaluation, from earlier CG polymer and MACE water studies to current pretrained-feature transfer research.",
     "stages": [
       {
         "slug": "pretrained-atomistic-representations",
         "label": "Current direction",
-        "context": "This branch asks when pretrained atomistic features help property prediction. Completed QM9 comparisons and a crystal extension in preparation address static properties, separately from earlier dynamical tasks."
+        "context": "This current branch compares pretrained and randomly initialized encoders for QM9 property prediction, with matched data and downstream update budgets. It also includes preparation for crystal-property transfer and label-efficiency studies."
       },
       {
         "slug": "controlled-physical-response",
         "label": "Recent completed study",
-        "context": "This synthetic-system investigation follows the earlier CG and MACE representation questions into controlled physical response. It tests state use and physical readouts without claiming a molecular or real-material result."
+        "context": "This completed study tested state/control adaptations and functional readouts on a synthetic hysteretic system. It extends the earlier representation questions into predictions under alternative control programs."
       },
       {
         "slug": "mace-jepa-molecular-dynamics",
         "label": "Earlier exploration · closed",
         "archive": true,
-        "context": "This atomistic-water phase followed the CG encoder comparison and closed on 9 October 2026. Its limits informed later response and transfer questions; it is no longer an ongoing water study."
+        "context": "This atomistic-water phase followed the CG encoder comparison and closed on 9 October 2026. The adapters, temporal controls, and physical-readout analyses informed later response and transfer questions."
       },
       {
         "slug": "cg-jepa-polymer-representations",
@@ -34,25 +34,25 @@
   {
     "id": "mlip-properties-efficiency",
     "title": "MLIP material properties and efficiency",
-    "summary": "I develop polymer-property workflows and examine their computational cost. Current density work connects classical preparation, MACE sampling, and reference comparisons; earlier resource studies grew from GPU-memory limits encountered with UMA / FAIR-Chem.",
+    "summary": "I build and evaluate polymer-property workflows and measure their computational cost. Current work connects classical preparation, MACE density simulations, sampling checks, and reference comparisons; GPU allocation studies examine the resource-efficiency questions raised by earlier UMA / FAIR-Chem work.",
     "question": "How can ML interatomic potentials support credible material-property calculations within practical compute and memory budgets?",
     "progression": "UMA / FAIR-Chem exploration → MACE property simulations → GPU resource evaluation",
-    "cvSummary": "Ongoing polymer-density workflow development, supported by earlier MACE resource measurements and the UMA / FAIR-Chem exploration that motivated my interest in MLIP efficiency.",
+    "cvSummary": "Polymer-density workflow development and HPC resource evaluation, building on earlier UMA / FAIR-Chem workflow exploration.",
     "stages": [
       {
         "slug": "polymer-density-screening",
         "label": "Current workflow development",
-        "context": "This ongoing branch connects classical polymer preparation, MACE density sampling, and reference comparisons. The numerical figure is a dated September pilot; expanding the workflow does not itself establish broader accuracy."
+        "context": "This ongoing branch connects classical polymer preparation, MACE density sampling, chemical-identity checks, and reference comparisons. The displayed measurements preserve the separately dated September pilot."
       },
       {
         "slug": "mlip-gpu-resources",
         "label": "Earlier engineering measurements",
-        "context": "This engineering pilot examines the computational cost of MACE molecular dynamics. It develops the resource-efficiency question raised by the earlier UMA memory constraints, without claiming a new optimization algorithm."
+        "context": "This engineering pilot compared GPU allocations for a fixed MACE workload, measuring runtime, sampled device memory, and allocated GPU-hours together."
       },
       {
         "slug": "uma-fairchem-polymer-workflow",
         "label": "Earlier exploration and motivation",
-        "context": "This resource-limited exploration is the starting point of the MLIP property-calculation line. Memory constraints prevented validated UMA property results and motivated the later focus on computational efficiency.",
+        "context": "This earlier exploration prepared UMA / FAIR-Chem polymer-calculation workflows. Practical memory constraints motivated the subsequent resource-efficiency studies.",
         "archive": true
       }
     ]

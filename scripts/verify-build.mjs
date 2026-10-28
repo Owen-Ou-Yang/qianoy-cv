@@ -78,6 +78,30 @@ assert.equal(new Set(groupedSlugs).size, groupedSlugs.length, 'Each project must
 assert.deepEqual([...groupedSlugs].sort(), [...publishedSlugs].sort(), 'Research lines must include every published project and no unpublished project.');
 const cvHtml = htmlByPath.get(path.join(root, 'cv/index.html'));
 const homeHtml = htmlByPath.get(path.join(root, 'index.html'));
+const profile = JSON.parse(await readFile('src/data/profile.json', 'utf8'));
+const exchange = profile.exchangeEducation;
+if (exchange) {
+  for (const route of ['about/index.html', 'cv/index.html']) {
+    const html = htmlByPath.get(path.join(root, route));
+    const block = html.match(/<article\b[^>]*id="notre-dame-exchange"[^>]*>([\s\S]*?)<\/article>/)?.[1];
+    assert(block?.includes(exchange.role) && block.includes(exchange.level), `${route}: exchange identity and undergraduate level`);
+    assert(block.includes(`Semester GPA: ${exchange.semesterGpa}`) && block.includes(`${exchange.credits} credits`), `${route}: semester GPA and credits must stay in the exchange record`);
+    for (const course of exchange.courses) {
+      const row = (block.match(/<tr>[^]*?<\/tr>/g) ?? []).find(row => row.includes(course.code));
+      assert(row?.includes(course.name) && row.includes(course.level) && row.includes(course.grade), `${route}: course name, code, level, and grade must agree with the shared record`);
+    }
+    const assistant = html.match(/<article\b[^>]*class="experience-entry"[^>]*>[^]*?Research Assistant[^]*?<\/article>/)?.[0] ?? '';
+    assert(!assistant.includes(exchange.semesterGpa), `${route}: exchange GPA must not become a research-assistant credential`);
+  }
+}
+const coursework = JSON.parse(await readFile('src/data/coursework.json', 'utf8')).filter(project => project.published);
+for (const project of coursework) {
+  for (const route of ['about/index.html', 'cv/index.html']) {
+    const html = htmlByPath.get(path.join(root, route));
+    assert(html.includes(project.title) && html.includes(project.instructor), `${route}: approved course project missing`);
+    if (project.repository) assert(html.includes(`href="${project.repository}"`), `${route}: public course-project code link`);
+  }
+}
 for (const project of projectRecords.filter(project => project.published === true && !project.output && !project.isPlaceholder)) {
   assert.equal(cvHtml.includes(`href="/projects/${project.slug}/"`), project.cvSelected !== false, `${project.slug}: HTML CV must honor the selected research data`);
 }

@@ -146,6 +146,21 @@
   .output-entry { border-top: 1px solid var(--line); padding-block: 1.5rem; }
   .output-entry h3 { margin-bottom: .75rem; }
   .education-title { color: var(--ink); font-weight: 600; margin-bottom: .35rem; }
+  .education-list { display: grid; gap: 1.5rem; }
+  .education-title { font-size: 1.05rem; }
+  .semester-gpa, .academic-course-highlight { margin-top: .45rem; }
+  .academic-course-highlight { font-size: .875rem; }
+  .exchange-education > .muted { font-size: .875rem; }
+  .course-table { border-collapse: collapse; width: 100%; margin-top: 1rem; font-size: .875rem; }
+  .course-table caption { text-align: left; color: var(--muted); font-size: .8125rem; margin-bottom: .35rem; }
+  .course-table th, .course-table td { text-align: left; vertical-align: top; padding: .6rem .65rem .6rem 0; border-bottom: 1px solid var(--line); }
+  .course-table th[scope='row'] { font-weight: 400; }
+  .course-table th:last-child, .course-table td:last-child { padding-right: 0; white-space: nowrap; }
+  .course-code { display: block; color: var(--muted); font-size: .8125rem; }
+  .coursework-entry h3 { margin-bottom: .4rem; }
+  .coursework-meta { color: var(--muted); font-size: .875rem; }
+  .coursework-entry ul { padding-left: 1.2rem; margin-top: .7rem; }
+  .coursework-entry + .coursework-entry { margin-top: 1.5rem; }
   .experience-list, .compact-outputs { display: grid; gap: 1.5rem; }
   .experience-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .3rem 1rem; }
   .experience-heading .muted { font-size: .875rem; }

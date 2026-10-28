@@ -24,6 +24,16 @@ interface Profile {
     institution: string | null;
     dates: string | null;
   };
+  exchangeEducation?: {
+    institution: string;
+    role: string;
+    level: string;
+    dates: string;
+    term: string;
+    semesterGpa: string;
+    credits: number;
+    courses: { name: string; code: string; level: string; grade: string; cvSelected: boolean }[];
+  };
   experience: {
     role: string;
     institution: string;

@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. Five case studies are individually selected for the CV, with earlier representation work summarized in the line introduction. Coursework and unrelated project results remain excluded.
+Updated on 2026-10-28; research-status review remains dated 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. Five case studies are individually selected for the CV, with earlier representation work summarized in the line introduction. The specifically approved Driving Coach course project is included separately; unrelated coursework and project results remain excluded.
 
 ## Confirmed and incorporated
 
@@ -8,9 +8,12 @@ Updated on 2026-10-26. Core profile and CV facts are confirmed. Seven research r
 - [x] Xi'an Jiaotong University: undergraduate, Artificial Intelligence major, Artificial Intelligence Experimental Class (人工智能拔尖班), currently fourth year.
 - [x] Enrollment in 2023; expected graduation in 2027. No months are inferred.
 - [x] RA in Prof. Tengfei Luo's group, Department of Aerospace and Mechanical Engineering, University of Notre Dame: October 2025 - Present.
-- [x] Notre Dame visiting student: August - December 2025.
+- [x] Notre Dame Non-degree Exchange Student: undergraduate exchange, August - December 2025 / Fall 2025, recorded separately from the RA role.
+- [x] Notre Dame exchange-semester GPA: 3.917/4.0 over 12 credits; not a cumulative undergraduate or XJTU GPA.
+- [x] Website course grades: graduate-level Computer Vision (CSE 60535, A); undergraduate NLP (CSE 40657, A), Computer Graphics (CSE 40166, A), and HCI (CSE 40424, A−). Select the first three for the compact PDF coursework line.
+- [x] Add the approved Driving Coach course project, Fall 2025 Computer Vision with Prof. Adam Czajka, using shared coursework data and two bounded contribution bullets.
 - [x] Notre Dame iSURE summer research: July - September 2026.
-- [x] Programming languages: C++ and Python. No proficiency rating is assumed.
+- [x] Programming: Python and C++. Concrete verified tools cover PyTorch, torchvision, TensorBoard, NumPy, SciPy, Matplotlib, LAMMPS, ASE, MACE, UMA / FAIR-Chem, and CRC/SGE workflows. No proficiency rating is assumed.
 - [x] CRC experience and experience with UMA/FAIR-Chem and MACE. Omit systems/networking experience from the academic profile at the owner's request.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
@@ -21,7 +24,7 @@ Updated on 2026-10-26. Core profile and CV facts are confirmed. Seven research r
 - [x] Keep all seven project URLs, with related-work links within the same line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
 - [x] Use shared `cvSummary` descriptions and `cvSelected` flags in the HTML and PDF CV; five case studies remain individually selected.
-- [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep coursework excluded.
+- [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep unrelated coursework excluded.
 - [x] Add a local sharing preview image without introducing client JavaScript.
 - [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
 
@@ -33,7 +36,7 @@ Edit `src/data/profile.json` if you want to add:
 - [ ] Official English degree designation (e.g. only if confirmed by the institution). Current wording states undergraduate studies and the major without claiming B.Eng./B.Sc.
 - [ ] Additional verified tools, frameworks, or skills and proficiency, if useful.
 
-No GPA, awards, publications, or service entries are assumed or required. `src/data/publications.json` intentionally remains empty.
+The Notre Dame exchange-semester GPA is owner-confirmed. No XJTU/cumulative GPA, awards, publications, or service entries are assumed or required. `src/data/publications.json` intentionally remains empty.
 
 ## Research maintenance
 
@@ -47,11 +50,11 @@ No GPA, awards, publications, or service entries are assumed or required. `src/d
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSelected`, `cvSummary`, workflow descriptions, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The October update describes research status and methods without releasing new private numerical results, figures, or raw reports. Existing September density figures and measurements remain historical snapshots, not a current campaign total.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSelected`, `cvSummary`, workflow descriptions, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The October 26 update describes research status and methods without releasing new private numerical results, figures, or raw reports. The October 28 revision adds owner-confirmed exchange grades and the specifically approved course-project summary, and makes research descriptions contribution-focused without changing their status or results. Existing September density figures and measurements remain historical snapshots, not a current campaign total.
 
 - [ ] Review project records weekly on Mondays at 10:00 Asia/Shanghai. When evidence changes, prepare a pending website/CV update for owner review; do not publish automatically. Stay quiet when there is no material change.
 
-Unpublished project drafts remain excluded from public source and public Git history.
+Unpublished project drafts and the private Driving Coach source/report remain excluded from public source and public Git history. A qualitative-video evaluation does not justify an accuracy or mAP number; an unimplemented lane-representation proposal must not be presented as a delivered feature.
 
 ## Public launch
 

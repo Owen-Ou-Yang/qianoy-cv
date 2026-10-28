@@ -3,7 +3,7 @@
     "slug": "pretrained-atomistic-representations",
     "title": "Pretrained atomistic representations: transfer and label efficiency",
     "theme": "Atomistic representation learning / Property prediction",
-    "summary": "I study when pretrained atomistic representations help property prediction under limited labels and compute. Completed native QM9 comparisons examine data and update budgets; a crystal-property extension is in preparation.",
+    "summary": "To examine when pretraining helps molecular property prediction, I compared pretrained and randomly initialized Atom-JEPA encoders on QM9 under matched data and downstream update budgets. I analyzed optimization-seed and checkpoint-selection effects; a crystal-property extension is in preparation.",
     "question": "When do pretrained atomistic features improve property prediction beyond training the same backbone from scratch, and how does that depend on labels, compute, and transfer to new structures?",
     "methodology": [
       "Compared the released Atom-JEPA encoder with the same backbone trained from scratch on the QM9 molecular polarizability task, using the native fine-tuning entry point.",
@@ -38,21 +38,21 @@
     "status": "Ongoing research · crystal study in preparation",
     "reviewedOn": "2026-10-26",
     "role": "Native evaluation workflows, matched baseline design, data and source verification, and analysis of training-budget and transfer questions.",
-    "cvSummary": "Compared pretrained and scratch Atom-JEPA models on QM9 under controlled data and update budgets. Current work prepares crystal-property and label-efficiency studies; crystal training and transfer results remain unestablished.",
+    "cvSummary": "Compared pretrained and randomly initialized Atom-JEPA encoders on QM9 molecular polarizability prediction under matched data and downstream update budgets. Examined how pretraining effects varied with optimization seeds and checkpoint selection. A crystal-property extension is in preparation.",
     "repository": null,
     "selected": true,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "Pretrained representations: transfer and label efficiency",
-      "description": "Native QM9 comparisons and a crystal-property extension in preparation, separating pretraining value from labels, compute, and transfer."
+      "description": "Compared pretrained and randomly initialized Atom-JEPA encoders on QM9, analyzing data budgets, optimization seeds, and checkpoint selection. A crystal-property extension is in preparation."
     }
   },
   {
     "slug": "controlled-physical-response",
     "title": "State-space models for controlled physical response",
     "theme": "Representation learning / Controlled dynamical systems",
-    "summary": "An exploratory comparison of state-space and recurrent models on a synthetic hysteretic system, examining how learned states and physical readouts support predictions under different controls.",
+    "summary": "To test whether learned states predict changes under different controls, I compared state-space and recurrent models on a synthetic Bouc–Wen system. I evaluated state/control adapters, functional readouts, and symmetry constraints using both full displacement curves and paired response differences.",
     "question": "Does a learned state support the correct change in physical response under different controls, rather than only a good overall trajectory fit?",
     "methodology": [
       "Used a fixed-parameter Bouc–Wen synthetic system with observed history and known future force controls to predict displacement responses.",
@@ -77,21 +77,21 @@
     "date": "Closed 24 October 2026",
     "reviewedOn": "2026-10-26",
     "role": "Controlled prediction experiments, matched baselines, functional readouts, and analysis of physical-response criteria.",
-    "cvSummary": "Compared state-space and recurrent models on synthetic hysteretic dynamics, separating trajectory fit from control-response prediction. Curve-level gains did not resolve the decisive response contrast; real-material validation remains open.",
+    "cvSummary": "Compared state-space and recurrent models on a synthetic Bouc-Wen system. Evaluated state/control adapters, functional readouts, and symmetry constraints against full-curve and paired control-response targets.",
     "repository": null,
     "selected": false,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "Controlled physical-response prediction",
-      "description": "A completed synthetic-system study of learned states, recurrent dynamics, and the gap between fitting curves and predicting control-response differences."
+      "description": "Compared state-space and recurrent models on synthetic hysteretic dynamics, testing state/control adapters, physical readouts, and response differences between control programs."
     }
   },
   {
     "slug": "mace-jepa-molecular-dynamics",
     "title": "MACE JEPA: representations for molecular dynamics",
     "theme": "Atomistic representation learning / Molecular dynamics",
-    "summary": "A completed exploration of pretrained MACE features, atomic velocities, and JEPA-style temporal learning on atomistic water. The phase closed without establishing a stable JEPA-specific advantage or reliable free-rollout dynamics.",
+    "summary": "Investigated how pretrained MACE features and temporal learning support water-dynamics prediction. I built adapters combining atomic features with velocities and geometry, then evaluated them with physical readouts, temporal-pairing controls, rollout diagnostics, and hydrogen-bond exchange targets.",
     "question": "Can temporal representation learning make pretrained atomistic features more useful for physical prediction, beyond the effects of the input interface and physical supervision?",
     "methodology": [
       "Audited encoder inputs and intermediate features to understand which geometric and dynamical information each representation exposes.",
@@ -116,14 +116,14 @@
     "scope": "Closed exploratory atomistic-water phase. Conditional-prediction and feature-transfer observations do not establish a stable JEPA advantage or a reliable autonomous dynamics model.",
     "status": "Research phase closed",
     "role": "Encoder comparison, representation and adapter development, controlled training, and physical-readout evaluation.",
-    "cvSummary": "Investigated MACE-based water representations with velocity adapters, temporal controls, physical readouts, and exchange-propensity targets. Closed the phase without a stable JEPA-specific advantage or reliable free-rollout dynamics.",
+    "cvSummary": "Built adapters combining MACE features, velocities, and local geometry for atomistic-water prediction. Compared supervision and temporal-learning settings using physical readouts, pairing controls, rollout diagnostics, and hydrogen-bond exchange targets.",
     "repository": null,
     "selected": false,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "MACE JEPA for molecular dynamics",
-      "description": "Completed water studies of pretrained features and temporal learning, retaining useful conditional-prediction observations and the limits of JEPA-specific gains."
+      "description": "Built MACE feature/velocity adapters and compared temporal-learning settings through physical readouts, pairing controls, and hydrogen-bond exchange targets."
     },
     "date": "Closed 9 October 2026",
     "reviewedOn": "2026-10-26",
@@ -133,7 +133,7 @@
     "slug": "cg-jepa-polymer-representations",
     "title": "CG JEPA: polymer representations and physical prediction",
     "theme": "Coarse-grained modeling / Representation learning",
-    "summary": "An exploratory study of JEPA-style learning for polymer dynamics, examining which molecular information survives encoding and whether it helps predict future physical observables.",
+    "summary": "Investigated which molecular information a coarse-grained polymer representation should retain for physical prediction. I built periodic-graph pipelines and compared token fields, local packing, pooling, and geometric interfaces against persistence, linear, supervised, and random-encoder baselines.",
     "question": "Which local and geometric information should a coarse-grained polymer representation retain to support useful physical prediction?",
     "methodology": [
       "Built periodic molecular graphs and temporal-learning pipelines for polymer trajectories, with local molecular descriptors and chain-level representations.",
@@ -157,14 +157,14 @@
     "scope": "Completed exploratory phase in polymer representation quality and fixed-horizon physical prediction; no validated autonomous coarse-grained trajectory generator.",
     "status": "Exploratory phase completed",
     "role": "Molecular representation development, controlled ablation studies, baseline comparisons, and physical-readout analysis.",
-    "cvSummary": "Investigated JEPA-style polymer representations through controlled ablations, geometric interfaces, and physical-readout evaluation. Temporal variants did not surpass strong linear baselines in the tested setting.",
+    "cvSummary": "Built periodic-graph pipelines for coarse-grained polymer trajectories. Ran token-field, local-packing, pooling, and geometric-interface ablations, and compared temporal predictors with persistence, linear, supervised, and random-encoder baselines.",
     "repository": null,
     "selected": false,
     "published": true,
     "isPlaceholder": false,
     "preview": {
       "title": "CG JEPA for polymer representations",
-      "description": "Explored coarse-grained polymer representations through controlled ablations and physical prediction, identifying useful geometric interfaces and limits of temporal learning."
+      "description": "Built polymer-trajectory graph pipelines and ran representation ablations and baseline comparisons to analyze what supports physical prediction."
     },
     "cvSelected": false,
     "reviewedOn": "2026-10-26"
@@ -173,14 +173,14 @@
     "slug": "mlip-gpu-resources",
     "title": "GPU resource trade-offs in MACE molecular dynamics",
     "theme": "ML interatomic potentials / HPC",
-    "summary": "Measuring how GPU allocation changes the runtime, memory footprint, and compute cost of the same polymer simulation workload.",
+    "summary": "To evaluate the resource cost of MLIP simulation, I compared GPU allocations for a fixed MACE polymer workload. I measured wall time, sampled per-device memory, and allocated GPU-hours, and analyzed the trade-off between elapsed time and total compute use.",
     "question": "How should runtime, device memory, and total resource cost be evaluated together when distributing an ML interatomic potential across GPUs?",
     "takeaway": "Four GPUs completed this short workload faster and used less memory per device, while consuming more total GPU time.",
     "scope": "Engineering pilot: one short run per configuration on different hosts. The three-GPU startup failure is retained; these runs do not establish equilibrium density or general scaling performance.",
     "date": "September 2026",
     "status": "Engineering pilot",
     "role": "Part of my work on MLIP simulation pipelines and HPC evaluation as a research assistant in Prof. Tengfei Luo's group.",
-    "cvSummary": "Evaluated runtime, sampled per-GPU memory, and GPU-hour trade-offs for a fixed MACE polymer simulation workload. Engineering pilot with one short run per configuration; not a general scaling claim.",
+    "cvSummary": "Ran a fixed MACE polymer workload with two- and four-GPU configurations, measuring wall time, sampled device memory, and allocated GPU-hours. Analyzed the runtime–memory–cost trade-off in a single-run engineering pilot on different hosts.",
     "methodology": [
       "A 3,666-atom polymer system with MACE-MH-1, the omol head, and float32 precision; a fixed workload of 5,500 MD steps (1.375 ps).",
       "Compared completed two- and four-GPU configurations using the same system, model, precision, and timestep. Wall time excludes queue wait and includes the recorded run stages.",
@@ -212,21 +212,21 @@
     },
     "preview": {
       "title": "MACE GPU resource study",
-      "description": "Measured runtime, sampled device memory, and allocated GPU-hours for a fixed polymer simulation workload."
+      "description": "Ran fixed-workload MACE GPU comparisons and analyzed wall time, sampled device memory, and total GPU-hour trade-offs."
     }
   },
   {
     "slug": "polymer-density-screening",
     "title": "Polymer density workflows with MACE",
     "theme": "Polymer properties / Molecular dynamics",
-    "summary": "Developing polymer-density workflows that connect classical preparation, MACE molecular dynamics, and careful comparisons with GAFF2 and experimental references. The figure below preserves an earlier three-polymer pilot.",
+    "summary": "I develop polymer-density workflows connecting RadonPy/GAFF2 preparation, MACE molecular dynamics, and reference comparisons. I run simulations, check chemical identity and sampling quality, and analyze how reference matching affects density estimates; the displayed figure records an earlier three-polymer pilot.",
     "question": "What can short MLIP-based polymer simulations establish about density, and how does reference-data matching affect the interpretation?",
     "takeaway": "Useful property estimates require both simulation checks and a physically matched reference. A small difference alone is not sufficient validation.",
     "scope": "Ongoing workflow development with a separately dated September pilot: three polymers, one initial packing and 25 ps sampling each. The displayed intervals describe within-run sampling only.",
     "date": "Displayed pilot: 17 September 2026",
     "status": "Ongoing workflow development",
     "role": "Part of my research on MLIP-based polymer property simulation and evaluation.",
-    "cvSummary": "Developing polymer-density workflows with classical preparation and MACE molecular dynamics, GAFF2/reference comparisons, chemical-identity checks, sampling QC, and resource-aware HPC execution. Displayed September results remain preliminary.",
+    "cvSummary": "Developed polymer-density workflows connecting RadonPy/GAFF2 preparation with MACE molecular dynamics and reference comparisons. Ran preliminary simulations, checked chemical identity and sampling quality, and analyzed reference matching and HPC resource requirements; workflow development continues.",
     "methodology": [
       "Simulated polyethylene (PE), poly(4-methyl-1-pentene) (PMP), and polyisobutylene (PIB) using MACE-MH-1, the omol head, and float32 precision.",
       "Used NPT conditions with targets of 300 K and 1.01325 bar, one initial packing per polymer, and 25 ps of target sampling.",
@@ -265,7 +265,7 @@
     },
     "preview": {
       "title": "Polymer density workflows with MACE",
-      "description": "Ongoing classical-to-MLIP simulation workflows, reference comparisons, and sampling checks, with a separately dated September pilot."
+      "description": "Develop and run classical-to-MACE density workflows, with chemical-identity checks, sampling analysis, reference comparisons, and resource-aware HPC execution."
     },
     "reviewedOn": "2026-10-26",
     "resultsHeading": "September pilot results (17 September 2026)",
@@ -283,13 +283,13 @@
     "slug": "uma-fairchem-polymer-workflow",
     "title": "Polymer elastic-response workflows with UMA / FAIR-Chem",
     "theme": "Scientific workflows / ML interatomic potentials",
-    "summary": "Explored a UMA / FAIR-Chem and LAMMPS workflow for polymer elastic response. GPU-memory constraints limited progress before validated property results were obtained.",
+    "summary": "Prepared a UMA / FAIR-Chem and LAMMPS workflow for polymer elastic-response calculations, including finite-strain stress sampling, batch execution, and graph-inspection tools. GPU-memory constraints limited the exploration and motivated my subsequent MLIP resource studies.",
     "question": "What does it take to turn a pretrained interatomic potential into a reproducible polymer-simulation workflow under practical GPU-memory constraints?",
     "takeaway": "GPU-memory limitations encountered in this project prompted my interest in MLIP efficiency and HPC optimization.",
     "scope": "Resource-limited workflow exploration and research motivation; no validated UMA property result or quantified optimization gain.",
     "status": "Resource-limited exploration",
     "role": "Workflow development as part of my research in Prof. Tengfei Luo's group.",
-    "cvSummary": "Explored UMA / FAIR-Chem polymer calculations with LAMMPS. GPU-memory constraints limited progress before validated property results and motivated my interest in MLIP efficiency.",
+    "cvSummary": "Prepared UMA / FAIR-Chem–LAMMPS workflow components for finite-strain stress sampling, batch execution, and graph inspection. GPU-memory constraints limited the work before validated property results and motivated subsequent MLIP resource studies.",
     "methodology": [
       "Used the FAIR-Chem–LAMMPS interface to build snapshot-based polymer calculations with UMA and a fixed-box baseline at 300 K.",
       "Implemented positive and negative perturbations in six strain modes, with stress sampling and finite-difference stiffness-matrix postprocessing.",
@@ -340,7 +340,7 @@
     "isPlaceholder": false,
     "preview": {
       "title": "UMA / FAIR-Chem polymer workflows",
-      "description": "Explored a polymer-simulation workflow; GPU-memory constraints limited progress before validated property results and motivated my interest in MLIP efficiency."
+      "description": "Prepared finite-strain, batch-execution, and graph-inspection workflow components; GPU-memory constraints motivated the later MLIP resource study."
     }
   }
 ]

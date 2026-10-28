@@ -4,7 +4,7 @@ Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.
 
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
-The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), visiting-student and iSURE dates, and C++/Python skills. As reviewed on 26 October 2026, seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work examines pretrained atomistic representations and prepares a crystal-property label-efficiency study; recent completed work compares controlled physical-response models. Earlier CG JEPA and MACE-water explorations remain available as archived case studies. The ongoing density workflow connects classical polymer preparation with MACE simulation and reference comparison; its approved September measurements remain historical examples. UMA remains background work with no validated property result. Five selected case studies and short line histories supply the HTML and PDF CV. Coursework remains excluded. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
+The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), undergraduate Non-degree Exchange Student studies at Notre Dame in Fall 2025, iSURE dates, and verified programming/research tools. The exchange record includes a semester GPA of 3.917/4.0 over 12 credits and course-specific grades; it is separate from the XJTU degree and RA experience. As reviewed on 26 October 2026, seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work examines pretrained atomistic representations and prepares a crystal-property label-efficiency study; recent completed work compares controlled physical-response models. Earlier CG JEPA and MACE-water explorations remain available as archived case studies. The ongoing density workflow connects classical polymer preparation with MACE simulation and reference comparison; its approved September measurements remain historical examples. UMA remains background work with no validated property result. Five selected research case studies and short line histories supply the HTML and PDF CV. The owner-approved Driving Coach project appears separately as compact Computer Vision coursework, without changing the two research lines. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
 
 ## Develop locally
 
@@ -57,6 +57,7 @@ npm run preview    # Serve the production build locally
 └── src/
     ├── components/
     │   ├── Education.astro
+    │   ├── CourseworkProjects.astro
     │   ├── Experience.astro
     │   ├── Skills.astro
     │   ├── PageHeader.astro
@@ -65,13 +66,15 @@ npm run preview    # Serve the production build locally
     │   ├── ResearchLine.astro
     │   └── Todo.astro
     ├── data/
-    │   ├── profile.json           # Name, biography, experience, education, skills
+    │   ├── profile.json           # Profile, XJTU/ND education, courses/grades, skills
+    │   ├── coursework.json        # Approved Driving Coach course-project entry
     │   ├── research.json          # Research themes and descriptions
     │   ├── research-lines.json    # Two research lines, narratives, and project context
     │   ├── projects.json          # Seven research records, status, and shared CV summaries
     │   ├── publications.json      # Actual citations only; currently empty
     │   ├── site.ts                # Profile types, exports, navigation
     │   ├── projects.ts            # Project types and exports
+    │   ├── coursework.ts          # Published coursework selection and types
     │   ├── research-lines.ts      # Shared line grouping and project lookup
     │   └── outputs.ts             # Citation types and software-output selection
     ├── layouts/BaseLayout.astro   # Navigation, metadata, footer
@@ -92,7 +95,7 @@ npm run preview    # Serve the production build locally
 
 ## Edit content
 
-The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by two compact research lines and links to selected studies within each. It highlights the current atomistic-representation study and ongoing polymer-density workflow. Research and Projects separate current/recent work from earlier explorations within the same lines. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. Detail-page backlinks and related-work links stay within the project's research line. The HTML and PDF CV use the same groups, with concise descriptions from `cvSummary` and explicit CV selection. Existing project URLs remain available.
+The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by two compact research lines and links to selected studies within each. It highlights the current atomistic-representation study and ongoing polymer-density workflow. Research and Projects separate current/recent work from earlier explorations within the same lines. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. Detail pages present the research question, approach, current progress, and findings in that order, with material limitations retained afterward. Backlinks and related-work links stay within the project's research line. The HTML and PDF CV use the same groups, with concise descriptions from `cvSummary` and explicit CV selection. Existing project URLs remain available.
 
 Typography and spacing favor quick reading: system sans-serif text, moderate headings, and one aligned column for project summaries. Detail pages provide section links and keep large scientific figures in a keyboard-accessible horizontal scroll region on narrow screens, with full-size image and data links.
 
@@ -100,7 +103,19 @@ Typography and spacing favor quick reading: system sans-serif text, moderate hea
 
 Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links are omitted rather than rendered as dead links. `name` supplies page titles and Person structured metadata. `researchReviewedOn` records the date of the latest research-content review, rather than an experiment date or claim of live monitoring. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.
 
-Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. Add verified languages to `programmingLanguages`; do not infer them from a project topic. A public email is visible to everyone. No contact form or data collection is included.
+Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. `programmingLanguages` supplies the Programming list; `skills` holds concrete Machine Learning and Scientific Computing / Research Workflows tools. List only tools verified from the existing work, without adding proficiency ratings. A public email is visible to everyone. No contact form or data collection is included.
+
+### Education and exchange coursework
+
+`profile.education` describes the XJTU undergraduate degree. `profile.exchangeEducation` separately records Notre Dame's Non-degree Exchange Student role, undergraduate exchange level, August-December 2025 dates, Fall 2025 term, semester GPA, credits, and course records. `semesterGpa: "3.917/4.0"` applies only to this 12-credit Notre Dame semester; it is neither an XJTU GPA nor a cumulative undergraduate GPA. Keep RA and iSURE entries in `experience` instead of merging them with education.
+
+Each exchange course has `name`, `code`, `level`, `grade`, and `cvSelected`. The website shows all four confirmed grades: graduate-level Computer Vision (CSE 60535, A), undergraduate Natural Language Processing (CSE 40657, A), Computer Graphics (CSE 40166, A), and Human Computer Interaction (CSE 40424, A−). The first three are selected for the compact PDF coursework line. One graduate-level course does not make the owner a graduate student.
+
+### Course project
+
+`src/data/coursework.json` and `coursework.ts` keep approved coursework separate from research projects and publication citations. `CourseworkProjects.astro` renders the compact Driving Coach entry, and the PDF generator reads the same title, term, instructor, and two contribution bullets. The entry identifies Computer Vision at Notre Dame in Fall 2025, taught by Prof. Adam Czajka.
+
+Driving Coach adapted an existing YOLOv1-style detector with a pretrained ResNet-18 backbone for BDD100K scenes. Its unseen Shenzhen highway-video evaluation was qualitative. Do not add mAP/accuracy claims, imply a new architecture, or describe the discussed but unimplemented local lane-geometry scheme as a delivered feature. `repository` remains `null` while no public project-code destination is confirmed. The October 28 request approves this specific course project; unrelated coursework and private reports remain excluded.
 
 ### Research lines
 
@@ -121,7 +136,7 @@ Edit `src/data/projects.json`. Each published record generates `/projects/<slug>
 - `takeaway`, `scope`, `resultsNote`, and `limitations`: the main observation, study scope, interpretation, and limits. Keep the engineering pilot and preliminary screening labels next to their evidence.
 - `date`: the actual evidence snapshot or study date; do not substitute a deployment date.
 - `reviewedOn`: optional date of the latest status/content review, kept distinct from `date` and from when an experiment ran.
-- `cvSummary`: a concise, bounded research description shared by the HTML CV and the optional PDF generator.
+- `cvSummary`: a concise contribution-focused research description shared by the HTML CV and the optional PDF generator. Lead with the actual implementation, comparison, execution, or analysis; retain detailed interpretation and material limitations on the project page.
 - `cvSelected`: controls individual case-study inclusion in the HTML and PDF CV. Earlier work can remain on the website and in a line's short historical summary with `cvSelected: false`.
 - `dataFile`: an optional public CSV URL for the approved plotted measurements; `references`: source attribution with optional notes about what each source establishes.
 - `detailsTodo`: remaining information needed for the project record.
@@ -134,7 +149,7 @@ Edit `src/data/projects.json`. Each published record generates `/projects/<slug>
 
 The current representation entry at `/projects/pretrained-atomistic-representations/` describes reduced native Atom-JEPA QM9 comparisons and the preparation of a crystal-property extension. Pretraining effects depend on budget and optimization seed; no complete paper reproduction, universal JEPA advantage, or unseen-material transfer is claimed. The recent completed `/projects/controlled-physical-response/` study concerns synthetic hysteresis and SSM/GRU controls, not a validated real-material simulator. The earlier CG and MACE-water URLs remain available as archived explorations with their negative and task-dependent observations.
 
-The ongoing `/projects/polymer-density-screening/` workflow connects classical RadonPy/GAFF2 preparation, MACE simulation, and reference comparison. Its existing approved September SVG/PNG figure and CSV values remain a historical three-polymer snapshot, not current campaign totals. The reference temperature is owner-confirmed as 300 K; phase, crystallinity, molecular weight, tacticity, preparation history, and other reference uncertainties still limit comparison. The GPU resource study retains its original engineering scope. UMA remains subordinate at `/projects/uma-fairchem-polymer-workflow/`, with no validated UMA property result; its HTML schematic illustrates processing stages. Keep the original UMA elastic-response workflow distinct from later Tg/density development. Coursework, private research reports, and unpublished numerical results or figures are not included. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built.
+The ongoing `/projects/polymer-density-screening/` workflow connects classical RadonPy/GAFF2 preparation, MACE simulation, and reference comparison. Its existing approved September SVG/PNG figure and CSV values remain a historical three-polymer snapshot, not current campaign totals. The reference temperature is owner-confirmed as 300 K; phase, crystallinity, molecular weight, tacticity, preparation history, and other reference uncertainties still limit comparison. The GPU resource study retains its original engineering scope. UMA remains subordinate at `/projects/uma-fairchem-polymer-workflow/`, with no validated UMA property result; its HTML schematic illustrates processing stages. Keep the original UMA elastic-response workflow distinct from later Tg/density development. Only the specifically approved Driving Coach coursework summary is included separately; unrelated coursework, private research reports, and unpublished numerical results or figures remain excluded. If no records are published, the empty `/projects/` route uses `noindex` and detail routes are not built.
 
 When adding new records, note that `published: false` controls rendered output only. Confidential drafts must stay outside public source and public Git history.
 
@@ -153,7 +168,7 @@ python3 -m venv .venv-cv
 npm run validate
 ```
 
-Running the script explicitly overwrites `public/cv.pdf`; it never runs during website builds. Python is not required for Cloudflare Pages. After editing profile, research, research-line, project, or publication data, regenerate the PDF and visually inspect all pages, especially after adding content that changes pagination. Commit both the data and the PDF. Research sections and page division follow the shared research-line groups and `cvSelected` records rather than a hardcoded count of entries. The current CV includes five individual case studies and short historical line summaries, preserving readable type size.
+Running the script explicitly overwrites `public/cv.pdf`; it never runs during website builds. Python is not required for Cloudflare Pages. After editing profile, exchange-course, coursework-project, research, research-line, project, or publication data, regenerate the PDF and visually inspect all pages, especially after adding content that changes pagination. Commit both the data and the PDF. Research sections and page division follow the shared research-line groups and `cvSelected` records rather than a hardcoded count of entries. The CV draws five individual research case studies and short line histories from the research data, plus the separately approved course project and Notre Dame exchange education. Keep the generated document to a readable two-page layout, with education, research contributions, coursework, and concrete skills; check pagination and links after regeneration.
 
 You may instead replace `public/cv.pdf` with an independently prepared CV, but then maintain its consistency with the HTML manually and do not run the generator over it. The current `cvIsDraft` value is `false`: the core education dates, RA start date, study level, and programming languages have been confirmed. Optional LinkedIn/degree-abbreviation details do not block the CV. Set it back to `true` when preparing an incomplete revision, then regenerate or replace the PDF. Remove the PDF's `X-Robots-Tag: noindex` rule in `public/_headers` only if you want it indexed. The HTML CV also has a print stylesheet.
 

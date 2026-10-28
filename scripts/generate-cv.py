@@ -19,7 +19,7 @@ def read_data(name):
     return json.loads((ROOT / 'src' / 'data' / name).read_text())
 
 profile = read_data('profile.json')
-themes = read_data('research.json')
+coursework = [project for project in read_data('coursework.json') if project.get('published') is True]
 projects = [project for project in read_data('projects.json') if project.get('published') is True]
 research_lines = read_data('research-lines.json')
 publications = read_data('publications.json')
@@ -42,6 +42,7 @@ styles = {
     'name': ParagraphStyle('name', fontName='Times-Roman', fontSize=30, leading=34, textColor=INK, spaceAfter=5),
     'identity': ParagraphStyle('identity', fontName='Helvetica', fontSize=10.5, leading=15, textColor=BODY, spaceAfter=5),
     'body': ParagraphStyle('body', fontName='Helvetica', fontSize=9.7, leading=13.3, textColor=BODY, spaceAfter=3),
+    'bullet': ParagraphStyle('bullet', fontName='Helvetica', fontSize=9.7, leading=13.3, textColor=BODY, leftIndent=11, firstLineIndent=0, bulletIndent=1, spaceAfter=4),
     'title': ParagraphStyle('title', fontName='Helvetica-Bold', fontSize=10, leading=13.5, textColor=INK, spaceAfter=3),
     'section': ParagraphStyle('section', fontName='Times-Roman', fontSize=14, leading=18, textColor=INK, spaceBefore=9, spaceAfter=5, keepWithNext=True),
     'line': ParagraphStyle('line', fontName='Helvetica-Bold', fontSize=11, leading=15, textColor=INK, spaceBefore=5, spaceAfter=4, keepWithNext=True),
@@ -58,7 +59,12 @@ def add(text, style='body'):
     content.append(para(text, style))
 
 def e(text):
-    return escape(str(text).replace('\u2011', '-').replace('\u2013', '-').replace('\u2014', '-'))
+    return escape(str(text).replace('\u2011', '-').replace('\u2013', '-').replace('\u2014', '-').replace('\u2212', '-'))
+
+def dated_heading(title, date):
+    row = Table([[para(e(title), 'title'), para(e(date), 'date')]], colWidths=[PAGE_WIDTH * .64, PAGE_WIDTH * .36], hAlign='LEFT')
+    row.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'TOP'), ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 0), ('TOPPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 0)]))
+    return row
 
 if profile['cvIsDraft']:
     add('CURRICULUM VITAE / DRAFT - TODO fields remain', 'meta')
@@ -77,16 +83,28 @@ content.extend([Spacer(1, 6), HRFlowable(width='100%', thickness=0.7, color=LINE
 
 edu = profile['education']
 add('Education', 'section')
-add(e(edu['institution'] or 'TODO: Institution'), 'title')
-add(e(edu['level'] + ' | ' + edu['background']))
+content.append(dated_heading(edu['institution'] or 'TODO: Institution', edu['dates'] or 'TODO: Dates'))
+add(e(edu['degree'] + ' studies | ' + edu['background']))
 if edu.get('program'):
     add(e(edu['program']))
-add(e(edu['dates'] or 'TODO: Enrollment and expected graduation dates'), 'body' if edu['dates'] else 'todo')
+
+exchange = profile.get('exchangeEducation')
+if exchange:
+    content.append(Spacer(1, 5))
+    block = [
+        dated_heading(exchange['institution'], exchange['dates']),
+        para(e(exchange['role'] + (' (undergraduate)' if exchange['level'] == 'Undergraduate exchange' else '') + ' | ' + exchange['term'])),
+        para('Semester GPA: <b>' + e(exchange['semesterGpa']) + '</b>, ' + e(exchange['credits']) + ' credits'),
+    ]
+    selected = [course for course in exchange['courses'] if course.get('cvSelected')]
+    course_labels = [e(course['name']) + (' - graduate level' if course['level'] == 'Graduate level' else '') + ' (' + e(course['grade']) + ')' for course in selected]
+    if course_labels:
+        block.append(para('<b>Selected coursework:</b> ' + '; '.join(course_labels) + '.'))
+    content.append(KeepTogether(block))
 
 add('Academic experience', 'section')
 for index, entry in enumerate(profile['experience']):
-    row = Table([[para(e(entry['role']), 'title'), para(e(entry['dates']), 'date')]], colWidths=[PAGE_WIDTH * .64, PAGE_WIDTH * .36], hAlign='LEFT')
-    row.setStyle(TableStyle([('VALIGN', (0, 0), (-1, -1), 'TOP'), ('LEFTPADDING', (0, 0), (-1, -1), 0), ('RIGHTPADDING', (0, 0), (-1, -1), 0), ('TOPPADDING', (0, 0), (-1, -1), 0), ('BOTTOMPADDING', (0, 0), (-1, -1), 0)]))
+    row = dated_heading(entry['role'], entry['dates'])
     block = [row, para(e(entry['institution']))]
     if entry['group']:
         block.append(para(e(entry['group'].replace(' · ', ' | ')), 'meta'))
@@ -97,9 +115,6 @@ for index, entry in enumerate(profile['experience']):
     if index < len(profile['experience']) - 1:
         block.append(Spacer(1, 5))
     content.append(KeepTogether(block))
-
-add('Research interests', 'section')
-add('; '.join(e(theme['title']) for theme in themes) + '.')
 
 for line_index, line in enumerate(research_lines):
     # Research lines define the hierarchy and page divisions shared with the site.
@@ -124,6 +139,21 @@ for line_index, line in enumerate(research_lines):
         ]
         content.append(KeepTogether(block))
 
+if coursework:
+    add('Selected course project', 'section')
+    for project in coursework:
+        title = e(project['title'])
+        if project.get('repository'):
+            title = f'<link href="{e(project["repository"])}">{title}</link>'
+        block = [
+            para(title, 'title'),
+            para(e(project['course'] + ', ' + project['institution'] + ' | ' + project['term']), 'meta'),
+            para(e('Instructor: ' + project['instructor']), 'meta'),
+        ]
+        block.extend(Paragraph(e(bullet), styles['bullet'], bulletText='\u2022') for bullet in project['bullets'])
+        block.append(Spacer(1, 3))
+        content.append(KeepTogether(block))
+
 if publications:
     add('Publications & presentations', 'section')
     for output in publications:
@@ -135,12 +165,12 @@ if publications:
         add(citation)
 
 add('Technical skills', 'section')
-for skill in profile['skills']:
-    add('<b>' + e(skill['title']) + ':</b> ' + e(skill['description']))
 if profile['programmingLanguages']:
-    add('<b>Programming languages:</b> ' + e(', '.join(profile['programmingLanguages'])))
+    add('<b>Programming:</b> ' + e(', '.join(profile['programmingLanguages'])))
 else:
     add('TODO: Confirm programming languages to list', 'todo')
+for skill in profile['skills']:
+    add('<b>' + e(skill['title']) + ':</b> ' + e(skill['description']))
 
 
 def footer(canvas, doc):

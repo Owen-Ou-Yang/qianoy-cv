@@ -4,6 +4,8 @@ import PageHeader from '../components/PageHeader.astro';
 import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
+import CourseworkProjects from '../components/CourseworkProjects.astro';
+import { coursework } from '../data/coursework';
 import { profile, researchThemes } from '../data/site';
 ---
 <BaseLayout title="About" description="Academic background in Artificial Intelligence and research interests in machine learning, materials, and molecular simulation.">
@@ -14,6 +16,7 @@ import { profile, researchThemes } from '../data/site';
   </div>
   <section class="section section-grid"><div><h2>Education</h2></div><Education detailed /></section>
   <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
+  {coursework.length > 0 && <section class="section section-grid"><div><h2>Course project</h2></div><CourseworkProjects /></section>}
   <section class="section section-grid"><div><h2>Research interests</h2></div><ul class="interest-list">{researchThemes.map(theme => <li><a href={`/research/#${theme.id}`}>{theme.title}</a></li>)}</ul></section>
   <section class="section section-grid"><div><h2>Skills</h2></div><Skills /></section>
   <div class="actions"><a class="button" href="/cv/">View curriculum vitae <span aria-hidden="true">↗</span></a><a href="/contact/">Get in touch</a></div>

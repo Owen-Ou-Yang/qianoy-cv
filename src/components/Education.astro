@@ -1,16 +1,30 @@
 ---
 import { profile } from '../data/site';
 import Todo from './Todo.astro';
-interface Props { detailed?: boolean; }
-const { detailed = false } = Astro.props;
+interface Props { detailed?: boolean; compact?: boolean; }
+const { detailed = false, compact = false } = Astro.props;
+const exchange = profile.exchangeEducation;
 ---
-<div>
-  <p class="education-title">{profile.education.institution ?? <Todo text="TODO: Institution" />}</p>
+<div class="education-list">
+  <article>
+  <h3 class="education-title">{profile.education.institution ?? <Todo text="TODO: Institution" />}</h3>
   <p>{profile.education.level} · {profile.education.background}</p>
-  {profile.education.program && <p>{profile.education.program}</p>}
+  {!compact && profile.education.program && <p>{profile.education.program}</p>}
   {detailed && <dl class="education-details space-top">
     <div><dt>Level</dt><dd>{profile.education.degree ?? <Todo text="TODO: Study level" />}</dd></div>
     <div><dt>Dates</dt><dd>{profile.education.dates ?? <Todo text="TODO: Enrollment and expected graduation dates" />}</dd></div>
   </dl>}
   {!detailed && profile.education.dates && <p class="muted">{profile.education.dates}</p>}
+  </article>
+  {exchange && <article id="notre-dame-exchange" class="exchange-education">
+    <h3 class="education-title">{exchange.institution}</h3>
+    <p>{exchange.role} · {exchange.level}</p>
+    <p class="muted">{exchange.term}{!compact && <> · {exchange.dates}</>}</p>
+    <p class="semester-gpa"><strong>Semester GPA: {exchange.semesterGpa}</strong> · {exchange.credits} credits</p>
+    {detailed ? <div class="course-table-wrap"><table class="course-table">
+      <caption>{exchange.term} exchange coursework and grades</caption>
+      <thead><tr><th scope="col">Course</th><th scope="col">Level</th><th scope="col">Grade</th></tr></thead>
+      <tbody>{exchange.courses.map(course => <tr><th scope="row">{course.name}<span class="course-code">{course.code}</span></th><td>{course.level}</td><td>{course.grade}</td></tr>)}</tbody>
+    </table></div> : <p class="academic-course-highlight">Graduate-level Computer Vision (A){compact && <> · <a href="/cv/#education">Coursework and academic record <span aria-hidden="true">→</span></a></>}</p>}
+  </article>}
 </div>

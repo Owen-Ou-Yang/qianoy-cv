@@ -5,6 +5,8 @@ import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import ProfileLinks from '../components/ProfileLinks.astro';
+import CourseworkProjects from '../components/CourseworkProjects.astro';
+import { coursework } from '../data/coursework';
 import { displayName, profile, researchThemes } from '../data/site';
 import { outputs, softwareOutputs } from '../data/outputs';
 import { researchLines } from '../data/research-lines';
@@ -15,11 +17,12 @@ const cvLines = researchLines.map(line => ({ ...line, stages: line.stages.filter
   <div class="actions space-bottom"><a class="button" href="/cv.pdf" download>{profile.cvIsDraft ? 'Download draft CV (PDF)' : 'Download CV (PDF)'} <span aria-hidden="true">↓</span></a><a href="/contact/">Contact details</a></div>
   {profile.cvIsDraft && <p class="draft-note">Draft CV. Outstanding factual fields are marked below.</p>}
   <ProfileLinks />
-  <section class="section section-grid space-top"><div><h2>Education</h2></div><Education detailed /></section>
+  <section id="education" class="section section-grid space-top"><div><h2>Education</h2></div><Education detailed /></section>
   <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
-  <section class="section section-grid"><div><h2>Research interests</h2></div><ul>{researchThemes.map(theme => <li>{theme.title}</li>)}</ul></section>
   {softwareOutputs.length > 0 && <section class="section section-grid"><div><h2>Research software & workflows</h2></div><div class="compact-outputs">{softwareOutputs.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.summary}</p><p class="muted">{project.output?.role}</p></article>)}<p><a href="/publications/">Full research output list <span aria-hidden="true">↗</span></a></p></div></section>}
   {cvLines.length > 0 && <section class="section section-grid"><div><h2>Selected research</h2></div><div class="cv-research-lines">{cvLines.map(line => <section class="cv-research-line" aria-labelledby={`cv-${line.id}`}><h3 id={`cv-${line.id}`}><a href={`/research/#${line.id}`}>{line.title}</a></h3><p class="cv-line-summary">{line.cvSummary}</p><div class="compact-outputs">{line.stages.map(({ project }) => <article><h4><a href={`/projects/${project.slug}/`}>{project.title}</a></h4><p>{project.cvSummary ?? project.summary}</p><p class="muted">{project.status}{project.date && <> · {project.date}</>}</p></article>)}</div></section>)}</div></section>}
+  {coursework.length > 0 && <section class="section section-grid"><div><h2>Course project</h2></div><CourseworkProjects /></section>}
+  <section class="section section-grid"><div><h2>Research interests</h2></div><ul>{researchThemes.map(theme => <li>{theme.title}</li>)}</ul></section>
   <section class="section section-grid"><div><h2>Technical skills</h2></div><Skills /></section>
   {outputs.length > 0 && <section class="section section-grid"><div><h2>Publications & presentations</h2></div><ul>{outputs.map(output => <li>{output.title} ({output.type})</li>)}</ul></section>}
 </BaseLayout>

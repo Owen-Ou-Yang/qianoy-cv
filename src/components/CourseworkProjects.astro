@@ -1,0 +1,12 @@
+---
+import { coursework } from '../data/coursework';
+---
+<div class="coursework-list">
+  {coursework.map(project => <article class="coursework-entry" id={project.id}>
+    <h3>{project.title}</h3>
+    <p class="coursework-meta">{project.course}, {project.institution} · {project.term}</p>
+    <p class="coursework-meta">Instructor: {project.instructor}</p>
+    <ul>{project.bullets.map(bullet => <li>{bullet}</li>)}</ul>
+    {project.repository && <p><a href={project.repository}>Project code <span aria-hidden="true">↗</span></a></p>}
+  </article>)}
+</div>
