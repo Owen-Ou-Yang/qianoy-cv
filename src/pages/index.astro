@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResearchLine from '../components/ResearchLine.astro';
-import { displayName, profile, formatReviewDate } from '../data/site';
+import { displayName, profile } from '../data/site';
 import { researchLines } from '../data/research-lines';
 ---
 <BaseLayout title="Home" description={profile.metaDescription}>
@@ -9,7 +9,6 @@ import { researchLines } from '../data/research-lines';
     <h1 id="intro-heading">{displayName}</h1>
     <div class="affiliations">{profile.overview.affiliations.map(line => <p>{line}</p>)}</div>
     <p class="hero-copy">{profile.overview.summary}</p>
-    {profile.researchReviewedOn && <p class="review-date">Research status reviewed <time datetime={profile.researchReviewedOn}>{formatReviewDate(profile.researchReviewedOn)}</time></p>}
     <div class="actions profile-actions">
       <a class="button" href="/cv.pdf">{profile.cvIsDraft ? 'CV (PDF · draft)' : 'CV (PDF)'} <span aria-hidden="true">↓</span></a>
       {profile.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
