@@ -163,6 +163,7 @@
   .cv-institution { margin-bottom: .4rem; }
   .cv-topic { margin-top: .85rem; }
   .cv-topic h4 { margin-bottom: .25rem; }
+  .cv-topic p + p { margin-top: .55rem; }
   .cv-coursework { font-size: .9375rem; }
   .cv-skills > div { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
   .cv-skills > div + div { margin-top: .4rem; }

@@ -29,7 +29,7 @@ import { cv, cvEducation, cvResearch, cvCourseProjects } from '../data/cv';
         {(index === 0 || cvResearch[index - 1].institution !== entry.institution) && <h3 class="cv-institution">{entry.institution}</h3>}
         <div class="cv-entry-heading"><p class="cv-role">{entry.role}</p><p class="cv-date">{entry.dates}</p></div>
         {entry.group && <p class="cv-affiliation">{entry.group}</p>}
-        {entry.topics.map(topic => <section id={topic.id} class="cv-topic" aria-labelledby={`${topic.id}-heading`}><h4 id={`${topic.id}-heading`}>{topic.title}</h4><p>{topic.paragraph}</p></section>)}
+        {entry.topics.map(topic => <section id={topic.id} class="cv-topic" aria-labelledby={`${topic.id}-heading`}><h4 id={`${topic.id}-heading`}>{topic.title}</h4>{topic.paragraphs.map(paragraph => <p>{paragraph}</p>)}</section>)}
       </article>)}
     </section>
     <section id="course-project" class="cv-section" aria-labelledby="cv-course-heading">

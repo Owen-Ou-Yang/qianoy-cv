@@ -15,13 +15,19 @@
         {
           "id": "polymer-simulation",
           "title": "Machine learning for polymer simulation",
-          "paragraph": "Compared preliminary polymer-density estimates from MACE simulations with reference data. Investigated GPU-memory limitations in UMA / FAIR-Chem calculations and compared runtime, GPU memory use, and GPU-hours across selected MACE runs.",
+          "paragraphs": [
+            "Investigated machine-learning interatomic potentials for polymer-property calculations. Initial work with UMA / FAIR-Chem explored finite-strain calculations of polymer elastic response, with GPU-memory constraints limiting the simulations.",
+            "With MACE, evaluated preliminary polymer-density estimates from molecular dynamics at 300 K following classical structure preparation. Compared the estimates with reference data and examined sampling and differences in physical conditions when interpreting the results. Also compared GPU memory use, runtime, and GPU-hours across selected MACE runs to assess the computational cost of these calculations."
+          ],
           "sourceProjects": ["uma-fairchem-polymer-workflow", "polymer-density-screening", "mlip-gpu-resources"]
         },
         {
           "id": "molecular-representations",
           "title": "Representation learning for molecular dynamics",
-          "paragraph": "Studied JEPA-based representations for coarse-grained polymers and atomistic water. In the water experiments, used pretrained MACE features and atomic velocities to predict short-time atomic displacements, and compared temporal JEPA training with direct supervision.",
+          "paragraphs": [
+            "Investigated how molecular representations affect physical prediction in coarse-grained polymers. Compared inputs describing local packing and chain geometry, and evaluated temporal-learning models against persistence and linear autoregressive baselines.",
+            "Moved to atomistic water to separate the effects of input information from the training objective. Used pretrained MACE features and atomic velocities for short-time displacement prediction, comparing temporal JEPA training with direct physical supervision. Evaluated the learned representations through the same downstream prediction task, examining whether improvements in the training objective translated into lower displacement errors."
+          ],
           "sourceProjects": ["cg-jepa-polymer-representations", "mace-jepa-molecular-dynamics"]
         }
       ]

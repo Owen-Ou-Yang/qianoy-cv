@@ -5,7 +5,7 @@ import { profile } from './site';
 interface ResearchTopic {
   id: string;
   title: string;
-  paragraph: string;
+  paragraphs: string[];
   sourceProjects: string[];
 }
 interface CVSelection {

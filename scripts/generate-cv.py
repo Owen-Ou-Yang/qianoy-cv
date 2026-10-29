@@ -57,6 +57,12 @@ def add(text, style='body'):
     content.append(para(text, style))
 
 
+def research_topic(topic):
+    return [para(e(topic['title']), 'topic'), *[
+        para(e(paragraph)) for paragraph in topic['paragraphs']
+    ]]
+
+
 def dated_heading(title, date, style='title'):
     row = Table([[para(e(title), style), para(e(date), 'date')]], colWidths=[PAGE_WIDTH * .68, PAGE_WIDTH * .32], hAlign='LEFT')
     row.setStyle(TableStyle([
@@ -131,10 +137,10 @@ for index, entry in enumerate(selection['researchExperience']):
     topics = entry.get('topics', [])
     if topics:
         first, *remaining = topics
-        heading.extend([para(e(first['title']), 'topic'), para(e(first['paragraph']))])
+        heading.extend(research_topic(first))
         content.append(KeepTogether(heading))
         for topic in remaining:
-            content.append(KeepTogether([para(e(topic['title']), 'topic'), para(e(topic['paragraph']))]))
+            content.append(KeepTogether(research_topic(topic)))
     else:
         content.append(KeepTogether(heading))
     previous_institution = record['institution']

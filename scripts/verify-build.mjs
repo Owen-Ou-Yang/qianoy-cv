@@ -136,7 +136,13 @@ for (const entry of curatedCv.researchExperience) {
   let position = -1;
   for (const topic of entry.topics) {
     const next = block.indexOf(topic.title);
-    assert(next > position && block.includes(topic.paragraph), `CV merged topic missing or reordered: ${topic.id}`);
+    assert(next > position, `CV merged topic missing or reordered: ${topic.id}`);
+    const topicBlock = block.match(new RegExp(`<section\\b[^>]*id="${topic.id}"[^>]*>([^]*?)<\\/section>`))?.[1];
+    assert(topicBlock, `CV research topic missing: ${topic.id}`);
+    assert(Array.isArray(topic.paragraphs) && topic.paragraphs.length > 0, `CV research topic needs explicit paragraphs: ${topic.id}`);
+    const paragraphs = [...topicBlock.matchAll(/<p>([^]*?)<\/p>/g)].map(match => match[1]);
+    assert.deepEqual(paragraphs, topic.paragraphs, `CV research paragraphs must match the selected text and order: ${topic.id}`);
+    assert(!/<(?:ul|ol|li)\b/.test(topicBlock), `CV research must use natural paragraphs without bullets: ${topic.id}`);
     position = next;
   }
 }
