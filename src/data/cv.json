@@ -15,13 +15,13 @@
         {
           "id": "polymer-simulation",
           "title": "Machine learning for polymer simulation",
-          "paragraph": "Participated in polymer simulations using UMA / FAIR-Chem and MACE, including preliminary density calculations and comparisons with reference data. Examined GPU-memory constraints and compared runtime, memory use, and allocated GPU time in selected MACE runs.",
+          "paragraph": "Compared preliminary polymer-density estimates from MACE simulations with reference data. Investigated GPU-memory limitations in UMA / FAIR-Chem calculations and compared runtime, GPU memory use, and GPU-hours across selected MACE runs.",
           "sourceProjects": ["uma-fairchem-polymer-workflow", "polymer-density-screening", "mlip-gpu-resources"]
         },
         {
           "id": "molecular-representations",
           "title": "Representation learning for molecular dynamics",
-          "paragraph": "Explored learned representations for coarse-grained polymers and MACE-based atomistic water. Used the simpler water setting to examine how input information and temporal training affect physical prediction, with comparisons against simple baselines. Examined cases where lower training loss did not consistently improve physical predictions.",
+          "paragraph": "Studied JEPA-based representations for coarse-grained polymers and atomistic water. In the water experiments, used pretrained MACE features and atomic velocities to predict short-time atomic displacements, and compared temporal JEPA training with direct supervision.",
           "sourceProjects": ["cg-jepa-polymer-representations", "mace-jepa-molecular-dynamics"]
         }
       ]
@@ -39,7 +39,6 @@
     }
   ],
   "skills": [
-    { "label": "Programming", "items": ["Python", "C++"] },
-    { "label": "Tools", "items": ["Notre Dame CRC computing environment"] }
+    { "label": "Programming", "items": ["Python", "C++"] }
   ]
 }
