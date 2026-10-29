@@ -1,0 +1,45 @@
+{
+  "education": [
+    { "id": "xjtu", "source": "education" },
+    {
+      "id": "notre-dame-exchange",
+      "source": "exchangeEducation",
+      "courseCodes": ["CSE 60535", "CSE 40657", "CSE 40166"]
+    }
+  ],
+  "researchExperience": [
+    {
+      "id": "notre-dame-ra",
+      "profileRole": "Research Assistant",
+      "topics": [
+        {
+          "id": "polymer-simulation",
+          "title": "Machine learning for polymer simulation",
+          "paragraph": "Participated in polymer simulations using UMA / FAIR-Chem and MACE, including preliminary density calculations and comparisons with reference data. Examined GPU-memory constraints and compared runtime, memory use, and allocated GPU time in selected MACE runs.",
+          "sourceProjects": ["uma-fairchem-polymer-workflow", "polymer-density-screening", "mlip-gpu-resources"]
+        },
+        {
+          "id": "molecular-representations",
+          "title": "Representation learning for molecular dynamics",
+          "paragraph": "Explored learned representations for coarse-grained polymers and MACE-based atomistic water. Used the simpler water setting to examine how input information and temporal training affect physical prediction, with comparisons against simple baselines. Examined cases where lower training loss did not consistently improve physical predictions.",
+          "sourceProjects": ["cg-jepa-polymer-representations", "mace-jepa-molecular-dynamics"]
+        }
+      ]
+    },
+    {
+      "id": "notre-dame-isure",
+      "profileRole": "Summer Research Participant (iSURE)",
+      "topics": []
+    }
+  ],
+  "courseProjects": [
+    {
+      "id": "driving-coach",
+      "paragraph": "Adapted an existing YOLOv1-style detector with a pretrained ResNet-18 backbone for lane and traffic-object detection in BDD100K driving scenes. Used an unseen Shenzhen highway video for qualitative evaluation and analyzed errors involving reflections, lane geometry, and traffic signs."
+    }
+  ],
+  "skills": [
+    { "label": "Programming", "items": ["Python", "C++"] },
+    { "label": "Tools", "items": ["Notre Dame CRC computing environment"] }
+  ]
+}

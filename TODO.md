@@ -1,6 +1,6 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-10-28; research-status review remains dated 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. Five case studies are individually selected for the CV, with earlier representation work summarized in the line introduction. The specifically approved Driving Coach course project is included separately; unrelated coursework and project results remain excluded.
+Updated on 2026-10-29; underlying research-status records remain dated 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. The application CV independently selects two merged research topics under the RA role; project publication/status records no longer determine its contents or order. The specifically approved Driving Coach course project is included separately; unrelated coursework and project results remain excluded.
 
 ## Confirmed and incorporated
 
@@ -13,20 +13,20 @@ Updated on 2026-10-28; research-status review remains dated 2026-10-26. Core pro
 - [x] Website course grades: graduate-level Computer Vision (CSE 60535, A); undergraduate NLP (CSE 40657, A), Computer Graphics (CSE 40166, A), and HCI (CSE 40424, A−). Select the first three for the compact PDF coursework line.
 - [x] Add the approved Driving Coach course project, Fall 2025 Computer Vision with Prof. Adam Czajka, using shared coursework data and two bounded contribution bullets.
 - [x] Notre Dame iSURE summer research: July - September 2026.
-- [x] Programming: Python and C++. Concrete verified tools cover PyTorch, torchvision, TensorBoard, NumPy, SciPy, Matplotlib, LAMMPS, ASE, MACE, UMA / FAIR-Chem, and CRC/SGE workflows. No proficiency rating is assumed.
+- [x] Conservative CV skills: Python, C++, and directly owner-confirmed CRC experience. Other tools in the unchanged About/research records are not taken as proof of personal proficiency.
 - [x] CRC experience and experience with UMA/FAIR-Chem and MACE. Omit systems/networking experience from the academic profile at the owner's request.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
 - [x] Keep two shared research lines while updating their current direction, earlier stages, status-review date, and links from verified project records.
 - [x] Highlight current pretrained atomistic-representation research and the ongoing density workflow on the homepage. Keep UMA subordinate, with status "Resource-limited exploration" and no validated property results.
-- [x] Retain earlier CG and MACE-water pages as archived explorations; MACE-water closed on 9 October 2026. Summarize them in the CV line history without duplicating individual CV entries.
+- [x] Retain earlier CG and MACE-water pages as archived explorations; MACE-water closed on 9 October 2026. Merge their selected questions into the molecular-dynamics representation topic without listing every experiment as a CV entry.
 - [x] Add bounded summaries of native QM9 budget comparisons, crystal-study preparation, and the completed SSM/GRU synthetic physical-response study, without releasing new numerical results or figures.
 - [x] Keep all seven project URLs, with related-work links within the same line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
-- [x] Use shared `cvSummary` descriptions and `cvSelected` flags in the HTML and PDF CV; five case studies remain individually selected.
+- [x] Use an explicit `cv.json` selection and `cv.ts` interface shared by HTML and PDF, independent of website `published`, project `cvSelected`, research-line order, and pagination.
 - [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep unrelated coursework excluded.
 - [x] Add a local sharing preview image without introducing client JavaScript.
-- [x] Regenerate the PDF using the same records as the HTML CV; remove the obsolete draft/TODO notices for confirmed core fields.
+- [x] Select the same compact paragraphs and confirmed facts for the HTML and generated PDF; use Education, Research Experience, Course Project, and Skills without the old top label, broad slogan, status labels, or long bullets.
 
 ## Optional details, not blockers
 
@@ -34,7 +34,7 @@ Edit `src/data/profile.json` if you want to add:
 
 - [ ] LinkedIn URL, or omit it. It is omitted from all public profile links while unavailable.
 - [ ] Official English degree designation (e.g. only if confirmed by the institution). Current wording states undergraduate studies and the major without claiming B.Eng./B.Sc.
-- [ ] Additional verified tools, frameworks, or skills and proficiency, if useful.
+- [ ] Add further CV tools only after the owner confirms being able to use and discuss them; imports, dependencies, and AI-assisted execution alone are insufficient.
 
 The Notre Dame exchange-semester GPA is owner-confirmed. No XJTU/cumulative GPA, awards, publications, or service entries are assumed or required. `src/data/publications.json` intentionally remains empty.
 
@@ -50,7 +50,7 @@ The Notre Dame exchange-semester GPA is owner-confirmed. No XJTU/cumulative GPA,
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep line narratives, `cvSelected`, `cvSummary`, workflow descriptions, figures, CSV files, attribution, and limits consistent; regenerate the PDF and run `npm run validate` after content changes. The October 26 update describes research status and methods without releasing new private numerical results, figures, or raw reports. The October 28 revision adds owner-confirmed exchange grades and the specifically approved course-project summary, and makes research descriptions contribution-focused without changing their status or results. Existing September density figures and measurements remain historical snapshots, not a current campaign total.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep website narratives, descriptions, figures, CSV files, attribution, and limits consistent. Maintain CV selection separately in `cv.json`; regenerate the PDF and run `npm run validate` when its selected text or shared facts change. The October 26 update describes research status and methods without releasing new private numerical results, figures, or raw reports. The October 28 revision adds owner-confirmed exchange grades and the specifically approved course-project summary, and makes research descriptions contribution-focused without changing their status or results. Existing September density figures and measurements remain historical snapshots, not a current campaign total. The October 29 CV revision conservatively merges UMA/MACE/property-resource work and CG/MACE-water work into two RA topics, omits Atom-JEPA/QM9, synthetic state-space, and crystal-extension entries from the CV, and keeps their research records intact. Driving Coach is a single paragraph in the CV. Target a readable one-page layout without forced research-line page breaks.
 
 - [ ] Review project records weekly on Mondays at 10:00 Asia/Shanghai. When evidence changes, prepare a pending website/CV update for owner review; do not publish automatically. Stay quiet when there is no material change.
 

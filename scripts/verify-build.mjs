@@ -84,7 +84,7 @@ if (exchange) {
   for (const text of ['Academic background', 'Semester GPA', `${exchange.credits} credits`, 'Graduate-level Computer Vision (A)', 'Coursework and academic record']) {
     assert(!homeHtml.includes(text), `Homepage must keep academic-record details on the CV: ${text}`);
   }
-  for (const route of ['about/index.html', 'cv/index.html']) {
+  for (const route of ['about/index.html']) {
     const html = htmlByPath.get(path.join(root, route));
     const block = html.match(/<article\b[^>]*id="notre-dame-exchange"[^>]*>([\s\S]*?)<\/article>/)?.[1];
     const exchangeLabel = exchange.role === 'Non-degree Exchange Student' && exchange.level === 'Undergraduate exchange'
@@ -102,14 +102,56 @@ if (exchange) {
 }
 const coursework = JSON.parse(await readFile('src/data/coursework.json', 'utf8')).filter(project => project.published);
 for (const project of coursework) {
-  for (const route of ['about/index.html', 'cv/index.html']) {
+  for (const route of ['about/index.html']) {
     const html = htmlByPath.get(path.join(root, route));
     assert(html.includes(project.title) && html.includes(project.instructor), `${route}: approved course project missing`);
     if (project.repository) assert(html.includes(`href="${project.repository}"`), `${route}: public course-project code link`);
   }
 }
-for (const project of projectRecords.filter(project => project.published === true && !project.output && !project.isPlaceholder)) {
-  assert.equal(cvHtml.includes(`href="/projects/${project.slug}/"`), project.cvSelected !== false, `${project.slug}: HTML CV must honor the selected research data`);
+const curatedCv = JSON.parse(await readFile('src/data/cv.json', 'utf8'));
+const cvMain = cvHtml.match(/<main\b[^>]*>([^]*?)<\/main>/)?.[1] ?? '';
+const cvSections = [...cvMain.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]);
+assert.deepEqual(cvSections, ['Education', 'Research Experience', 'Course Project', 'Skills'], 'CV needs the four curated sections in order.');
+const selectionIds = [...curatedCv.education, ...curatedCv.researchExperience, ...curatedCv.courseProjects].map(entry => entry.id);
+assert.equal(new Set(selectionIds).size, selectionIds.length, 'Curated CV IDs must be unique.');
+for (const entry of curatedCv.education) {
+  const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
+  assert(block, `Selected CV education missing: ${entry.id}`);
+  if (entry.source === 'exchangeEducation') {
+    assert(block.includes('Undergraduate Exchange Student (non-degree)'), 'CV exchange is undergraduate/non-degree.');
+    assert(block.includes(exchange.semesterGpa) && block.includes(`${exchange.credits} credits`), 'CV retains exchange GPA and credits.');
+    for (const code of entry.courseCodes ?? []) {
+      const course = exchange.courses.find(course => course.code === code);
+      assert(course && block.includes(course.name) && block.includes(`(${course.grade})`), `Selected CV course missing: ${code}`);
+      if (course.level === 'Graduate level') assert(block.includes('graduate level'), 'CV retains the selected course level.');
+    }
+  }
+}
+for (const entry of curatedCv.researchExperience) {
+  const record = profile.experience.find(record => record.role === entry.profileRole);
+  assert(record, `Unknown selected CV role: ${entry.profileRole}`);
+  const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
+  assert(block?.includes(record.role) && block.includes(record.dates), `CV role/date mismatch: ${entry.id}`);
+  assert(!block.includes(exchange.semesterGpa), 'Exchange GPA is not a research credential.');
+  let position = -1;
+  for (const topic of entry.topics) {
+    const next = block.indexOf(topic.title);
+    assert(next > position && block.includes(topic.paragraph), `CV merged topic missing or reordered: ${topic.id}`);
+    position = next;
+  }
+}
+for (const entry of curatedCv.courseProjects) {
+  const record = coursework.find(record => record.id === entry.id);
+  assert(record, `Unknown selected CV course project: ${entry.id}`);
+  const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
+  assert(block?.includes(record.title) && block.includes(record.instructor) && block.includes(entry.paragraph), 'CV course project must use its curated paragraph and shared metadata.');
+  assert(!/<(?:ul|ol)\b/.test(block), 'CV course project must be a paragraph.');
+}
+for (const skill of curatedCv.skills) {
+  assert(cvMain.includes(skill.label) && skill.items.every(item => cvMain.includes(item)), 'CV skills must come from its explicit selection.');
+}
+for (const omitted of ['Atom-JEPA', 'QM9', 'Bouc', 'state-space', 'crystal', 'Scientific Computing / Research Workflows', 'CURRICULUM VITAE', 'Closed ', 'Displayed pilot']) {
+  assert(!cvMain.includes(omitted), `Omitted/management content leaked into CV: ${omitted}`);
 }
 for (const line of researchLines) {
   for (const stage of line.stages.filter(stage => stage.archive)) {

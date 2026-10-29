@@ -147,6 +147,26 @@
   .output-entry h3 { margin-bottom: .75rem; }
   .education-title { color: var(--ink); font-weight: 600; margin-bottom: .35rem; }
   .education-list { display: grid; gap: 1.5rem; }
+  .cv-document { max-width: 800px; margin-inline: auto; }
+  .cv-heading { padding-block: 2.25rem 1.5rem; }
+  .cv-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem 1.5rem; flex-wrap: wrap; }
+  .cv-title-row > a { font-size: .875rem; padding-block: .35rem; }
+  .cv-heading .profile-links { margin-top: .5rem; }
+  .cv-section { border-top: 1px solid var(--line); padding-block: 1.4rem; }
+  .cv-section h2 { margin-bottom: 1rem; }
+  .cv-entry + .cv-entry { margin-top: 1.1rem; }
+  .cv-entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .25rem 1.25rem; flex-wrap: wrap; }
+  .cv-entry-heading h3, .cv-institution { font-size: 1.05rem; }
+  .cv-date, .cv-affiliation { color: var(--muted); font-size: .875rem; }
+  .cv-entry > p { margin-top: .25rem; }
+  .cv-role { color: var(--ink); font-weight: 600; }
+  .cv-institution { margin-bottom: .4rem; }
+  .cv-topic { margin-top: .85rem; }
+  .cv-topic h4 { margin-bottom: .25rem; }
+  .cv-coursework { font-size: .9375rem; }
+  .cv-skills > div { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+  .cv-skills > div + div { margin-top: .4rem; }
+  .cv-skills dt { color: var(--ink); font-weight: 600; }
   .education-title { font-size: 1.05rem; }
   .semester-gpa, .academic-course-highlight { margin-top: .45rem; }
   .academic-course-highlight { font-size: .875rem; }

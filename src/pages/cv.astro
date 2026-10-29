@@ -1,28 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import Education from '../components/Education.astro';
-import Experience from '../components/Experience.astro';
-import Skills from '../components/Skills.astro';
-import ProfileLinks from '../components/ProfileLinks.astro';
-import CourseworkProjects from '../components/CourseworkProjects.astro';
-import { coursework } from '../data/coursework';
-import { displayName, profile, researchThemes } from '../data/site';
-import { outputs, softwareOutputs } from '../data/outputs';
-import { researchLines } from '../data/research-lines';
-const cvLines = researchLines.map(line => ({ ...line, stages: line.stages.filter(stage => !stage.project.output && !stage.project.isPlaceholder && stage.project.cvSelected !== false) })).filter(line => line.stages.length > 0);
+import { displayName, profile } from '../data/site';
+import { cv, cvEducation, cvResearch, cvCourseProjects } from '../data/cv';
 ---
-<BaseLayout title="Curriculum Vitae" description="Academic CV: Artificial Intelligence background and research interests in AI for materials and molecular simulation.">
-  <PageHeader eyebrow="Curriculum vitae" title={displayName} description={profile.identity} />
-  <div class="actions space-bottom"><a class="button" href="/cv.pdf" download>{profile.cvIsDraft ? 'Download draft CV (PDF)' : 'Download CV (PDF)'} <span aria-hidden="true">↓</span></a><a href="/contact/">Contact details</a></div>
-  {profile.cvIsDraft && <p class="draft-note">Draft CV. Outstanding factual fields are marked below.</p>}
-  <ProfileLinks />
-  <section id="education" class="section section-grid space-top"><div><h2>Education</h2></div><Education detailed /></section>
-  <section class="section section-grid"><div><h2>Academic experience</h2></div><Experience /></section>
-  {softwareOutputs.length > 0 && <section class="section section-grid"><div><h2>Research software & workflows</h2></div><div class="compact-outputs">{softwareOutputs.map(project => <article><h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3><p>{project.summary}</p><p class="muted">{project.output?.role}</p></article>)}<p><a href="/publications/">Full research output list <span aria-hidden="true">↗</span></a></p></div></section>}
-  {cvLines.length > 0 && <section class="section section-grid"><div><h2>Selected research</h2></div><div class="cv-research-lines">{cvLines.map(line => <section class="cv-research-line" aria-labelledby={`cv-${line.id}`}><h3 id={`cv-${line.id}`}><a href={`/research/#${line.id}`}>{line.title}</a></h3><p class="cv-line-summary">{line.cvSummary}</p><div class="compact-outputs">{line.stages.map(({ project }) => <article><h4><a href={`/projects/${project.slug}/`}>{project.title}</a></h4><p>{project.cvSummary ?? project.summary}</p><p class="muted">{project.status}{project.date && <> · {project.date}</>}</p></article>)}</div></section>)}</div></section>}
-  {coursework.length > 0 && <section class="section section-grid"><div><h2>Course project</h2></div><CourseworkProjects /></section>}
-  <section class="section section-grid"><div><h2>Research interests</h2></div><ul>{researchThemes.map(theme => <li>{theme.title}</li>)}</ul></section>
-  <section class="section section-grid"><div><h2>Technical skills</h2></div><Skills /></section>
-  {outputs.length > 0 && <section class="section section-grid"><div><h2>Publications & presentations</h2></div><ul>{outputs.map(output => <li>{output.title} ({output.type})</li>)}</ul></section>}
+<BaseLayout title="CV" description="Qian Ouyang's education, Notre Dame research experience, computer vision course project, and selected skills.">
+  <div class="cv-document">
+    <header class="cv-heading">
+      <div class="cv-title-row"><h1>{displayName}</h1><a href="/cv.pdf" download>Download PDF <span aria-hidden="true">↓</span></a></div>
+      <ul class="profile-links" aria-label="Contact and profile links">
+        {profile.email && <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>}
+        <li><a href={profile.siteUrl}>{profile.domain}</a></li>
+        {profile.github && <li><a href={profile.github}>GitHub</a></li>}
+      </ul>
+    </header>
+    <section id="education" class="cv-section" aria-labelledby="cv-education-heading">
+      <h2 id="cv-education-heading">Education</h2>
+      {cvEducation.map(entry => <article id={entry.id} class="cv-entry">
+        <div class="cv-entry-heading"><h3>{entry.institution}</h3><p class="cv-date">{entry.dates}</p></div>
+        <p>{entry.description}</p>
+        {entry.program && <p>{entry.program}</p>}
+        {entry.semesterGpa && <p><strong>Semester GPA: {entry.semesterGpa}</strong> · {entry.credits} credits</p>}
+        {entry.courses.length > 0 && <p class="cv-coursework"><strong>Selected coursework:</strong> {entry.courses.map((course, index) => <>{index > 0 && '; '}{course.name}{course.level === 'Graduate level' && ' — graduate level'} ({course.grade})</>)}.</p>}
+      </article>)}
+    </section>
+    <section id="research-experience" class="cv-section" aria-labelledby="cv-research-heading">
+      <h2 id="cv-research-heading">Research Experience</h2>
+      {cvResearch.map((entry, index) => <article id={entry.id} class="cv-entry">
+        {(index === 0 || cvResearch[index - 1].institution !== entry.institution) && <h3 class="cv-institution">{entry.institution}</h3>}
+        <div class="cv-entry-heading"><p class="cv-role">{entry.role}</p><p class="cv-date">{entry.dates}</p></div>
+        {entry.group && <p class="cv-affiliation">{entry.group}</p>}
+        {entry.topics.map(topic => <section id={topic.id} class="cv-topic" aria-labelledby={`${topic.id}-heading`}><h4 id={`${topic.id}-heading`}>{topic.title}</h4><p>{topic.paragraph}</p></section>)}
+      </article>)}
+    </section>
+    <section id="course-project" class="cv-section" aria-labelledby="cv-course-heading">
+      <h2 id="cv-course-heading">Course Project</h2>
+      {cvCourseProjects.map(entry => <article id={entry.id} class="cv-entry">
+        <div class="cv-entry-heading"><h3>{entry.title}</h3><p class="cv-date">{entry.term}</p></div>
+        <p class="cv-affiliation">{entry.course}, {entry.institution} · Instructor: {entry.instructor}</p>
+        <p>{entry.paragraph}</p>
+      </article>)}
+    </section>
+    <section id="skills" class="cv-section" aria-labelledby="cv-skills-heading">
+      <h2 id="cv-skills-heading">Skills</h2>
+      <dl class="cv-skills">{cv.skills.map(skill => <div><dt>{skill.label}</dt><dd>{skill.items.join(', ')}</dd></div>)}</dl>
+    </section>
+  </div>
 </BaseLayout>
