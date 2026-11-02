@@ -1,59 +1,77 @@
 [
   {
-    "id": "dynamics-representations",
-    "title": "Molecular representations and physical prediction",
-    "summary": "I investigate when learned molecular representations help physical prediction. My work combines encoder comparisons, controlled ablations, and physical readouts, progressing from CG polymer and MACE water studies to controlled-response experiments and current pretrained-feature transfer research.",
-    "question": "Which physical information survives representation learning, and when does it improve prediction beyond matched baselines?",
-    "progression": "CG and MACE JEPA → controlled-response tests and pretrained-feature transfer",
-    "cvSummary": "Encoder comparisons, representation ablations, and physical-readout evaluation, from earlier CG polymer and MACE water studies to current pretrained-feature transfer research.",
+    "id": "mlip-properties-efficiency",
+    "title": "Machine Learning Potentials for Polymer Properties",
+    "summary": "I develop simulation workflows for estimating polymer properties with machine learning interatomic potentials. My work includes finite-strain calculations and stress processing with UMA and LAMMPS, and density estimates from MACE molecular dynamics with sampling checks and reference comparisons.",
+    "question": "How do simulation setup, sampling, and reference conditions affect estimates of polymer properties?",
+    "cvSummary": "Finite-strain and stress-processing workflows for polymer elastic response, MACE density simulations, and assessment of simulation time requirements for thermal conductivity calculations.",
     "stages": [
       {
-        "slug": "pretrained-atomistic-representations",
-        "label": "Current direction",
-        "context": "This current branch compares pretrained and randomly initialized encoders for QM9 property prediction, with matched data and downstream update budgets. It also includes preparation for crystal-property transfer and label-efficiency studies."
+        "slug": "uma-fairchem-polymer-workflow",
+        "label": "Elastic response",
+        "context": "This polymer-mechanics study connects finite-strain simulation with stress tensor postprocessing. Its workflow development complements the MACE density calculations in the same research line.",
+        "featured": true,
+        "preview": {
+          "title": "Polymer elastic-response workflows with UMA",
+          "description": "Developed workflows with UMA (FAIR-Chem) and LAMMPS for positive and negative strains in six modes, followed by stress tensor postprocessing to estimate stiffness matrices and elastic moduli."
+        }
       },
       {
-        "slug": "controlled-physical-response",
-        "label": "Recent completed study",
-        "context": "This completed study tested state/control adaptations and functional readouts on a synthetic hysteretic system. It extends the earlier representation questions into predictions under alternative control programs."
+        "slug": "polymer-density-screening",
+        "label": "Density and sampling",
+        "context": "This workflow combines classical polymer preparation with MACE density sampling and reference comparisons at 300 K. The displayed measurements retain the separately dated September pilot.",
+        "featured": true,
+        "preview": {
+          "title": "Polymer density simulations with MACE",
+          "description": "Connected classical polymer preparation with MACE molecular dynamics to estimate densities at 300 K, analyze trajectory fluctuations, and compare with reference values. Also assessed simulation time requirements for thermal conductivity calculations."
+        }
       },
       {
-        "slug": "mace-jepa-molecular-dynamics",
-        "label": "Earlier exploration · closed",
-        "archive": true,
-        "context": "This atomistic-water phase followed the CG encoder comparison and closed on 9 October 2026. The adapters, temporal controls, and physical-readout analyses informed later response and transfer questions."
-      },
-      {
-        "slug": "cg-jepa-polymer-representations",
-        "label": "Earlier exploration · completed",
-        "archive": true,
-        "context": "The original CG polymer study examined geometric interfaces, physical readouts, and temporal learning. It motivated the subsequent MACE encoder comparison and broader questions about physically useful representations."
+        "slug": "mlip-gpu-resources",
+        "label": "Simulation resource use",
+        "context": "This engineering pilot compared GPU allocations for a fixed MACE workload, measuring runtime, sampled device memory, and allocated GPU-hours together.",
+        "featured": false
       }
     ]
   },
   {
-    "id": "mlip-properties-efficiency",
-    "title": "MLIP material properties and efficiency",
-    "summary": "I build and evaluate polymer-property workflows and measure their computational cost. Current work connects classical preparation, MACE density simulations, sampling checks, and reference comparisons; GPU allocation studies examine the resource-efficiency questions raised by earlier UMA / FAIR-Chem work.",
-    "question": "How can ML interatomic potentials support credible material-property calculations within practical compute and memory budgets?",
-    "progression": "UMA / FAIR-Chem exploration → MACE property simulations → GPU resource evaluation",
-    "cvSummary": "Polymer-density workflow development and HPC resource evaluation, building on earlier UMA / FAIR-Chem workflow exploration.",
+    "id": "dynamics-representations",
+    "title": "Representation Learning for Molecular Dynamics",
+    "summary": "I study which molecular features and temporal information support physical prediction. In atomistic water and coarse-grained polystyrene, I compare JEPA models with direct supervision and simple dynamical baselines, using controlled comparisons to examine what the learned representations retain.",
+    "question": "When do learned representations provide useful information beyond simple prediction baselines?",
+    "cvSummary": "Representation and baseline comparisons in atomistic water and coarse-grained polystyrene, including physical prediction tasks and temporal-pairing controls.",
     "stages": [
       {
-        "slug": "polymer-density-screening",
-        "label": "Current workflow development",
-        "context": "This ongoing branch connects classical polymer preparation, MACE density sampling, chemical-identity checks, and reference comparisons. The displayed measurements preserve the separately dated September pilot."
+        "slug": "mace-jepa-molecular-dynamics",
+        "label": "Atomistic water",
+        "context": "This atomistic-water study complements the coarse-grained polymer work by testing pretrained features, atomic velocities, and local geometry at the atomic scale.",
+        "featured": true,
+        "preview": {
+          "title": "Molecular representations for water dynamics",
+          "description": "Integrated MACE features, atomic velocities, and local geometry for displacement prediction over short intervals. Compared temporal JEPA training with direct physical supervision, evaluated oxygen and hydrogen errors separately, and tested temporal information using true and shuffled configuration pairs."
+        }
       },
       {
-        "slug": "mlip-gpu-resources",
-        "label": "Earlier engineering measurements",
-        "context": "This engineering pilot compared GPU allocations for a fixed MACE workload, measuring runtime, sampled device memory, and allocated GPU-hours together."
+        "slug": "cg-jepa-polymer-representations",
+        "label": "Coarse-grained polystyrene",
+        "context": "The CG polystyrene study examines how local packing and chain geometry support physical prediction. Persistence and linear autoregressive baselines provide reference points for evaluating the learned representations.",
+        "featured": true,
+        "preview": {
+          "title": "Coarse-grained polymer representations",
+          "description": "Benchmarked JEPA predictors against persistence and linear autoregression in coarse-grained polystyrene. Compared representations of local packing and chain geometry for predicting chain size and local coordination."
+        }
       },
       {
-        "slug": "uma-fairchem-polymer-workflow",
-        "label": "Earlier exploration and motivation",
-        "context": "This earlier exploration prepared UMA / FAIR-Chem polymer-calculation workflows. Practical memory constraints motivated the subsequent resource-efficiency studies.",
-        "archive": true
+        "slug": "pretrained-atomistic-representations",
+        "label": "Pretrained feature transfer",
+        "context": "This current branch compares pretrained and randomly initialized encoders for QM9 property prediction, with matched data and downstream update budgets. It also includes preparation for crystal-property transfer and label-efficiency studies.",
+        "featured": false
+      },
+      {
+        "slug": "controlled-physical-response",
+        "label": "Controlled physical response",
+        "context": "This completed study tested state/control adaptations and functional readouts on a synthetic hysteretic system. It extends the earlier representation questions into predictions under alternative control programs.",
+        "featured": false
       }
     ]
   }

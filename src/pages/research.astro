@@ -5,8 +5,8 @@ import { researchThemes } from '../data/site';
 import { researchLines } from '../data/research-lines';
 import ResearchLine from '../components/ResearchLine.astro';
 ---
-<BaseLayout title="Research" description="Qian Ouyang's interests in AI for materials, MLIP HPC optimization, molecular dynamics, coarse-graining, JEPA, and polymer properties.">
-  <PageHeader title="Research" description="My work follows two connected questions: when learned representations help physical prediction, and how to calculate polymer properties efficiently with ML interatomic potentials." />
+<BaseLayout title="Research" description="Qian Ouyang's research on polymer properties with machine learning potentials and representation learning for molecular dynamics.">
+  <PageHeader title="Research" description="My research connects polymer property calculations with representation learning for molecular dynamics. These studies document the simulation workflows, physical prediction tasks, and comparisons behind that work." />
   <nav class="page-links" aria-label="On this page">
     <span>On this page</span>
     <ul>{researchLines.map(line => <li><a href={`#${line.id}`}>{line.title}</a></li>)}<li><a href="#research-interests">Research interests</a></li></ul>

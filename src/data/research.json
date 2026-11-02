@@ -1,11 +1,22 @@
 [
   {
-    "id": "ai-for-materials",
-    "title": "AI for Materials",
-    "description": "Machine learning for molecular and materials modeling, with an interest in the relationships between structure, dynamics, and macroscopic properties.",
+    "id": "polymer-properties",
+    "title": "Polymer Property Prediction",
+    "description": "Polymer property calculations using molecular simulation and machine learning potentials, particularly elastic response and density. I am interested in how preparation, stress analysis, sampling, and reference conditions affect the interpretation of these estimates.",
     "keywords": [
-      "AI for Science",
-      "Materials modeling"
+      "Polymer mechanics",
+      "Density",
+      "Molecular simulation"
+    ]
+  },
+  {
+    "id": "representation-learning",
+    "title": "Representation Learning for Molecular Dynamics",
+    "description": "Molecular features and temporal information for physical prediction in atomistic and coarse-grained systems. My studies compare JEPA training, direct supervision, and simple dynamical baselines through matched prediction tasks and temporal-pairing controls.",
+    "keywords": [
+      "Representation learning",
+      "JEPA",
+      "Physical prediction"
     ]
   },
   {
@@ -18,16 +29,6 @@
     ]
   },
   {
-    "id": "mlip-hpc",
-    "title": "HPC Optimization of ML Interatomic Potentials",
-    "description": "My interest in MLIP efficiency grew out of GPU-memory limitations encountered while developing UMA / FAIR-Chem polymer-simulation workflows. I want to understand where these models spend memory and computation, and how to improve simulation throughput while preserving physical predictions. My MACE resource pilot is an initial measurement study; a new optimization method remains a research goal.",
-    "keywords": [
-      "GPU memory",
-      "Computational efficiency",
-      "HPC"
-    ]
-  },
-  {
     "id": "coarse-graining",
     "title": "Coarse-Grained Molecular Modeling",
     "description": "Reduced molecular descriptions that connect atomistic detail with modeling at larger length and time scales, and the information those descriptions retain about molecular dynamics.",
@@ -37,23 +38,22 @@
     ]
   },
   {
-    "id": "representation-learning",
-    "title": "Representation Learning / JEPA",
-    "description": "I study learned molecular representations and physically useful prediction, from completed CG and MACE-water JEPA explorations to pretrained-feature transfer and label efficiency. Controlled synthetic-response tests help separate state information, temporal propagation, and physical readout.",
+    "id": "ai-for-materials",
+    "title": "AI for Materials",
+    "description": "Machine learning for molecular and materials modeling, with an interest in the relationships between structure, dynamics, and macroscopic properties.",
     "keywords": [
-      "Representation learning",
-      "Transfer and label efficiency",
-      "Physical prediction"
+      "AI for Science",
+      "Materials modeling"
     ]
   },
   {
-    "id": "polymer-properties",
-    "title": "Polymer Property Prediction",
-    "description": "Molecular simulation and machine learning for polymer properties, including density and glass-transition temperature. Current workflow development connects classical preparation, MACE sampling, and carefully matched references; interest in agentic polymer workflows remains part of this direction.",
+    "id": "mlip-hpc",
+    "title": "Computational Efficiency of ML Interatomic Potentials",
+    "description": "Practical memory and runtime limits in polymer simulations motivate my interest in computational efficiency. My MACE resource pilot measured trade-offs in GPU allocation; developing an optimization method remains a research interest.",
     "keywords": [
-      "Polymers",
-      "Property prediction",
-      "Research workflows"
+      "Computational efficiency",
+      "GPU memory",
+      "HPC"
     ]
   }
 ]

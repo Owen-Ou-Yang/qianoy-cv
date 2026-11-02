@@ -1,6 +1,6 @@
 # Content provenance and editorial boundaries
 
-Updated from the owner's messages through 2026-10-29; the underlying research-status records remain dated 2026-10-26. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
+Updated from the owner's messages through 2026-11-02; the underlying research-status records remain dated 2026-10-26. This file records what was supplied, what remains unknown, and why research output is separated from publications. It is not evidence of independent scientific validation.
 
 | 用户确认的信息 | 网站 / CV 英文表述 |
 | --- | --- |
@@ -25,7 +25,17 @@ Updated from the owner's messages through 2026-10-29; the underlying research-st
 
 The GitHub profile `Owen-Ou-Yang` was identified through the connected GitHub account. LinkedIn remains unknown. Public research content includes seven bounded research descriptions, with current and earlier work distinguished. A separately approved course-project summary and owner-confirmed Notre Dame exchange grades are included as of October 28. The October update adds status and methodological summaries of pretrained atomistic-representation research and a controlled synthetic physical-response study. It does not release new numerical results or figures, private research reports, unrelated results, configuration files, server details, or credentials.
 
-## Reading and navigation
+## Current approved presentation — 2 November 2026
+
+The owner asked to align the website's research emphasis with the finalized Application CV before sending recommendation materials. This supersedes the older overview-selection policies below; those entries remain a historical record. The source of the public CV is now the approved one-page Application PDF, mirrored by `cv.json`, with Education, Research Experience, Industry Experience, and Technical Skills. The approved degree, college/program, internship, and tool list supersede older provisional CV selections recorded here.
+
+Home, Research, Projects, and the About research narrative now lead with **Machine Learning Potentials for Polymer Properties**, followed by **Representation Learning for Molecular Dynamics**. The selected studies are UMA finite-strain/stress-processing workflows, MACE density estimates, atomistic-water representation learning, and CG-polystyrene representation/baseline comparisons. Atom-JEPA/QM9 and its prepared crystal extension, controlled physical response, and the GPU engineering pilot remain fully accessible under Additional explorations. JIESHUN remains in the approved CV; it need not be repeated in the research overview.
+
+Stage-level `featured` flags and optional overview previews replace the previous archive/current-work presentation. These describe emphasis, not chronology. All seven underlying project records, statuses, experiment dates, figures, measurements, and scientific limitations are preserved. Existing section IDs and project URLs stay available. The approved PDF and HTML CV text are unchanged. No private research material or new result is released.
+
+The overview describes stiffness/modulus **estimation workflows**, not validated property results; density **estimates**, not demonstrated equilibrium; thermal-conductivity **simulation time requirements**, not completed calculations or a scaling study; and JEPA **comparisons**, not a claimed advantage over baselines. The research-status date remains 2026-10-26 because this is an editorial alignment rather than a new status audit. The weekly maintenance task remains canceled following the owner's 2026-10-30 instruction.
+
+## Historical reading and navigation decisions
 
 On 2026-10-29, the owner requested a conservative application CV based on personal participation and understanding. `cv.json` and `cv.ts` now define the selected content for both HTML and PDF, independently of website publication flags, research-line order, and legacy `cvSummary`/`cvSelected` fields. Two topics sit under the Notre Dame RA role: Machine learning for polymer simulation merges UMA/FAIR-Chem, MACE density, and GPU resource work; Representation learning for molecular dynamics connects CG polymer and MACE-water exploration. The text describes participation, comparisons, and analysis without inferring independent method design or ownership of every implementation.
 

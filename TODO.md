@@ -18,8 +18,8 @@ Updated on 2026-11-02. The finalized Application PDF supplied by the owner is no
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
 - [x] Keep two shared research lines while updating their current direction, earlier stages, status-review date, and links from verified project records.
-- [x] Highlight current pretrained atomistic-representation research and the ongoing density workflow on the homepage. Keep UMA subordinate, with status "Resource-limited exploration" and no validated property results.
-- [x] Retain earlier CG and MACE-water pages as archived explorations; MACE-water closed on 9 October 2026. Merge their selected questions into the molecular-dynamics representation topic without listing every experiment as a CV entry.
+- [x] Align Home, Research, Projects, and About with the approved CV research emphasis: polymer properties first, then molecular-dynamics representations. Feature UMA, MACE density, atomistic water, and CG polystyrene. Preserve all project statuses and limitations.
+- [x] Separate website selection from chronology with explicit stage-level `featured` flags. Keep Atom-JEPA/QM9, controlled physical response, and GPU resource work under Additional explorations. MACE-water remains closed on 9 October 2026; selection does not imply ongoing work.
 - [x] Add bounded summaries of native QM9 budget comparisons, crystal-study preparation, and the completed SSM/GRU synthetic physical-response study, without releasing new numerical results or figures.
 - [x] Keep all seven project URLs, with related-work links within the same line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.

@@ -3,13 +3,13 @@
   "domain": "cv.qianoy.uk",
   "siteUrl": "https://cv.qianoy.uk",
   "identity": "Machine learning for materials and molecular simulation.",
-  "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame undergraduate research assistant, studying molecular representations, physical prediction, polymer properties, and MLIP efficiency.",
-  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as an undergraduate research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. GPU-memory limitations in my UMA / FAIR-Chem polymer-simulation work sparked my interest in making ML interatomic potentials more efficient.",
+  "metaDescription": "Qian Ouyang studies polymer properties with machine learning potentials and representation learning for molecular dynamics at Xi’an Jiaotong University and Notre Dame.",
+  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as an undergraduate research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. My research focuses on polymer property calculations and representation learning for molecular dynamics.",
   "biography": [
     "I am a fourth-year undergraduate pursuing a B.Eng. in Artificial Intelligence in the Artificial Intelligence Experimental Class at Qian Xuesen Honors College, Xi'an Jiaotong University. I am also an undergraduate research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
     "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I studied at Notre Dame as an undergraduate exchange student (non-degree) from August to December 2025. My undergraduate research assistant role in Prof. Tengfei Luo's group began during that semester, in October 2025, and continues today. I returned to Notre Dame as an iSURE Research Participant from July to September 2026.",
-    "Working on polymer simulations with UMA / FAIR-Chem exposed me to GPU-memory constraints in practice. That experience led me to ask how ML interatomic potentials could use computational resources more efficiently. I am interested in understanding computational redundancy, reducing memory requirements, and improving simulation throughput while preserving useful physical predictions.",
-    "My representation-learning work began with coarse-grained polymers and MACE-based water studies, followed by controlled physical-response experiments. I now compare pretrained and randomly initialized Atom-JEPA encoders for molecular property prediction and develop reproducible polymer-density workflows. A crystal-property extension is in preparation."
+    "My work on polymer properties combines machine learning interatomic potentials with molecular simulation. I developed workflows for finite-strain calculations and stress processing with UMA and LAMMPS, and use MACE simulations to estimate polymer densities, examine trajectory fluctuations, and compare with reference values.",
+    "I also study representations of molecular dynamics in atomistic water and coarse-grained polymers. This work compares JEPA training with direct supervision and simple baselines, and tests how molecular features and temporal information affect physical prediction. Further project records cover pretrained representations, controlled physical response, and simulation resource use."
   ],
   "personalAside": "The .uk is more committed to being British than my accent is.",
   "email": "qouyang@nd.edu",
@@ -70,7 +70,7 @@
       "Fourth-year AI undergraduate · Xi'an Jiaotong University",
       "Undergraduate Research Assistant · Prof. Tengfei Luo's group, University of Notre Dame"
     ],
-    "summary": "I study how learned molecular representations support physical prediction, and how to use ML interatomic potentials efficiently for polymer simulation. My current work explores pretrained-feature transfer, label efficiency, and reproducible density workflows."
+    "summary": "I work on machine learning for molecular simulation, with two main interests: polymer property calculations and representations of molecular dynamics. My projects include elastic-response workflows with UMA, density simulations with MACE, and JEPA studies of atomistic water and coarse-grained polymers."
   },
   "researchReviewedOn": "2026-10-26",
   "exchangeEducation": {

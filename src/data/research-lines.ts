@@ -5,14 +5,14 @@ interface ResearchStage {
   slug: string;
   label: string;
   context: string;
-  archive?: boolean;
+  featured: boolean;
+  preview?: { title: string; description: string };
 }
 interface ResearchLineRecord {
   id: string;
   title: string;
   summary: string;
   question: string;
-  progression: string;
   cvSummary: string;
   stages: ResearchStage[];
 }
@@ -20,8 +20,8 @@ export interface ResearchLine extends Omit<ResearchLineRecord, 'stages'> {
   stages: (ResearchStage & { project: Project })[];
 }
 
-// One shared hierarchy for the website and CV. Unknown, omitted, or duplicate
-// project assignments fail the build rather than silently hiding research.
+// Website emphasis is independent of project chronology and CV selection.
+// Unknown, omitted, or duplicate assignments must not silently hide research.
 const assigned = new Set<string>();
 const ids = new Set<string>();
 export const researchLines: ResearchLine[] = (lineData as ResearchLineRecord[]).map(line => {

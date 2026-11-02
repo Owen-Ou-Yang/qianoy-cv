@@ -6,7 +6,7 @@ import { projects } from '../../data/projects';
 import { researchLines } from '../../data/research-lines';
 ---
 <BaseLayout title="Projects" description="Research project entries in AI for materials and molecular simulation." noindex={projects.length === 0}>
-  <PageHeader title="Selected research" description="Two research lines organize these studies: molecular dynamics representation learning, and MLIP material properties and efficiency. Each study records its methods, observations, and limits." />
+  <PageHeader title="Selected research" description="Two research lines organize these studies: machine learning potentials for polymer properties, and representation learning for molecular dynamics. Each study records its methods, observations, and limits." />
   {projects.some(project => project.isPlaceholder) && <p class="draft-note">Draft project entries: these describe research interests. Specific questions, methods, contributions, and results are TODOs until verified project details are added.</p>}
   {researchLines.map(line => <ResearchLine line={line} />)}
   {projects.length === 0 && <section class="empty-output"><h2>Project details are not currently listed.</h2><p><a href="/research/">Explore research interests</a></p></section>}

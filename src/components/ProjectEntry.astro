@@ -1,8 +1,8 @@
 ---
 import type { Project } from '../data/projects';
-interface Props { project: Project; index: number; heading?: 'h2' | 'h3' | 'h4'; stageLabel?: string; }
-const { project, heading: Heading = 'h3', stageLabel } = Astro.props;
-const title = project.preview?.title ?? project.title;
+interface Props { project: Project; index: number; heading?: 'h2' | 'h3' | 'h4'; stageLabel?: string; preview?: { title: string; description: string }; }
+const { project, heading: Heading = 'h3', stageLabel, preview = project.preview } = Astro.props;
+const title = preview?.title ?? project.title;
 ---
 <article class="project-entry">
   {stageLabel && <p class="project-stage">{stageLabel}</p>}
@@ -10,6 +10,6 @@ const title = project.preview?.title ?? project.title;
     <Heading class="project-title"><a href={`/projects/${project.slug}/`}>{title}</a></Heading>
     <p class="entry-status">{project.status}</p>
   </div>
-  <p class="project-summary">{project.preview?.description ?? project.summary}</p>
+  <p class="project-summary">{preview?.description ?? project.summary}</p>
   <a class="study-link" href={`/projects/${project.slug}/`} aria-label={`View project: ${title}`}>View project <span aria-hidden="true">→</span></a>
 </article>

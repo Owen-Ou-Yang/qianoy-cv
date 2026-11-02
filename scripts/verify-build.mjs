@@ -189,11 +189,13 @@ for (const [file, html] of htmlByPath) {
   }
 }
 assert(downloadLinks >= 2, 'Home and CV must both offer the approved PDF.');
+const cvTopics = curatedCv.researchExperience.flatMap(entry => entry.topics);
+assert.deepEqual(researchLines.map(line => line.title), cvTopics.map(topic => topic.title), 'Website research headings and order must follow the approved CV topics.');
+assert.deepEqual(researchLines.flatMap(line => line.stages.filter(stage => stage.featured).map(stage => stage.slug)), cvTopics.flatMap(topic => topic.sourceProjects), 'Website highlights must follow the studies selected in the approved CV.');
 for (const line of researchLines) {
-  for (const stage of line.stages.filter(stage => stage.archive)) {
-    const project = projectRecords.find(project => project.slug === stage.slug);
-    assert(!project.selected, `${stage.slug}: archived work must not be a current homepage highlight`);
-    assert(!homeHtml.includes(`href="/projects/${stage.slug}/"`), `${stage.slug}: archive is still linked as current work`);
+  for (const stage of line.stages) {
+    assert.equal(typeof stage.featured, 'boolean', `${stage.slug}: explicit website emphasis is required`);
+    assert.equal(homeHtml.includes(`href="/projects/${stage.slug}/"`), stage.featured, `${stage.slug}: homepage links must match the selected research, independently of project status`);
   }
 }
 for (const route of ['research/index.html', 'projects/index.html']) {
