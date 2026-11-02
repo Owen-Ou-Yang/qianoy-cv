@@ -3,15 +3,22 @@
     "kind": "owner-approved-pdf",
     "source": "assets/cv/Qian_Ouyang_CV_Application.pdf",
     "publicPath": "/cv.pdf",
-    "sha256": "f905683e7b9c2b14cfe23eb537a4c96867f3e3f8c07946910615c263ae38b164",
+    "sha256": "bbd2bdec3afdafc65652c89162ed22856e544e3e5e5d4ded04cf2989de55d193",
     "pageCount": 1
   },
   "education": [
-    { "id": "xjtu", "source": "education" },
+    {
+      "id": "xjtu",
+      "source": "education"
+    },
     {
       "id": "notre-dame-exchange",
       "source": "exchangeEducation",
-      "courseCodes": ["CSE 60535", "CSE 40657", "CSE 40166"]
+      "courseCodes": [
+        "CSE 60535",
+        "CSE 40657",
+        "CSE 40166"
+      ]
     }
   ],
   "researchExperience": [
@@ -25,9 +32,12 @@
           "title": "Machine Learning Potentials for Polymer Properties",
           "paragraphs": [
             "Developed workflows for finite-strain calculations with UMA (FAIR-Chem) and LAMMPS, using positive and negative strains in six modes and stress tensor postprocessing to estimate stiffness matrices and elastic moduli for individual and batched polymer structures.",
-            "Combined classical structure preparation with MACE molecular dynamics to estimate polymer densities at 300 K, analyze trajectory fluctuations, and compare with reference values. Assessed simulation time requirements for thermal conductivity calculations."
+            "Combined classical structure preparation with MACE molecular dynamics to estimate polymer densities at 300 K. Examined trajectory fluctuations and compared the density estimates with reference values. Assessed the simulation time required for thermal conductivity calculations."
           ],
-          "sourceProjects": ["uma-fairchem-polymer-workflow", "polymer-density-screening"]
+          "sourceProjects": [
+            "uma-fairchem-polymer-workflow",
+            "polymer-density-screening"
+          ]
         },
         {
           "id": "molecular-representations",
@@ -37,7 +47,10 @@
             "Benchmarked JEPA predictors against persistence and linear autoregression in coarse-grained polystyrene, comparing representations of local packing and chain geometry for predicting chain size and local coordination.",
             "Tested the contribution of temporal information by comparing true and shuffled pairs of molecular configurations. Froze the encoder and adapter, then trained probes on the same downstream displacement prediction task."
           ],
-          "sourceProjects": ["mace-jepa-molecular-dynamics", "cg-jepa-polymer-representations"]
+          "sourceProjects": [
+            "mace-jepa-molecular-dynamics",
+            "cg-jepa-polymer-representations"
+          ]
         }
       ]
     }
@@ -47,14 +60,37 @@
       "id": "jieshun-internship",
       "profileRole": "Deep Learning Algorithm Intern",
       "paragraphs": [
-        "Reproduced and fine-tuned end-to-end OCR and visual sequence recognition models for license plates with varied layouts using Middle Eastern traffic data.",
-        "Refined model architecture and training strategies, evaluated recognition across traffic scenes, and analyzed failure cases involving viewpoint changes, lighting variation, and cluttered backgrounds."
+        "Adapted pretrained OCR models to Middle Eastern license plates with varied layouts, adjusting training settings and reviewing errors under different viewpoints and lighting conditions."
       ]
     }
   ],
   "skills": [
-    { "label": "Programming & Tools", "items": ["Python", "C++", "PyTorch", "Git", "Linux Shell", "Conda"] },
-    { "label": "Molecular Simulation", "items": ["LAMMPS", "MACE", "FAIR-Chem (UMA)"] },
-    { "label": "HPC & Cloud", "items": ["Notre Dame CRC (Grid Engine, HTCondor)", "AWS", "CPU/GPU Batch Computing"] }
+    {
+      "label": "Programming & Tools",
+      "items": [
+        "Python",
+        "C++",
+        "PyTorch",
+        "Git",
+        "Linux Shell",
+        "Conda"
+      ]
+    },
+    {
+      "label": "Molecular Simulation",
+      "items": [
+        "LAMMPS",
+        "MACE",
+        "FAIR-Chem (UMA)"
+      ]
+    },
+    {
+      "label": "HPC & Cloud",
+      "items": [
+        "Notre Dame CRC (Grid Engine, HTCondor)",
+        "AWS",
+        "CPU/GPU Batch Computing"
+      ]
+    }
   ]
 }

@@ -47,7 +47,7 @@ export const cvEducation = cv.education.map(entry => {
     institution: exchange.institution,
     dates: exchange.dates,
     description: exchange.role === 'Non-degree Exchange Student' && exchange.level === 'Undergraduate exchange'
-      ? 'Undergraduate Exchange Student (non-degree)' : exchange.role,
+      ? 'Undergraduate Exchange Student' : exchange.role,
     program: null,
     semesterGpa: exchange.semesterGpa,
     credits: exchange.credits,

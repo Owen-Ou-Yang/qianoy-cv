@@ -129,7 +129,8 @@ for (const entry of curatedCv.education) {
     }
   }
   if (entry.source === 'exchangeEducation') {
-    assert(text.includes('Undergraduate Exchange Student (non-degree)'), 'CV exchange is undergraduate/non-degree.');
+    assert(text.includes('Undergraduate Exchange Student'), 'CV exchange retains the undergraduate exchange identity.');
+    assert(!text.includes('(non-degree)'), 'CV uses the approved concise exchange label; the underlying non-degree record is retained.');
     assert(text.includes(exchange.dates) && text.includes(exchange.semesterGpa) && text.includes(`${exchange.credits} credits`), 'CV retains exchange dates, semester GPA, and credits.');
     for (const code of entry.courseCodes ?? []) {
       const course = exchange.courses.find(course => course.code === code);
