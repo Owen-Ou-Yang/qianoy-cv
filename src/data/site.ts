@@ -20,6 +20,7 @@ interface Profile {
     background: string;
     level: string;
     degree: string | null;
+    college: string | null;
     program: string | null;
     institution: string | null;
     dates: string | null;
@@ -38,9 +39,19 @@ interface Profile {
     role: string;
     institution: string;
     group: string | null;
+    advisor?: string;
+    department?: string;
     dates: string;
+    term?: string;
     description: string;
     dateTodo: string | null;
+  }[];
+  industryExperience: {
+    role: string;
+    institution: string;
+    department: string;
+    location: string;
+    dates: string;
   }[];
   skills: { title: string; description: string }[];
   programmingLanguages: string[];
@@ -48,7 +59,7 @@ interface Profile {
   socialImage: string | null;
 }
 
-// JSON records are also read by the optional PDF generator.
+// Shared factual records support the website and approved Application CV content.
 export const profile: Profile = profileData;
 export const researchThemes = researchData;
 export const displayName = profile.name ?? 'TODO: Full name';

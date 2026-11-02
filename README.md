@@ -4,7 +4,7 @@ Live: [cv.qianoy.uk](https://cv.qianoy.uk/) · [PDF CV](https://cv.qianoy.uk/cv.
 
 A complete, static Astro website for an academic profile in AI for materials and molecular simulation. It uses semantic HTML, system fonts, a shared CSS design system, and reusable Astro components. No frontend framework, external font requests, analytics, database, or client JavaScript is required.
 
-The profile includes Qian Ouyang's confirmed contact details, Artificial Intelligence major and Experimental Class at Xi'an Jiaotong University (2023-2027, expected), RA role with Prof. Tengfei Luo at Notre Dame (October 2025-present), undergraduate Non-degree Exchange Student studies at Notre Dame in Fall 2025, iSURE dates, and owner-confirmed programming and CRC experience. The exchange record includes a semester GPA of 3.917/4.0 over 12 credits and course-specific grades; it is separate from the XJTU degree and RA experience. As reviewed on 26 October 2026, seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work examines pretrained atomistic representations and prepares a crystal-property label-efficiency study; recent completed work compares controlled physical-response models. Earlier CG JEPA and MACE-water explorations remain available as archived case studies. The ongoing density workflow connects classical polymer preparation with MACE simulation and reference comparison; its approved September measurements remain historical examples. UMA remains background work with no validated property result. The application CV has an independent, conservative selection: two merged research topics under the Notre Dame RA role, shared education facts, one course project, and a short skills list. The owner-approved Driving Coach project appears separately as compact Computer Vision coursework, without changing the two research lines. No degree designation, publication, novel optimization algorithm, or general predictive accuracy is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
+The public CV is the owner's finalized Application PDF supplied on 2 November 2026. Its approved selection is Education, Research Experience, Industry Experience, and Technical Skills. The HTML CV mirrors that wording and reuses confirmed profile facts, including B.Eng. in Artificial Intelligence, Qian Xuesen Honors College, the Artificial Intelligence Experimental Class, Notre Dame exchange education, Undergraduate Research Assistant, iSURE Research Participant, and JIESHUN Technology internship. The Notre Dame 3.917/4.0 GPA applies only to the 12-credit exchange semester. Existing research records, figures, and Driving Coach coursework remain on the website without being added to the Application CV. No new result, publication, or proficiency claim is inferred. See [TODO.md](TODO.md) and [CONTENT_NOTES.md](CONTENT_NOTES.md).
 
 ## Develop locally
 
@@ -21,13 +21,13 @@ Open the localhost URL printed by Astro (normally http://127.0.0.1:4321). `nvm` 
 
 ```sh
 npm run lint       # Astro, HTML-template, and TypeScript diagnostics
-npm run build      # Complete static site in dist/
+npm run build      # Verify approved PDF, then build the static site in dist/
 npm test           # Check the generated output (build first)
 npm run validate   # All three, in order
 npm run preview    # Serve the production build locally
 ```
 
-`lint` intentionally uses Astro's own diagnostics instead of adding a separate ESLint toolchain. Validation checks every generated page and local link, heading order, unique titles, SEO and OpenGraph metadata, canonical URLs, sitemap/noindex consistency, a real PDF download, and lightweight output budgets. It is not a browser accessibility audit or a measured Core Web Vitals report. Responsive styles cover narrow screens and wrapping navigation; manually review on mobile and at 200% zoom before the public launch.
+`lint` intentionally uses Astro's own diagnostics instead of adding a separate ESLint toolchain. Validation checks every generated page and local link, heading order, unique titles, SEO and OpenGraph metadata, canonical URLs, sitemap/noindex consistency, the approved PDF hash and download links, CV wording and shared facts, and lightweight output budgets. It is not a browser accessibility audit or a measured Core Web Vitals report. Responsive styles cover narrow screens and wrapping navigation; manually review on mobile and at 200% zoom before the public launch.
 
 ## Structure
 
@@ -45,14 +45,17 @@ npm run preview    # Serve the production build locally
 ├── TODO.md
 ├── DEPLOYMENT.md
 ├── CONTENT_NOTES.md                # Content provenance and claim boundaries
+├── assets/cv/
+│   └── Qian_Ouyang_CV_Application.pdf # Owner-approved original; not copied to dist/ directly
 ├── public/
 │   ├── _headers                   # Cloudflare caching and security headers
 │   ├── favicon.svg
 │   ├── figures/                   # Approved SVG/PNG figures and plotted CSV data
 │   ├── social/profile.png         # Name and research-identity sharing preview
-│   └── cv.pdf                     # Generated academic CV from confirmed profile
+│   └── cv.pdf                     # Byte-identical public copy of approved Application PDF
 ├── scripts/
-│   ├── generate-cv.py              # Optional PDF generator from shared JSON
+│   ├── generate-cv.py              # Verified copy/restore of the approved PDF; no typesetting
+│   ├── verify-cv-asset.mjs          # Source/public/built PDF hash guard
 │   └── verify-build.mjs
 └── src/
     ├── components/
@@ -97,7 +100,7 @@ npm run preview    # Serve the production build locally
 
 ## Edit content
 
-The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by two compact research lines and links to selected studies within each. It highlights the current atomistic-representation study and ongoing polymer-density workflow. Research and Projects separate current/recent work from earlier explorations within the same lines. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. Detail pages present the research question, approach, current progress, and findings in that order, with material limitations retained afterward. Backlinks and related-work links stay within the project's research line. The HTML and PDF CV instead use the same explicit selection in `cv.json`; website research-line order does not determine CV inclusion or pagination. Existing project URLs remain available.
+The homepage uses `profile.json`'s `overview` for a short identity and research introduction, followed by two compact research lines and links to selected studies within each. It highlights the current atomistic-representation study and ongoing polymer-density workflow. Research and Projects separate current/recent work from earlier explorations within the same lines. Each project's optional `preview` supplies its short listing title and description; the full title, methods, observations, figures, and limitations remain on its detail page. Detail pages present the research question, approach, current progress, and findings in that order, with material limitations retained afterward. Backlinks and related-work links stay within the project's research line. The HTML CV uses the approved Application wording selected in `cv.json`; its pinned original PDF supplies the public download. Website research-line order does not determine CV inclusion or PDF layout. Existing project URLs remain available.
 
 Typography and spacing favor quick reading: system sans-serif text, moderate headings, and one aligned column for project summaries. Detail pages provide section links and keep large scientific figures in a keyboard-accessible horizontal scroll region on narrow screens, with full-size image and data links.
 
@@ -105,19 +108,19 @@ Typography and spacing favor quick reading: system sans-serif text, moderate hea
 
 Edit `src/data/profile.json` for identity, biography, education, academic experience, skills, and contact links. Replace `null` with verified values. Absent optional links are omitted rather than rendered as dead links. `name` supplies page titles and Person structured metadata. `researchReviewedOn` records the date of the latest research-content review, rather than an experiment date or claim of live monitoring. Edit `src/data/research.json` for research themes, descriptions, and keywords. `src/data/site.ts` holds the types and navigation.
 
-Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. `programmingLanguages` and `skills` supply the existing About-page skill presentation. The application CV uses its own shorter list in `cv.json`. Do not infer personal proficiency from repository dependencies, imports, successful runs, or AI-assisted implementation; retain only owner-confirmed tools and contribution wording, without proficiency ratings. A public email is visible to everyone. No contact form or data collection is included.
+Use a plain email address for `email` (the site adds `mailto:`), full HTTPS URLs for `github` and `linkedin`, and skill objects with `title` and `description`. `skills` supplies the About-page presentation, with the same approved categories and tools selected for the Application CV in `cv.json`. `programmingLanguages` retains the confirmed language records. Do not infer personal proficiency from repository dependencies, imports, successful runs, or AI-assisted implementation; retain only owner-confirmed tools and contribution wording, without proficiency ratings. A public email is visible to everyone. No contact form or data collection is included.
 
 ### Education and exchange coursework
 
 The homepage goes directly from the profile introduction and contact actions to Research lines. The About biography describes the exchange, RA, and iSURE chronology without repeating grades or credits. Its Education component uses “Undergraduate Exchange Student (non-degree)” with one adjacent date. The application CV reuses the same education facts in a compact presentation; underlying academic data is retained.
 
-`profile.education` describes the XJTU undergraduate degree. `profile.exchangeEducation` separately records Notre Dame's Non-degree Exchange Student role, undergraduate exchange level, August-December 2025 dates, Fall 2025 term, semester GPA, credits, and course records. `semesterGpa: "3.917/4.0"` applies only to this 12-credit Notre Dame semester; it is neither an XJTU GPA nor a cumulative undergraduate GPA. Keep RA and iSURE entries in `experience` instead of merging them with education.
+`profile.education` describes the XJTU B.Eng. in Artificial Intelligence, Qian Xuesen Honors College, and Artificial Intelligence Experimental Class. `profile.exchangeEducation` separately records Notre Dame's Non-degree Exchange Student role, undergraduate exchange level, August-December 2025 dates, Fall 2025 term, semester GPA, credits, and course records. `semesterGpa: "3.917/4.0"` applies only to this 12-credit Notre Dame semester; it is neither an XJTU GPA nor a cumulative undergraduate GPA. Keep RA and iSURE entries in `experience` instead of merging them with education.
 
-Each exchange course has `name`, `code`, `level`, `grade`, and the earlier `cvSelected` flag. The About education table shows all four confirmed grades: graduate-level Computer Vision (CSE 60535, A), undergraduate Natural Language Processing (CSE 40657, A), Computer Graphics (CSE 40166, A), and Human Computer Interaction (CSE 40424, A−). The curated CV explicitly selects the compact coursework information it needs from those shared records, for both HTML and PDF. One graduate-level course does not make the owner a graduate student.
+Each exchange course has `name`, `code`, `level`, `grade`, and the earlier `cvSelected` flag. The About education table shows all four confirmed grades: graduate-level Computer Vision (CSE 60535, A), undergraduate Natural Language Processing (CSE 40657, A), Computer Graphics (CSE 40166, A), and Human Computer Interaction (CSE 40424, A−). The HTML CV explicitly selects the first three courses to match the compact coursework line in the approved PDF. One graduate-level course does not make the owner a graduate student.
 
 ### Course project
 
-`src/data/coursework.json` and `coursework.ts` keep approved coursework separate from research projects and publication citations. `CourseworkProjects.astro` retains the About-page entry. The curated CV reuses the title, course, term, and instructor facts, but selects its own short paragraph in `cv.json` rather than importing the About bullets. The entry identifies Computer Vision at Notre Dame in Fall 2025, taught by Prof. Adam Czajka.
+`src/data/coursework.json` and `coursework.ts` keep approved coursework separate from research projects and publication citations. `CourseworkProjects.astro` retains the About-page entry. Driving Coach is retained on About and is deliberately absent from the public Application CV. The entry identifies Computer Vision at Notre Dame in Fall 2025, taught by Prof. Adam Czajka.
 
 Driving Coach adapted an existing YOLOv1-style detector with a pretrained ResNet-18 backbone for BDD100K scenes. Its unseen Shenzhen highway-video evaluation was qualitative. Do not add mAP/accuracy claims, imply a new architecture, or describe the discussed but unimplemented local lane-geometry scheme as a delivered feature. `repository` remains `null` while no public project-code destination is confirmed. The October 28 request approves this specific course project; unrelated coursework and private reports remain excluded.
 
@@ -163,26 +166,23 @@ When adding new records, note that `published: false` controls rendered output o
 
 ### PDF and HTML CV
 
-`src/data/cv.json` is the explicit content selection shared by the HTML CV and PDF generator. Its typed interface is in `cv.ts`. It selects two merged topics under the Notre Dame Research Assistant experience: **Machine learning for polymer simulation** (UMA/FAIR-Chem, MACE density, and GPU resource work) and **Representation learning for molecular dynamics** (CG polymer and MACE-water exploration). Each research topic stores an ordered `paragraphs` array, rendered as separate natural paragraphs in both formats. RA and iSURE identities/dates remain separate and reuse confirmed profile facts. The Driving Coach course project uses one short `paragraph`, while education/course and project metadata can be reused from `profile.json` and `coursework.json`.
+The owner-approved `assets/cv/Qian_Ouyang_CV_Application.pdf` is the public CV authority. `public/cv.pdf` must remain byte-identical to it, including its confirmed one-page layout. `src/data/cv.json` pins the source path, public path, SHA-256, and one-page contract in `document`; its other fields mirror the Application wording for the HTML page. The typed interface and shared-fact lookups are in `cv.ts`.
 
-The CV deliberately omits the independent Atom-JEPA/QM9, Bouc–Wen/state-space, and prepared crystal-extension entries. Their website records, results, and source material remain available for later consideration. The CV skills list currently retains only owner-confirmed Python and C++. Other installed or imported tools are not evidence of personal proficiency and must be confirmed before adding them.
+The selected sections are **Education**, **Research Experience**, **Industry Experience**, and **Technical Skills**. Research retains **Machine Learning Potentials for Polymer Properties** and **Representation Learning for Molecular Dynamics** under Undergraduate Research Assistant, with the approved advisor and iSURE Research Participant line. JIESHUN Technology supplies the industry entry. Skills use the three approved categories: Programming & Tools, Molecular Simulation, and HPC & Cloud. Driving Coach, Atom-JEPA/QM9, Bouc-Wen/state-space, and the crystal extension are not CV entries; their website records remain available. No `published` flag or website timeline automatically selects CV content.
 
-The document begins with the name and clickable contacts, followed by Education, Research Experience, Course Project, and Skills. It omits the broad identity slogan, repeated line summaries, research-status labels, and bullets. Content uses short paragraphs. No `published`, project `cvSelected`, website research-line order, or forced line-based `PageBreak` determines the CV. Aim for a readable one-page document; use a second page only if genuinely important content requires it, without shrinking type or squeezing line spacing.
-
-`public/cv.pdf` is a checked-in asset regenerated by the optional Python script:
+The former typesetting script is now an exact-copy publisher with no third-party Python dependencies. It does not compose a PDF from JSON or change the approved layout:
 
 ```sh
-python3 -m venv .venv-cv
-.venv-cv/bin/pip install reportlab
-.venv-cv/bin/python scripts/generate-cv.py
+python3 scripts/generate-cv.py --check  # Read-only source/public hash check
+python3 scripts/generate-cv.py          # Restore public/cv.pdf from the verified original
 npm run validate
 ```
 
-Running the script explicitly overwrites `public/cv.pdf`; it never runs during website builds. Python is not required for Cloudflare Pages. After changing the curated CV selection or any shared facts it consumes, regenerate the PDF, inspect every rendered page, and verify identity, dates, GPA scope, course level, links, and paragraph/page boundaries. Commit both the data and PDF. Changes to unrelated research archives alone should not change the CV.
+Ordinary `npm run build` first runs `verify-cv-asset.mjs`, so a changed source or stale public copy fails before Astro publishes it. Output validation also checks the built PDF against the same SHA-256. Python is not required for Cloudflare Pages. Download buttons use `/cv.pdf?v=<first-12-hash-characters>` and the canonical `/cv.pdf` response retains revalidation headers, reducing stale browser downloads.
 
-Conservative contribution wording is intentional. Do not infer independent method design, implementation of all modules, familiarity with every tool, or a separate CV accomplishment from code, logs, reports, or AI-assisted execution. When participation or understanding is uncertain, omit the item from this version and keep a short review note instead of strengthening the claim.
+For a future CV revision, obtain a new explicitly approved **Application** PDF first. Keep internal or Adam-specific variants outside `assets/`, `public/`, and public Git history. Replace the canonical approved source, verify its actual page count and rendering, update `cv.json.document.sha256` and the matching HTML/shared facts without editorial additions, then run the publisher and all checks. Commit the approved source, public copy, metadata, and corresponding content together. Do not change the hash merely to accept an unexplained file mismatch. A website-only research update must not rewrite the public PDF.
 
-You may replace `public/cv.pdf` with an independently prepared CV, but then maintain consistency with the HTML manually and do not run the generator over it. Optional LinkedIn/degree-abbreviation details do not block the CV. Remove the PDF's `X-Robots-Tag: noindex` rule in `public/_headers` only if you want it indexed. The HTML CV also has a print stylesheet.
+The PDF's `X-Robots-Tag: noindex` remains configured in `public/_headers`. The HTML CV retains the existing responsive design and print stylesheet. Contribution wording comes from the finalized Application document; code, logs, dependencies, or AI-assisted execution do not authorize additional accomplishments or skills.
 
 ### SEO and appearance
 
@@ -192,7 +192,7 @@ Keep `site` in `astro.config.mjs` and `profile.siteUrl` aligned if the canonical
 
 ## Deploy
 
-Weekly research maintenance reviews are intended for Mondays at 10:00 Asia/Shanghai. When project evidence changes, prepare a pending editorial update for the owner; do not publish it automatically. Review status, methods, uncertainties, and the approved public scope before changing the shared data. A new experiment or a local completion file alone does not authorize release of its results, figures, or research directory.
+The owner canceled weekly research maintenance on 30 October 2026. Do not run or reschedule recurring site checks unless explicitly requested again. For a requested project update, prepare any new public claims for owner review before release. Review status, methods, uncertainties, and the approved public scope before changing the shared data. A new experiment or a local completion file alone does not authorize release of its results, figures, or research directory.
 
 Follow [DEPLOYMENT.md](DEPLOYMENT.md) for Cloudflare Pages, the public GitHub repository, HTTPS, and automatic updates from `main`. Deploy only `dist/`.
 

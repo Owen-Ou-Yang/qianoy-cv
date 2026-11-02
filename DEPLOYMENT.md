@@ -31,9 +31,11 @@ npm run validate
 
 Node 22.23.3 is pinned in `.nvmrc`; `nvm` is optional if compatible Node is already installed. In a restricted environment use `ASTRO_TELEMETRY_DISABLED=1 npm run validate`.
 
-The current content includes confirmed education, experience, and skills plus three owner-approved research case studies: an earlier UMA/FAIR-Chem workflow, a MACE GPU engineering pilot, and preliminary polymer density screening. The UMA workflow explains how practical GPU-memory constraints motivated the owner's HPC interests; it does not present quantitative UMA results. The HTML and PDF CV use the records' shared `cvSummary` fields. JEPA results and coursework remain excluded; general JEPA research interests remain visible. Review `TODO.md` for optional additions.
+The website retains its complete research and coursework records. The public CV separately follows the owner-approved Application document: Education, Research Experience, Industry Experience, and Technical Skills. `src/data/cv.json` mirrors its text and pins the original PDF at `assets/cv/Qian_Ouyang_CV_Application.pdf`. `public/cv.pdf` must be byte-identical. Driving Coach remains on About and is not part of this Application CV.
 
-Keep the selected SVG/PNG figures, plotted CSV files, and social preview image in `public/`; they are ordinary static assets and add no JavaScript or hosting service. The UMA workflow schematic is rendered as static HTML and is not a scientific result figure. Check all three case-study pages, including `/projects/uma-fairchem-polymer-workflow/`, the two measurement studies' image/data downloads, and the updated PDF before publishing a content update. Regenerate and visually inspect the PDF when changing CV content, then run `npm run validate`. A prepared content revision is not confirmed live until its deployment and served pages have been checked.
+`npm run build` runs the approved-PDF hash guard before Astro; `npm run validate` also checks the resulting `dist/cv.pdf`. Neither process retypesets the document. `python3 scripts/generate-cv.py --check` verifies the source/public copy without writing, while invoking that script without `--check` restores the approved original exactly. For a new owner-approved Application PDF, update the original, pinned hash, HTML/shared facts, and public copy together; inspect its actual rendering/page count before validation. Do not publish internal or Adam-specific variants.
+
+Keep the approved figures, CSV files, and sharing image in `public/`; only `dist/` is deployed. After a successful Pages deployment, verify `/cv/`, the canonical `/cv.pdf`, and the versioned PDF link rendered on Home and CV. Download the live PDF and compare its SHA-256 with the approved source, rather than treating a successful build as evidence that the public file changed. The PDF response retains `Cache-Control: public, max-age=0, must-revalidate`; download buttons include a hash version query to avoid reusing an old browser download. A prepared content revision is not confirmed live until its deployment and served pages have been checked.
 
 ## 2. Create the public GitHub repository and push
 
@@ -140,11 +142,11 @@ Sources: [Cloudflare HTTPS](https://developers.cloudflare.com/ssl/get-started/),
 In the Pages project's branch settings, retain `main` as the production branch and enable automatic production deployments. A pushed content change triggers a new build; the GitHub Actions workflow independently validates the source. No deployment token needs to be checked into this repository.
 
 ```sh
-git add src/data/profile.json public/cv.pdf
-git commit -m 'Update academic profile'
+git add src/data/profile.json src/data/cv.json src/data/cv.ts src/pages/cv.astro assets/cv public/cv.pdf scripts package.json README.md TODO.md DEPLOYMENT.md
+git commit -m 'Synchronize approved Application CV'
 git push origin main
 ```
 
-Check that the Pages deployment references that commit, succeeds, and the changed content appears at `https://cv.qianoy.uk`. A failed `npm run validate` command prevents the new Pages build from publishing.
+Check that the Pages deployment references that commit, succeeds, and the changed content appears at `https://cv.qianoy.uk/cv/`. Compare the live canonical and versioned PDF bytes with the approved original. A failed `npm run validate` command prevents the new Pages build from publishing.
 
 Source: [Pages branch controls](https://developers.cloudflare.com/pages/configuration/git-integration/).

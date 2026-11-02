@@ -3,11 +3,11 @@
   "domain": "cv.qianoy.uk",
   "siteUrl": "https://cv.qianoy.uk",
   "identity": "Machine learning for materials and molecular simulation.",
-  "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame research assistant, studying molecular representations, physical prediction, polymer properties, and MLIP efficiency.",
-  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as a research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. GPU-memory limitations in my UMA / FAIR-Chem polymer-simulation work sparked my interest in making ML interatomic potentials more efficient.",
+  "metaDescription": "Qian Ouyang, AI undergraduate at Xi'an Jiaotong University and Notre Dame undergraduate research assistant, studying molecular representations, physical prediction, polymer properties, and MLIP efficiency.",
+  "introduction": "I study Artificial Intelligence at Xi'an Jiaotong University and work as an undergraduate research assistant in Prof. Tengfei Luo's group at the University of Notre Dame. GPU-memory limitations in my UMA / FAIR-Chem polymer-simulation work sparked my interest in making ML interatomic potentials more efficient.",
   "biography": [
-    "I am a fourth-year undergraduate majoring in Artificial Intelligence in the Artificial Intelligence Experimental Class at Xi'an Jiaotong University. I am also a research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
-    "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I studied at Notre Dame as an undergraduate exchange student (non-degree) from August to December 2025. My research assistant role in Prof. Tengfei Luo's group began during that semester, in October 2025, and continues today. I returned to Notre Dame for iSURE summer research from July to September 2026.",
+    "I am a fourth-year undergraduate pursuing a B.Eng. in Artificial Intelligence in the Artificial Intelligence Experimental Class at Qian Xuesen Honors College, Xi'an Jiaotong University. I am also an undergraduate research assistant in Prof. Tengfei Luo's group in the Department of Aerospace and Mechanical Engineering at the University of Notre Dame.",
+    "I enrolled at Xi'an Jiaotong University in 2023 and expect to graduate in 2027. I studied at Notre Dame as an undergraduate exchange student (non-degree) from August to December 2025. My undergraduate research assistant role in Prof. Tengfei Luo's group began during that semester, in October 2025, and continues today. I returned to Notre Dame as an iSURE Research Participant from July to September 2026.",
     "Working on polymer simulations with UMA / FAIR-Chem exposed me to GPU-memory constraints in practice. That experience led me to ask how ML interatomic potentials could use computational resources more efficiently. I am interested in understanding computational redundancy, reducing memory requirements, and improving simulation throughput while preserving useful physical predictions.",
     "My representation-learning work began with coarse-grained polymers and MACE-based water studies, followed by controlled physical-response experiments. I now compare pretrained and randomly initialized Atom-JEPA encoders for molecular property prediction and develop reproducible polymer-density workflows. A crystal-property extension is in preparation."
   ],
@@ -18,37 +18,45 @@
   "education": {
     "background": "Artificial Intelligence",
     "level": "Fourth-year undergraduate",
-    "degree": "Undergraduate",
+    "degree": "B.Eng.",
     "institution": "Xi'an Jiaotong University",
     "dates": "2023 - 2027 (expected)",
-    "program": "Artificial Intelligence Experimental Class"
+    "program": "Artificial Intelligence Experimental Class",
+    "college": "Qian Xuesen Honors College"
   },
   "experience": [
     {
-      "role": "Research Assistant",
+      "role": "Undergraduate Research Assistant",
       "institution": "University of Notre Dame",
       "group": "Prof. Tengfei Luo's group · Department of Aerospace and Mechanical Engineering",
       "dates": "October 2025 - Present",
       "description": "Research in AI for materials and molecular simulation.",
-      "dateTodo": null
+      "dateTodo": null,
+      "advisor": "Prof. Tengfei Luo",
+      "department": "Aerospace and Mechanical Engineering"
     },
     {
-      "role": "Summer Research Participant (iSURE)",
+      "role": "iSURE Research Participant",
       "institution": "University of Notre Dame",
       "group": null,
       "dates": "July - September 2026",
       "description": "International Summer Undergraduate Research Experience (iSURE).",
-      "dateTodo": null
+      "dateTodo": null,
+      "term": "Summer 2026"
     }
   ],
   "skills": [
     {
-      "title": "Machine Learning",
-      "description": "PyTorch, torchvision, TensorBoard."
+      "title": "Programming & Tools",
+      "description": "Python, C++, PyTorch, Git, Linux Shell, Conda"
     },
     {
-      "title": "Scientific Computing / Research Workflows",
-      "description": "NumPy, SciPy, Matplotlib; LAMMPS, ASE, MACE, UMA / FAIR-Chem; CRC/SGE batch workflows and GPU resource measurement."
+      "title": "Molecular Simulation",
+      "description": "LAMMPS, MACE, FAIR-Chem (UMA)"
+    },
+    {
+      "title": "HPC & Cloud",
+      "description": "Notre Dame CRC (Grid Engine, HTCondor), AWS, CPU/GPU Batch Computing"
     }
   ],
   "programmingLanguages": [
@@ -60,7 +68,7 @@
   "overview": {
     "affiliations": [
       "Fourth-year AI undergraduate · Xi'an Jiaotong University",
-      "Research Assistant · Prof. Tengfei Luo's group, University of Notre Dame"
+      "Undergraduate Research Assistant · Prof. Tengfei Luo's group, University of Notre Dame"
     ],
     "summary": "I study how learned molecular representations support physical prediction, and how to use ML interatomic potentials efficiently for polymer simulation. My current work explores pretrained-feature transfer, label efficiency, and reproducible density workflows."
   },
@@ -103,5 +111,14 @@
         "cvSelected": false
       }
     ]
-  }
+  },
+  "industryExperience": [
+    {
+      "role": "Deep Learning Algorithm Intern",
+      "institution": "JIESHUN Technology",
+      "department": "Intelligent Algorithm Department",
+      "location": "Shenzhen, China",
+      "dates": "January - March 2026"
+    }
+  ]
 }

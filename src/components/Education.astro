@@ -11,10 +11,11 @@ const exchangeRole = exchange?.role === 'Non-degree Exchange Student' && exchang
 <div class="education-list">
   <article>
   <h3 class="education-title">{profile.education.institution ?? <Todo text="TODO: Institution" />}</h3>
-  <p>{profile.education.level} · {profile.education.background}</p>
+  <p>{profile.education.degree ? `${profile.education.degree} in ${profile.education.background}` : `${profile.education.level} · ${profile.education.background}`}</p>
+  {!compact && profile.education.college && <p>{profile.education.college}</p>}
   {!compact && profile.education.program && <p>{profile.education.program}</p>}
   {detailed && <dl class="education-details space-top">
-    <div><dt>Level</dt><dd>{profile.education.degree ?? <Todo text="TODO: Study level" />}</dd></div>
+    <div><dt>Level</dt><dd>{profile.education.level}</dd></div>
     <div><dt>Dates</dt><dd>{profile.education.dates ?? <Todo text="TODO: Enrollment and expected graduation dates" />}</dd></div>
   </dl>}
   {!detailed && profile.education.dates && <p class="muted">{profile.education.dates}</p>}

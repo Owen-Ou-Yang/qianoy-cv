@@ -1,19 +1,19 @@
 # Remaining optional content and maintenance
 
-Updated on 2026-10-29; underlying research-status records remain dated 2026-10-26. Core profile and CV facts are confirmed. Seven research records follow two lines: molecular representations and physical prediction, and MLIP material properties and efficiency. Current work covers pretrained atomistic representations and ongoing polymer-density workflows. The crystal label-efficiency extension remains in preparation; controlled synthetic physical-response work is a recent completed study. Earlier CG JEPA and the closed MACE-water exploration remain available at their existing URLs. The application CV independently selects two merged research topics under the RA role; project publication/status records no longer determine its contents or order. The specifically approved Driving Coach course project is included separately; unrelated coursework and project results remain excluded.
+Updated on 2026-11-02. The finalized Application PDF supplied by the owner is now the authority for the public CV. Its selection is Education, Research Experience, Industry Experience, and Technical Skills. Existing seven research records and Driving Coach coursework remain on the website; absence from the Application CV does not remove a project. Underlying research-status records remain dated 2026-10-26, and this synchronization does not claim a new review of experiment status.
 
 ## Confirmed and incorporated
 
 - [x] Qian Ouyang; public email `qouyang@nd.edu`; connected GitHub profile `Owen-Ou-Yang`.
-- [x] Xi'an Jiaotong University: undergraduate, Artificial Intelligence major, Artificial Intelligence Experimental Class (人工智能拔尖班), currently fourth year.
+- [x] Xi'an Jiaotong University: B.Eng. in Artificial Intelligence, Qian Xuesen Honors College, Artificial Intelligence Experimental Class (人工智能拔尖班), currently fourth year.
 - [x] Enrollment in 2023; expected graduation in 2027. No months are inferred.
-- [x] RA in Prof. Tengfei Luo's group, Department of Aerospace and Mechanical Engineering, University of Notre Dame: October 2025 - Present.
+- [x] Undergraduate Research Assistant in Prof. Tengfei Luo's group, Department of Aerospace and Mechanical Engineering, University of Notre Dame: October 2025 - Present.
 - [x] Notre Dame Non-degree Exchange Student: undergraduate exchange, August - December 2025 / Fall 2025, recorded separately from the RA role.
 - [x] Notre Dame exchange-semester GPA: 3.917/4.0 over 12 credits; not a cumulative undergraduate or XJTU GPA.
 - [x] Website course grades: graduate-level Computer Vision (CSE 60535, A); undergraduate NLP (CSE 40657, A), Computer Graphics (CSE 40166, A), and HCI (CSE 40424, A−). Select the first three for the compact PDF coursework line.
-- [x] Add the approved Driving Coach course project, Fall 2025 Computer Vision with Prof. Adam Czajka, using shared coursework data and two bounded contribution bullets.
-- [x] Notre Dame iSURE summer research: July - September 2026.
-- [x] Conservative CV skills: Python, C++, and directly owner-confirmed CRC experience. Other tools in the unchanged About/research records are not taken as proof of personal proficiency.
+- [x] Retain Driving Coach on About: Fall 2025 Computer Vision with Prof. Adam Czajka. Do not include it in the finalized Application CV.
+- [x] iSURE Research Participant: Summer 2026 in the Application CV; confirmed July - September 2026 dates remain in shared academic experience.
+- [x] Application CV skills match the three owner-approved categories: Programming & Tools, Molecular Simulation, and HPC & Cloud. About uses the same categories and tools.
 - [x] CRC experience and experience with UMA/FAIR-Chem and MACE. Omit systems/networking experience from the academic profile at the owner's request.
 - [x] Preserve MLIP HPC optimization and molecular/JEPA/coarse-graining interests without inventing results.
 - [x] Add the two approved measurement studies with SVG/PNG figures, plotted CSV data, methods, and visible limitations.
@@ -23,17 +23,17 @@ Updated on 2026-10-29; underlying research-status records remain dated 2026-10-2
 - [x] Add bounded summaries of native QM9 budget comparisons, crystal-study preparation, and the completed SSM/GRU synthetic physical-response study, without releasing new numerical results or figures.
 - [x] Keep all seven project URLs, with related-work links within the same line. Contact remains GitHub-free, with approved GitHub links elsewhere preserved.
 - [x] Add the approved UMA/FAIR-Chem workflow case study at `/projects/uma-fairchem-polymer-workflow/`, with an HTML schematic and the owner-confirmed motivation for HPC research. Keep the original elastic-response workflow separate from later Tg/density development; no quantitative UMA validation is claimed.
-- [x] Use an explicit `cv.json` selection and `cv.ts` interface shared by HTML and PDF, independent of website `published`, project `cvSelected`, research-line order, and pagination.
+- [x] Use explicit Application wording in `cv.json`/`cv.ts`, independent of website publication flags and research-line order. Pin the approved one-page original PDF and publish a byte-identical public copy.
 - [x] Add the owner-approved CG JEPA and MACE JEPA descriptions, with completed work, current status, and physical-evaluation limits. Distinguish supervised geometric gains and frozen-MACE readout results from temporal JEPA gains. Keep unrelated coursework excluded.
 - [x] Add a local sharing preview image without introducing client JavaScript.
-- [x] Select the same compact paragraphs and confirmed facts for the HTML and generated PDF; use Education, Research Experience, Course Project, and Skills without the old top label, broad slogan, status labels, or long bullets.
+- [x] Synchronize the approved Application PDF with HTML Education, Research Experience, Industry Experience, and Technical Skills; preserve the uploaded layout and exact contribution wording.
 
 ## Optional details, not blockers
 
 Edit `src/data/profile.json` if you want to add:
 
 - [ ] LinkedIn URL, or omit it. It is omitted from all public profile links while unavailable.
-- [ ] Official English degree designation (e.g. only if confirmed by the institution). Current wording states undergraduate studies and the major without claiming B.Eng./B.Sc.
+- [x] Owner-confirmed B.Eng. designation incorporated from the finalized Application PDF.
 - [ ] Add further CV tools only after the owner confirms being able to use and discuss them; imports, dependencies, and AI-assisted execution alone are insufficient.
 
 The Notre Dame exchange-semester GPA is owner-confirmed. No XJTU/cumulative GPA, awards, publications, or service entries are assumed or required. `src/data/publications.json` intentionally remains empty.
@@ -50,9 +50,9 @@ The Notre Dame exchange-semester GPA is owner-confirmed. No XJTU/cumulative GPA,
 - [ ] Add a public HPC code link if a suitable repository is later released. The current case study makes the plotted measurements available without assuming the underlying research repository is public.
 - [ ] Add quantitative UMA property or optimization results only after they exist, have been checked, and are approved for public release. A workflow implementation or schematic does not establish scientific validation.
 
-No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep website narratives, descriptions, figures, CSV files, attribution, and limits consistent. Maintain CV selection separately in `cv.json`; regenerate the PDF and run `npm run validate` when its selected text or shared facts change. The October 26 update describes research status and methods without releasing new private numerical results, figures, or raw reports. The October 28 revision adds owner-confirmed exchange grades and the specifically approved course-project summary, and makes research descriptions contribution-focused without changing their status or results. Existing September density figures and measurements remain historical snapshots, not a current campaign total. The October 29 CV revision conservatively merges UMA/MACE/property-resource work and CG/MACE-water work into two RA topics, omits Atom-JEPA/QM9, synthetic state-space, and crystal-extension entries from the CV, and keeps their research records intact. Driving Coach is a single paragraph in the CV. Target a readable one-page layout without forced research-line page breaks.
+No additional project is required for this version. Future records belong in `src/data/projects.json` only after their public scope is approved, with membership and context in `src/data/research-lines.json`. Keep existing project narratives, figures, CSV files, attribution, and limits intact. The finalized Application PDF supersedes previous CV text and selection; its new industry entry is JIESHUN Technology, Deep Learning Algorithm Intern, January - March 2026, Intelligent Algorithm Department, Shenzhen, China. The original PDF is retained in `assets/cv/`, published unchanged as `public/cv.pdf`, and guarded by its SHA-256 before ordinary builds. `scripts/generate-cv.py` only verifies/restores those exact approved bytes; it no longer typesets old JSON. A future owner-approved PDF revision must update the original, hash, public copy, HTML wording, and shared facts together, followed by visual and build checks. Internal variants are not public downloads.
 
-- [ ] Review project records weekly on Mondays at 10:00 Asia/Shanghai. When evidence changes, prepare a pending website/CV update for owner review; do not publish automatically. Stay quiet when there is no material change.
+- [x] Weekly website progress checks canceled at the owner's request on 2026-10-30. Do not reschedule without an explicit new request.
 
 Unpublished project drafts and the private Driving Coach source/report remain excluded from public source and public Git history. A qualitative-video evaluation does not justify an accuracy or mAP number; an unimplemented lane-representation proposal must not be presented as a delivered feature.
 

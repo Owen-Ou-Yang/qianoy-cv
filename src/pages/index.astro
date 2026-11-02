@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ResearchLine from '../components/ResearchLine.astro';
 import { displayName, profile } from '../data/site';
 import { researchLines } from '../data/research-lines';
+import { cvDownloadHref } from '../data/cv';
 ---
 <BaseLayout title="Home" description={profile.metaDescription}>
   <section class="hero" aria-labelledby="intro-heading">
@@ -10,7 +11,7 @@ import { researchLines } from '../data/research-lines';
     <div class="affiliations">{profile.overview.affiliations.map(line => <p>{line}</p>)}</div>
     <p class="hero-copy">{profile.overview.summary}</p>
     <div class="actions profile-actions">
-      <a class="button" href="/cv.pdf">{profile.cvIsDraft ? 'CV (PDF · draft)' : 'CV (PDF)'} <span aria-hidden="true">↓</span></a>
+      <a class="button" href={cvDownloadHref}>{profile.cvIsDraft ? 'CV (PDF · draft)' : 'CV (PDF)'} <span aria-hidden="true">↓</span></a>
       {profile.email && <a href={`mailto:${profile.email}`}>{profile.email}</a>}
       {profile.github && <a href={profile.github}>GitHub</a>}
       {profile.linkedin && <a href={profile.linkedin}>LinkedIn</a>}

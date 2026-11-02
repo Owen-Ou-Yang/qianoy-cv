@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { verifyCvAsset } from './verify-cv-asset.mjs';
 
 const root = path.resolve('dist');
 async function walk(dir) {
@@ -109,21 +110,31 @@ for (const project of coursework) {
   }
 }
 const curatedCv = JSON.parse(await readFile('src/data/cv.json', 'utf8'));
+const cvAsset = await verifyCvAsset({ builtPath: path.join(root, 'cv.pdf') });
 const cvMain = cvHtml.match(/<main\b[^>]*>([^]*?)<\/main>/)?.[1] ?? '';
+const textOf = html => html.replace(/<[^>]*>/g, ' ').replaceAll('&amp;', '&').replaceAll('&#39;', "'").replaceAll('&#x27;', "'").replaceAll('&quot;', '"').replace(/\s+/g, ' ').trim();
+const cvText = textOf(cvMain);
 const cvSections = [...cvMain.matchAll(/<h2[^>]*>([^<]+)<\/h2>/g)].map(match => match[1]);
-assert.deepEqual(cvSections, ['Education', 'Research Experience', 'Course Project', 'Skills'], 'CV needs the four curated sections in order.');
-const selectionIds = [...curatedCv.education, ...curatedCv.researchExperience, ...curatedCv.courseProjects].map(entry => entry.id);
-assert.equal(new Set(selectionIds).size, selectionIds.length, 'Curated CV IDs must be unique.');
+assert.deepEqual(cvSections, ['Education', 'Research Experience', 'Industry Experience', 'Technical Skills'], 'CV must follow the approved Application selection.');
+const selectionIds = [...curatedCv.education, ...curatedCv.researchExperience, ...curatedCv.industryExperience].map(entry => entry.id);
+assert.equal(new Set(selectionIds).size, selectionIds.length, 'Application CV IDs must be unique.');
 for (const entry of curatedCv.education) {
   const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
   assert(block, `Selected CV education missing: ${entry.id}`);
+  const text = textOf(block);
+  if (entry.source === 'education') {
+    for (const fact of [profile.education.institution, profile.education.dates, `${profile.education.degree} in ${profile.education.background}`, profile.education.college, profile.education.program]) {
+      assert(text.includes(fact), `CV degree fact missing: ${fact}`);
+      assert(textOf(htmlByPath.get(path.join(root, 'about/index.html'))).includes(fact), `About degree fact missing: ${fact}`);
+    }
+  }
   if (entry.source === 'exchangeEducation') {
-    assert(block.includes('Undergraduate Exchange Student (non-degree)'), 'CV exchange is undergraduate/non-degree.');
-    assert(block.includes(exchange.semesterGpa) && block.includes(`${exchange.credits} credits`), 'CV retains exchange GPA and credits.');
+    assert(text.includes('Undergraduate Exchange Student (non-degree)'), 'CV exchange is undergraduate/non-degree.');
+    assert(text.includes(exchange.dates) && text.includes(exchange.semesterGpa) && text.includes(`${exchange.credits} credits`), 'CV retains exchange dates, semester GPA, and credits.');
     for (const code of entry.courseCodes ?? []) {
       const course = exchange.courses.find(course => course.code === code);
-      assert(course && block.includes(course.name) && block.includes(`(${course.grade})`), `Selected CV course missing: ${code}`);
-      if (course.level === 'Graduate level') assert(block.includes('graduate level'), 'CV retains the selected course level.');
+      const label = `${course?.name} (${course?.level === 'Graduate level' ? 'graduate, ' : ''}${course?.grade})`;
+      assert(course && text.includes(label), `Selected CV course name, level, or grade mismatch: ${code}`);
     }
   }
 }
@@ -131,34 +142,53 @@ for (const entry of curatedCv.researchExperience) {
   const record = profile.experience.find(record => record.role === entry.profileRole);
   assert(record, `Unknown selected CV role: ${entry.profileRole}`);
   const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
-  assert(block?.includes(record.role) && block.includes(record.dates), `CV role/date mismatch: ${entry.id}`);
-  assert(!block.includes(exchange.semesterGpa), 'Exchange GPA is not a research credential.');
+  const text = textOf(block ?? '');
+  for (const fact of [record.role, record.institution, record.dates, record.advisor, record.department]) assert(text.includes(fact), `CV research fact mismatch: ${fact}`);
+  assert(!text.includes(exchange.semesterGpa), 'Exchange GPA is not a research credential.');
+  if (entry.relatedRole) {
+    const related = profile.experience.find(record => record.role === entry.relatedRole);
+    assert(related && text.includes(related.role) && text.includes(related.term), 'CV retains the approved iSURE identity and term.');
+  }
   let position = -1;
   for (const topic of entry.topics) {
     const next = block.indexOf(topic.title);
-    assert(next > position, `CV merged topic missing or reordered: ${topic.id}`);
+    assert(next > position, `CV topic missing or reordered: ${topic.id}`);
     const topicBlock = block.match(new RegExp(`<section\\b[^>]*id="${topic.id}"[^>]*>([^]*?)<\\/section>`))?.[1];
     assert(topicBlock, `CV research topic missing: ${topic.id}`);
-    assert(Array.isArray(topic.paragraphs) && topic.paragraphs.length > 0, `CV research topic needs explicit paragraphs: ${topic.id}`);
-    const paragraphs = [...topicBlock.matchAll(/<p>([^]*?)<\/p>/g)].map(match => match[1]);
-    assert.deepEqual(paragraphs, topic.paragraphs, `CV research paragraphs must match the selected text and order: ${topic.id}`);
-    assert(!/<(?:ul|ol|li)\b/.test(topicBlock), `CV research must use natural paragraphs without bullets: ${topic.id}`);
+    assert(Array.isArray(topic.paragraphs) && topic.paragraphs.length > 0, `CV topic needs explicit paragraphs: ${topic.id}`);
+    const paragraphs = [...topicBlock.matchAll(/<p>([^]*?)<\/p>/g)].map(match => textOf(match[1]));
+    assert.deepEqual(paragraphs, topic.paragraphs, `CV paragraphs must match approved Application wording and order: ${topic.id}`);
+    assert(!/<(?:ul|ol|li)\b/.test(topicBlock), `HTML CV retains natural paragraphs: ${topic.id}`);
     position = next;
   }
 }
-for (const entry of curatedCv.courseProjects) {
-  const record = coursework.find(record => record.id === entry.id);
-  assert(record, `Unknown selected CV course project: ${entry.id}`);
+for (const entry of curatedCv.industryExperience) {
+  const record = profile.industryExperience.find(record => record.role === entry.profileRole);
+  assert(record, `Unknown selected industry role: ${entry.profileRole}`);
   const block = cvMain.match(new RegExp(`<article\\b[^>]*id="${entry.id}"[^>]*>([^]*?)<\\/article>`))?.[1];
-  assert(block?.includes(record.title) && block.includes(record.instructor) && block.includes(entry.paragraph), 'CV course project must use its curated paragraph and shared metadata.');
-  assert(!/<(?:ul|ol)\b/.test(block), 'CV course project must be a paragraph.');
+  const text = textOf(block ?? '');
+  for (const fact of [record.role, record.institution, record.dates, record.department, record.location]) assert(text.includes(fact), `CV internship fact mismatch: ${fact}`);
+  assert.deepEqual([...block.matchAll(/<p>([^]*?)<\/p>/g)].map(match => textOf(match[1])), entry.paragraphs, 'CV internship paragraphs match the approved wording.');
 }
+assert.deepEqual(curatedCv.skills.map(skill => ({ title: skill.label, description: skill.items.join(', ') })), profile.skills, 'CV and About skills must use the same approved tools.');
 for (const skill of curatedCv.skills) {
-  assert(cvMain.includes(skill.label) && skill.items.every(item => cvMain.includes(item)), 'CV skills must come from its explicit selection.');
+  assert(cvText.includes(skill.label) && cvText.includes(skill.items.join(', ')), 'CV skills must match the approved categories and tools.');
 }
-for (const omitted of ['Atom-JEPA', 'QM9', 'Bouc', 'state-space', 'crystal', 'Scientific Computing / Research Workflows', 'CURRICULUM VITAE', 'Closed ', 'Displayed pilot']) {
-  assert(!cvMain.includes(omitted), `Omitted/management content leaked into CV: ${omitted}`);
+for (const omitted of ['Driving Coach', 'Course Project', 'Atom-JEPA', 'QM9', 'Bouc', 'state-space', 'crystal', 'Scientific Computing / Research Workflows', 'CURRICULUM VITAE', 'Closed ', 'Displayed pilot']) {
+  assert(!cvText.includes(omitted), `Content outside the Application selection leaked into CV: ${omitted}`);
 }
+assert.deepEqual(files.filter(file => file.toLowerCase().endsWith('.pdf')).map(file => path.relative(root, file)), ['cv.pdf'], 'Only the approved Application PDF belongs in deployed output.');
+const downloadHref = `${cvAsset.publicPath}?v=${cvAsset.sha256.slice(0, 12)}`;
+let downloadLinks = 0;
+for (const [file, html] of htmlByPath) {
+  for (const tag of html.match(/<a\b[^>]*>/g) ?? []) {
+    const href = readAttr(tag, 'href');
+    if (!href || !/\.pdf(?:[?#]|$)/i.test(href)) continue;
+    assert.equal(href, downloadHref, `${routeOf(file)}: all PDF links must use the versioned approved Application download`);
+    downloadLinks++;
+  }
+}
+assert(downloadLinks >= 2, 'Home and CV must both offer the approved PDF.');
 for (const line of researchLines) {
   for (const stage of line.stages.filter(stage => stage.archive)) {
     const project = projectRecords.find(project => project.slug === stage.slug);
